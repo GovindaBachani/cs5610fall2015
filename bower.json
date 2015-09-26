@@ -1,0 +1,30 @@
+{
+  "name": "cs5610",
+  "version": "0.0.0",
+  "authors": [
+    "GovindaBachani <govinda.bachanis@gmail.com>"
+  ],
+  "description": "Bootstrap",
+  "main": "",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "bootstrap",
+    "jquery"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
