@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Tables</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-xs-6">
+            <h1>Table of 1 to 12</h1>
+            <div class="col-md-6">
+                <script>
+                    var html = "<table border=\"1\">";
+                    for (var i = 10; i <= 20; i++) {
+                        html = html + "<tr>";
+                        for (var j = 1; j <= 10; j++) {
+                            var prod = i * j;
+                            html = html + "<td>" + prod + "</td>";
+                        }
+                        html = html + "</tr>";
+                    }
+                    document.write(html);
+                </script>
+            </div>
+        </div>
+    </div>
+    <table ></table>
+    
+</body>
+</html>
