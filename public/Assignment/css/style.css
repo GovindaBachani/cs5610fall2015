@@ -2,9 +2,19 @@
     padding-top:50px;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+  color: gold;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #bf1414;
+  background-color: transparent;
+}
+
 a#active{color:black;background-color:gold}
 
-a#active1{color:#777;text-decoration:none;background-color:transparent}
+a#active1{color:gold;text-decoration:none;background-color:transparent}
 
 body{
     background-image:url(t1UkrtF.png);
@@ -14,6 +24,10 @@ body{
 h1{
     color:yellow;
 }
+h2{
+    color:yellow;
+}
+
 
 p{
     color: white;
