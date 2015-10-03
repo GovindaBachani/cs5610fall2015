@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Register </title>
-    <meta charset="utf-8" />
+    <title>Profile</title>
+	<meta charset="utf-8" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/dashboard.css" rel="stylesheet" />
@@ -21,8 +21,6 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="active1">Register</a></li>
-                    <li><a href="#"><u>Login</u></a></li>
                     <li><a href="#"><u>Username</u></a></li>
                     <li><a href="#"><u>Logout</u></a></li>
                 </ul>
@@ -41,7 +39,7 @@
                 </ul>
             </div>
             <div class="col-md-9 col-lg-9">
-                <h1 class="col-lg-offset-1">Register</h1>
+                <h1 class="col-lg-offset-1">Profile</h1>
                 <br />
                 <br />
                 <form class="form-horizontal" action="profile.html">
@@ -58,9 +56,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="rep-pass" class="col-md-2 col-lg-2 control-label text-justify">Verify Password:</label>
+                        <label for="fname" class="control-label col-lg-2 col-md-2">First Name:</label>
                         <div class="col-lg-7 col-md-7">
-                            <input type="password" placeholder="Verify Password" id="rep-pass" class="form-control" />
+                            <input type="text" id="fname" class="form-control" placeholder="First Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname" class="control-label col-lg-2 col-md-2">Last Name:</label>
+                        <div class="col-lg-7 col-md-7">
+                            <input type="text" id="lname" class="form-control" placeholder="Last Name" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-offset-2 col-md-offset-2 col-lg-7 col-md-7">
-                            <button type="submit" class="btn btn-primary btn-group-justified">Register</button>
+                            <button type="submit" class="btn btn-primary btn-group-justified">Update</button>
                         </div>
                     </div>
                 </form>
