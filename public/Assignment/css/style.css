@@ -1,3 +1,22 @@
 .container-custom-padding{
-    padding-top:80px;
+    padding-top:50px;
+}
+
+a#active{color:black;background-color:gold}
+
+body{
+    background-image:url('New Manchester United jersey wallpapers 05 2560x1600.jpg');
+    background-size:cover;
+}
+
+h1{
+    color:yellow;
+}
+
+p{
+    color: white;
+}
+
+label{
+    color:gold;
 }
