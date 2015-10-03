@@ -37,10 +37,26 @@ label{
     color:gold;
 }
 
-td{
-    color:gold;
+table, td, th {
+    border: 1px solid green;
 }
 
-.table-bordered{
-    border-color:#1d8515;
+th {    
+    color: black;
+    background-color:#64767a;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td{
+   background-color: #faf6d4;
+}
+.table-striped > tbody > tr:nth-child(2n) > td{
+   background-color: white;
+}
+
+.big-glyphicon{
+    font-size:x-large;
+}
+
+.textbox-color{
+    border-color:black;
 }
