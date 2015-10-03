@@ -60,3 +60,8 @@ th {
 .textbox-color{
     border-color:black;
 }
+
+.nav-justified > li {
+    display: table-cell; 
+    width: 1%
+}
