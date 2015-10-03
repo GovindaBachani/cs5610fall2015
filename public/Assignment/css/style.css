@@ -36,3 +36,11 @@ p{
 label{
     color:gold;
 }
+
+td{
+    color:gold;
+}
+
+.table-bordered{
+    border-color:#1d8515;
+}
