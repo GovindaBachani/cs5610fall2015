@@ -35,6 +35,7 @@ p{
 
 label{
     color:gold;
+
 }
 
 table, td, th {
@@ -65,3 +66,41 @@ th {
     display: table-cell; 
     width: 1%
 }
+
+.tab-pane {
+
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    border-color:white;
+    border-width:2px;
+    border:solid 2px white;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+
+
+.form-text {
+        -moz-box-sizing:border-box;
+        -webkit-box-sizing:border-box;
+        box-sizing:border-box;
+}
+
+.input-width{
+  width:50%;
+  box-sizing:border-box;
+}
+
+.label-bold-custom{
+    font-weight: bold;
+}
+
+.horizontal-line{
+    border-color: darkgreen;
+}
+
+
