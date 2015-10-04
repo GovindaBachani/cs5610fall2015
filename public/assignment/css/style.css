@@ -1,0 +1,131 @@
+.container-custom-padding{
+    padding-top:50px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: gold;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #bf1414;
+  background-color: transparent;
+}
+
+a#active{color:black;background-color:gold}
+
+a#active1{color:gold;text-decoration:none;background-color:transparent}
+
+body{
+    background-image:url(t1UkrtF.png);
+    background-size:cover;
+}
+
+h1{
+    color:yellow;
+}
+h2{
+    color:yellow;
+}
+
+
+p{
+    color: white;
+}
+
+label{
+    color:gold;
+
+}
+
+table, td, th {
+    border: 1px solid green;
+}
+
+th {    
+    color: black;
+    background-color:#64767a;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td{
+   background-color: #faf6d4;
+}
+.table-striped > tbody > tr:nth-child(2n) > td{
+   background-color: white;
+}
+
+.big-glyphicon{
+    font-size:x-large;
+}
+
+.textbox-color{
+    border-color:black;
+}
+
+.nav-justified > li {
+    display: table-cell; 
+    width: 1%
+}
+
+.tab-pane {
+
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    border-color:white;
+    border-width:2px;
+    border:solid 2px white;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+
+
+.form-text {
+        -moz-box-sizing:border-box;
+        -webkit-box-sizing:border-box;
+        box-sizing:border-box;
+}
+
+.input-width{
+  width:50%;
+  box-sizing:border-box;
+}
+
+.label-bold-custom{
+    font-weight: bold;
+}
+
+.horizontal-line{
+    border-color: darkgreen;
+}
+
+.align-right{
+    float: left;
+    text-align:right;
+    width: 50%;
+}
+.align-left{
+    float: left;
+    text-align:left;
+    width: 50%;
+    padding-right: 200px;
+}
+
+.right-align{
+    float:right;
+}
+
+.index-p{
+    color:gold;
+}
+
+.image-custom{
+    border-top:200px;
+    float:right;
+    height:200px;
+    width:200px;
+}
