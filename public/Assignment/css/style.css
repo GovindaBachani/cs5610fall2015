@@ -103,4 +103,29 @@ th {
     border-color: darkgreen;
 }
 
+.align-right{
+    float: left;
+    text-align:right;
+    width: 50%;
+}
+.align-left{
+    float: left;
+    text-align:left;
+    width: 50%;
+    padding-right: 200px;
+}
 
+.right-align{
+    float:right;
+}
+
+.index-p{
+    color:gold;
+}
+
+.image-custom{
+    padding:0px;
+    float:right;
+    height:200px;
+    width:200px;
+}
