@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Manipulating the Dom with jQuery</title>
+	<meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+        $(init);
+        function init(){
+            $("body").append("<h2>Appending to HTML using jQuery!!</h2>");
+
+            var ul = $("<ul>");
+            for (var i = 1; i <= 10; i++) {
+                var li = $("<li>");
+                li.append("Line Item " + i + "</li>");
+                ul.append(li);
+            }
+            ul.append("</ul>");
+            console.log(ul);
+            $("body").append(ul);
+            $("body").css("background-color", "black");
+            $("#1").css("color", "Gold");
+        }
+    </script>
+</head>
+<body>
+    <h1 id="1">Manipulating DOM with jQuery!!</h1>    
+</body>
+</html>

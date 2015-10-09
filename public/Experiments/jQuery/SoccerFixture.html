@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="soccer.js"></script>
+    <link href="soccer.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <div class="container">
+        <h1>
+            Welcome to first Soccer API trial!!
+        </h1>
+        <h2 id="Heading">Premier League Tables</h2>
+        <h3 id="matchday" class="md"></h3>
+        <table class="table table-striped table-responsive" id="league-table">
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th></th>
+                    <th>Team</th>
+                    <th>Pts</th>
+                    <th>P</th>
+                    <th>GS</th>
+                    <th>GA</th>
+                    <th>+/-</th>
+                </tr>
+            </thead>
+            <tbody id="container">
+                <tr id="row">
+                    <td class="pos">Pos</td>
+                    <td><img src="" class="crest shrinkImage"/></td>
+                    <td class="team">Team</td>
+                    <td class="pts">Pts</td>
+                    <td class="p">P</td>
+                    <td class="gs">GS</td>
+                    <td class="ga">GA</td>
+                    <td class="gd">+/-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

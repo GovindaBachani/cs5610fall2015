@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+        $(init);
+        function init() {
+            $("#p1").click(p1Clicked);
+            $("#add").click(addAandB);
+        }
+        function p1Clicked() {
+            $("body").
+            append("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>");
+        }
+        function addAandB() {
+            var a = parseInt($("#a").val());
+            var b = parseInt($("#b").val());
+
+            var c = a + b;
+
+            $("#c").val(c);
+            console.log(c);
+        }
+    </script>
+</head>
+<body>
+    <h1>Handling Event with jQuery</h1>
+    <p id="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <br />
+    <input type="text" id="a"/> + <input type="text" id="b" /> = <input type="text" id="c" />
+    <button id="add">Add</button>
+<b/ody>
+</html>
