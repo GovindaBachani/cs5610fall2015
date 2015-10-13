@@ -1,6 +1,7 @@
-﻿h2{
-    color:gold;
+﻿h2 {
+    color: gold;
 }
+
 th,td{
     overflow: hidden;
     width: 100px;

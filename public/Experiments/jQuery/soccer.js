@@ -12,7 +12,7 @@
         
         $.ajax({
             headers: { 'X-Auth-Token': '0918793d32054063ac52204e3d81735f' },
-            url: 'http://api.football-data.org/alpha/soccerseasons/398/leagueTable',
+            url: 'http://api.football-data.org/alpha/soccerseasons/405/leagueTable',
             dataType: 'json',
             type: 'GET',
             success: renderStandings
@@ -21,8 +21,9 @@
 
         function renderStandings(table) {
             var md = "MatchDay " + table.matchday;
-            h3.find("md").html(md);
-            console.log(h3.html);
+            console.log(md);
+            $("#lt h3 #matchday").text(md);
+            //console.log(h3.html);
             console.log(table);
             tbody.empty();
             var teams = table.standing;
