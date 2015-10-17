@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="ClickApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="AngularClick.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="NgClickController">
+        <h1>ng click</h1>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="hello = 'Hello!!!'">Say Hello</button>
+            <p>Say {{hello}}</p>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="ans= 2+3">2+3</button>
+            <p>Answer = {{ans}}</p>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="setLorem()">Lorem Ipsum</button>
+            <p>{{lorem}}</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+            <input placeholder="First Number" ng-model="fNum"/>
+            <input placeholder="Second Number" ng-model="sNum"/>
+            <button class="btn btn-primary" ng-click="setAnswer(fNum,sNum)">Add Numbers</button></div>
+            <p>Answer: {{answer}}</p>
+        </div>
+
+    </div>
+</body>
+</html>
