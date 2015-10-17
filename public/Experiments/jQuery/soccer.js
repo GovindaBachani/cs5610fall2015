@@ -12,7 +12,7 @@
         
         $.ajax({
             headers: { 'X-Auth-Token': '0918793d32054063ac52204e3d81735f' },
-            url: 'http://api.football-data.org/alpha/soccerseasons/405/leagueTable',
+            url: 'http://api.football-data.org/alpha/soccerseasons/402/leagueTable',
             dataType: 'json',
             type: 'GET',
             success: renderStandings
