@@ -5,11 +5,13 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-    <ul class="nav nav-sidebar">
-        <li><a href="#/home" id="active">Home</a></li>
-        <li><a href="#/profile">Profile</a></li>
-        <li><a href="#/admin">Admin</a></li>
-        <li><a href="#/form">Forms</a></li>
+    <ul class="nav nav-sidebar"  ng-controller="SidebarController">
+        <li><a href="#/home"  ng-class="{'active-sidebar' : $location.url() == '/home'}">Home</a></li>
+        <li ><a href="#/profile" ng-class="{'active-sidebar' : $location.url() == '/profile'}">Profile</a></li>
+        <li ><a href="#/admin" ng-class="{'active-sidebar' : $location.url() == '/admin'}">Admin</a></li>
+        <li ><a href="#/form" 
+                ng-class="{'active-sidebar' : $location.url() == '/form' || $location.url() == '/form-fields'}">
+            Forms</a></li>
     </ul>
 </body>
 </html>

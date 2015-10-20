@@ -8,13 +8,16 @@
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #bf1414;
+  color: #a50808;
   background-color: transparent;
+  text-decoration:underline;
 }
 
-a#active{color:black;background-color:gold}
+.active-sidebar{color:black;background-color:gold}
 
-a#active1{color:gold;text-decoration:none;background-color:transparent}
+.active-header{background-color:transparent;text-decoration:none}
+.inactive-header{background-color:transparent;text-decoration:underline}
+
 
 body{
     background-image:url(t1UkrtF.png);
