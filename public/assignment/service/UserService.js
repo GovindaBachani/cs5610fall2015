@@ -23,21 +23,18 @@
 
         }
 
-        function createUser(user) {
-            console.log("create user service");
-            guid();
-            console.log(guid);
-                var newUser = {
-
-                }
+        function createUser(user, callback) {
+            var guID = guid();
+            user.id = guID;
+            users.push(user);
         }
 
 
 
-            function guid() {
-                console.log("guid");
-                function s4() {
-                    return Math.floor((1 + Math.random()) * 0x10000)
+        function guid() {
+            console.log("guid");
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
                         .toString(16)
                         .substring(1);
                 }
