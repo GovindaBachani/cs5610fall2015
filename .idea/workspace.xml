@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d85fab0a-a521-44d4-90e8-4439e7e91ce9" name="Default" comment="">
-      <change type="DELETED" beforePath="G:\WebDevlopment2015\cs5610\public\index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/cs5610.iml" afterPath="$PROJECT_DIR$/.idea/cs5610.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="cs5610.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="soccer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="soccer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/experiments/jQuery/soccer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
@@ -45,6 +42,16 @@
               <folding>
                 <element signature="e#0#43#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.427256">
+              <caret line="86" column="83" selection-start-line="86" selection-start-column="83" selection-end-line="86" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,8 +103,8 @@
         <option value="$PROJECT_DIR$/public/experiments/jQuery/imdb.html" />
         <option value="$PROJECT_DIR$/public/experiments/jQuery/imdb.js" />
         <option value="$PROJECT_DIR$/public/experiments/jQuery/SoccerFixture.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/experiments/jQuery/soccer.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -446,6 +453,14 @@
           <folding>
             <element signature="e#0#43#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.427256">
+          <caret line="86" column="83" selection-start-line="86" selection-start-column="83" selection-end-line="86" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
