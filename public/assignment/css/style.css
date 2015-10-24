@@ -6,11 +6,10 @@
   color: gold;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
+.navbar-inverse .navbar-nav > li > a:hover{
   color: #a50808;
   background-color: transparent;
-  text-decoration:underline;
+  text-decoration : underline;
 }
 
 .active-sidebar{color:black;background-color:gold}
