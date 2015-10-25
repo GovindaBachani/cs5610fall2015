@@ -8,16 +8,12 @@
                 password : $scope.pwd,
                 email : $scope.email
             }
-            console.log(user);
-            UserService.createUser(user);
-            if(user != undefined){
-                $rootScope.loggedUser = user;
-                console.log($location);
-                $location.path("/profile");
-                console.log($location)
-            }
+            var currentUser = UserService.createUser(user, function (currentUser) {
+                if (angular.isDefined(currentUser)) {
+                    $rootScope.loggedUser = currentUser;
+                    $location.path("/profile");
+                }
+            });            
         }
     }
 })();
-
-
