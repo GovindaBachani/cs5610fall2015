@@ -66,7 +66,7 @@
         }
 
         function updateFormById(formId, newForm, callback) {
-            if (form.name != null) {
+            if (newForm.name != null) {
                 for (var i = 0; i < forms.length; i++) {
                     if (formId == forms[i].id) {
                         forms[i].userid = newForm.userid;

@@ -33,6 +33,7 @@
         }
 
         $scope.updateForm = function (selectedFormId, index) {
+            console.log("in update");
             var formToBeUpdated = $scope.forms[index];
             var newForm = {
                 name: $scope.formName,
