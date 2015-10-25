@@ -17,27 +17,33 @@
         <div class="tab-pane active nav-tabs-justified" id="Forms">
             <div class="table-responsive">
                 <table class="table table-striped">
-                    <tr class="table-bordered">
-                        <th class="table-bordered"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Form Name</th>
-                        <th class="table-bordered"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
-                    </tr>
-                    <tr class="table-bordered">
-                        <th><input type="text" placeholder="name" class="textbox-color" /></th>
-                        <th>
-                            <a ng-click="addForm()"><span class="big-glyphicon glyphicon glyphicon-plus" 
-                                                          aria-hidden="true"></span></a>
-                            &nbsp &nbsp &nbsp &nbsp &nbsp  
-                            <a><span class="big-glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-                        </th>
-                    </tr>
-                    <tr class="table-bordered">
-                        <td><a href="#/form-fields" ng-repeat="form in controller.forms">{{form.name}}</a></td>
-                        <td>
-                            <a ng-click="deleteForm()"><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                            &nbsp &nbsp &nbsp &nbsp &nbsp  
-                            <a ng-click="selectForm()"><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr class="table-bordered">
+                            <th class="table-bordered"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Form Name</th>
+                            <th class="table-bordered"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-bordered">
+                            <td><input type="text" placeholder="name" class="textbox-color" /></td>
+                            <td>
+                                <a ng-click="addForm()">
+                                    <span class="big-glyphicon glyphicon glyphicon-plus"
+                                          aria-hidden="true"></span>
+                                </a>
+                                &nbsp &nbsp &nbsp &nbsp &nbsp
+                                <a ng-click="updateForm()"><span class="big-glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                            </td>
+                        </tr>
+                        <tr class="table-bordered" ng-repeat="form in controller.forms">
+                            <td><a href="#/form-fields">{{form.name}}</a></td>
+                            <td>
+                                <a ng-click="deleteForm()"><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                &nbsp &nbsp &nbsp &nbsp &nbsp
+                                <a ng-click="selectForm()"><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
