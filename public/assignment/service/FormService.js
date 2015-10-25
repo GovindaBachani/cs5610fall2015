@@ -4,10 +4,10 @@
 
     function FormService() {
         var forms =
-            [{ id: "abcd", name: "First Form", userid: "1", id: "1"},
-            { id: "efgh", name: "Second Form", userid: "1", id: "2" },
-            { id: "ijkl", name: "Third Form", userid: "1", id: "3" },
-            { id: "mnop", name: "Fourth Form", userid: "1", id: "4" }];
+            [{ name: "First Form", userid: "1", id: "1"},
+            { name: "Second Form", userid: "1", id: "2" },
+            { name: "Third Form", userid: "1", id: "3" },
+            { name: "Fourth Form", userid: "1", id: "4" }];
 
         var service = {
             createFormForUser: createFormForUser,

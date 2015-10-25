@@ -16,6 +16,7 @@
             
             FormService.createFormForUser($rootScope.loggedUser.id, form, function (forms) {
                 $scope.forms = forms;
+                $scope.formName = "";
             });
         }
 
@@ -23,6 +24,24 @@
             FormService.deleteFormById(id, function (forms) {
                 $scope.forms = forms;
             });
+        }
+
+        $scope.selectForm = function (index) {
+            $scope.selectedFormId = $scope.forms[index].id;
+            $scope.formName = $scope.forms[index].name;
+            $scope.index = index;
+        }
+
+        $scope.updateForm = function (selectedFormId, index) {
+            var formToBeUpdated = $scope.forms[index];
+            var newForm = {
+                name: $scope.formName,
+                userid: formToBeUpdated.userid
+                };
+            FormService.updateFormById(selectedFormId, newForm, function (updatedForm) {
+                $scope.forms[index] = updatedForm;
+                $scope.formName = "";
+            })
         }
     }
 })();

@@ -6,6 +6,8 @@
         $scope.uName = $rootScope.loggedUser.userName;
         $scope.email = $rootScope.loggedUser.email;
         $scope.pwd = $rootScope.loggedUser.password;
+        $scope.fName = $rootScope.loggedUser.firstName;
+        $scope.lName = $rootScope.loggedUser.lastName;
 
         $scope.update = function () {
             var user= {
