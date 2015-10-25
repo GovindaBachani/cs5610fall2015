@@ -4,7 +4,7 @@
 
     function FormService() {
         var forms =
-            [{ name: "First Form", userid: "1", id: "1"},
+            [{ name: "First Form", userid: "1", id: "1" },
             { name: "Second Form", userid: "1", id: "2" },
             { name: "Third Form", userid: "1", id: "3" },
             { name: "Fourth Form", userid: "1", id: "4" }];
@@ -66,11 +66,13 @@
         }
 
         function updateFormById(formId, newForm, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (formId == forms[i].id) {
-                    forms[i].userid = newForm.userid;
-                    forms[i].name = newForm.name;
-                    return (callback(forms[i]));
+            if (form.name != null) {
+                for (var i = 0; i < forms.length; i++) {
+                    if (formId == forms[i].id) {
+                        forms[i].userid = newForm.userid;
+                        forms[i].name = newForm.name;
+                        return (callback(forms[i]));
+                    }
                 }
             }
         }
