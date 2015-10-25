@@ -4,10 +4,10 @@
 
     function FormService() {
         var forms =
-            [{ id: "abcd", name: "First Form", userid: "1" },
-            { id: "efgh", name: "Second Form", userid: "1" },
-            { id: "ijkl", name: "Third Form", userid: "1" },
-            { id: "mnop", name: "Fourth Form", userid: "1" }];
+            [{ id: "abcd", name: "First Form", userid: "1", id: "1"},
+            { id: "efgh", name: "Second Form", userid: "1", id: "2" },
+            { id: "ijkl", name: "Third Form", userid: "1", id: "3" },
+            { id: "mnop", name: "Fourth Form", userid: "1", id: "4" }];
 
         var service = {
             createFormForUser: createFormForUser,
@@ -19,10 +19,17 @@
         return service;
 
         function createFormForUser(userId, form, callback) {
-            form.userid = userId;
-            form.id = guid();
-            forms.push(form);
-            return callback(form);
+            if (form.name != null) {
+                form.userid = userId;
+                form.id = guid();
+                forms.push(form);
+                console.log(forms);
+                var userForms;
+                findAllFormsForUser(userId, function (forms) {
+                    userForms = forms;
+                });
+                return callback(userForms);
+            }
         }
 
         function guid() {
@@ -36,6 +43,7 @@
         }
 
         function findAllFormsForUser(userId, callback) {
+            console.log("abcd");
             var foundForms = [];
             for (var i = 0; i < forms.length; i++) {
                 if (userId == forms[i].userid) {
@@ -46,11 +54,14 @@
         }
 
         function deleteFormById(formId, callback) {
+            var index = -1;
             for (var i = 0; i < forms.length; i++) {
                 if (formId == forms[i].id) {
-                    delete forms[i];
+                    index = i;
+                    break;
                 }
             }
+            forms.splice(index, 1);
             return callback(forms);
         }
 
