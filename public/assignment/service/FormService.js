@@ -24,11 +24,7 @@
                 form.id = guid();
                 forms.push(form);
                 console.log(forms);
-                var userForms;
-                findAllFormsForUser(userId, function (forms) {
-                    userForms = forms;
-                });
-                return callback(userForms);
+                return callback(forms);
             }
         }
 

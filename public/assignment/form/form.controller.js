@@ -15,14 +15,18 @@
             };
             
             FormService.createFormForUser($rootScope.loggedUser.id, form, function (forms) {
-                $scope.forms = forms;
-                $scope.formName = "";
+                FormService.findAllFormsForUser($rootScope.loggedUser.id, function (forms) {
+                    $scope.forms = forms;
+                    $scope.formName = "";
+                });
             });
         }
 
         $scope.deleteForm = function (id) {
             FormService.deleteFormById(id, function (forms) {
-                $scope.forms = forms;
+                FormService.findAllFormsForUser($rootScope.loggedUser.id, function (forms) {
+                    $scope.forms = forms;
+                });
             });
         }
 
