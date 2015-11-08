@@ -39,7 +39,7 @@ label{
 }
 
 table, td, th {
-    border: 1px solid green;
+    border: none;
 }
 
 th {    
@@ -138,4 +138,8 @@ th {
 
 .about{
     color:black;
+}
+
+.myTable{
+    border:none
 }

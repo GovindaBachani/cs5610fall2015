@@ -24,8 +24,11 @@
                 .when("/news", {
                 templateUrl: "news/news.view.html",
                 })
-                .when("/fixture", {
-                    templateUrl: "fixture/fixture.view.html",
+                .when("/fixtures", {
+                    templateUrl: "fixtures/fixture.view.html",
+                })
+                .when("/result", {
+                    templateUrl: "result/result.view.html",
                 })
                 .otherwise({
                     redirectTo: "/home"

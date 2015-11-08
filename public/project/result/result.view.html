@@ -1,6 +1,6 @@
-﻿<div class="container" id="lt" ng-controller="FixtureController">
+﻿<div class="container" id="lt" ng-controller="ResultController">
     <h1>
-        Fixtures
+        Results
     </h1>
 
     <div id="date" ng-repeat="data in groupedDataByDate">
@@ -10,7 +10,7 @@
                 <tr id="row" ng-repeat="fix in data.dataArray">
                     <td class="time">{{fix.myTime}}</td>
                     <td class="hTeam">{{fix.homeTeamName}}</td>
-                    <td>vs</td>
+                    <td>{{fix.res}}</td>
                     <td class="aTeam">{{fix.awayTeamName}}</td>
                 </tr>
             </tbody>

@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿    "use strict";
 (function () {
     angular.module("FormBuilderApp").factory("FormService", FormService);
 
