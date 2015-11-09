@@ -54,6 +54,7 @@
                     console.log(meaningFulFixtures);
                     console.log(groupedDataByDate);
                     $scope.groupedDataByDate = groupedDataByDate;
+                    $scope.$apply();
                 }
             });
         }

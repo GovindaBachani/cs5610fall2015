@@ -1,1 +1,15 @@
-﻿
+﻿<div class="container" ng-controller="NewsController">
+    <div>
+        <h1>In the News</h1>
+        <div ng-repeat="post in posts" class="container">
+            <div class="col-sm-2 col-lg-2 col-md-2 col-xs-2">
+                <img src="{{post.thread.main_image}} " class="thumbnail"/>
+            </div>
+            <div class="col-sm-10 col-lg-10 col-md-10 col-xs-10">
+                <a ng-click="newsClick($index)">
+                <b>{{post.thread.title}}</b></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui.</p>
+            </div>
+        </div>
+    </div>
+</div>

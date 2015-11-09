@@ -30,6 +30,13 @@
                 .when("/result", {
                     templateUrl: "result/result.view.html",
                 })
+                .when("/news-display", {
+                    templateUrl: "news-display/news-display.view.html",
+                })
+                //})
+                //.when("/news-display/:title/:content", {
+                //    templateUrl: "news-display/news-display.view.html",
+                //})
                 .otherwise({
                     redirectTo: "/home"
                 });

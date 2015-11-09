@@ -10,6 +10,7 @@
                 if (angular.isDefined(table)) {
                     $scope.teams = table.standing;
                     $scope.leagueName = table.leagueCaption;
+                    $scope.$apply();
                 }
             });
         }

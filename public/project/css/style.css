@@ -1,81 +1,91 @@
-.container-custom-padding{
-    padding-top:50px;
+.container-custom-padding {
+    padding-top: 50px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: darkgoldenrod;
-  font-weight:bold;
+    color: darkgoldenrod;
+    font-weight: bold;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover{
-  color: #104808;
-  background-color: transparent;
-  text-decoration : underline;
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: #104808;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+.active-sidebar {
+    color: black;
+    background-color: gold;
 }
 
-.active-sidebar{color:black;background-color:gold}
-
-.active-header{background-color:transparent;text-decoration:none}
-.inactive-header{background-color:transparent;text-decoration:underline}
-
-
-
-
-h1{
-    color:black;
+.active-header {
+    background-color: transparent;
+    text-decoration: none;
 }
-h2{
-    color:black;
+
+.inactive-header {
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 
-p{
+
+
+h1 {
     color: black;
 }
 
-label{
-    color:#2f0a0a
+h2 {
+    color: black;
+}
 
+
+p {
+    color: black;
+}
+
+label {
+    color: #2f0a0a;
 }
 
 table, td, th {
     border: none;
 }
 
-th {    
+th {
     color: black;
-    background-color:#64767a;
+    background-color: #64767a;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) > td{
-   background-color: #faf6d4;
-}
-.table-striped > tbody > tr:nth-child(2n) > td{
-   background-color: white;
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #faf6d4;
 }
 
-.big-glyphicon{
-    font-size:x-large;
+.table-striped > tbody > tr:nth-child(2n) > td {
+    background-color: white;
 }
 
-.textbox-color{
-    border-color:black;
+.big-glyphicon {
+    font-size: x-large;
+}
+
+.textbox-color {
+    border-color: black;
 }
 
 .nav-justified > li {
-    display: table-cell; 
-    width: 1%
+    display: table-cell;
+    width: 1%;
 }
 
 .tab-pane {
-
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     padding: 10px;
-    border-color:white;
-    border-width:2px;
-    border:solid 2px white;
+    border-color: white;
+    border-width: 2px;
+    border: solid 2px white;
 }
 
 .nav-tabs {
@@ -85,49 +95,50 @@ th {
 
 
 .form-text {
-        -moz-box-sizing:border-box;
-        -webkit-box-sizing:border-box;
-        box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.input-width{
-  width:50%;
-  box-sizing:border-box;
+.input-width {
+    width: 50%;
+    box-sizing: border-box;
 }
 
-.label-bold-custom{
+.label-bold-custom {
     font-weight: bold;
 }
 
-.horizontal-line{
+.horizontal-line {
     border-color: darkgreen;
 }
 
-.align-right{
+.align-right {
     float: left;
-    text-align:right;
+    text-align: right;
     width: 50%;
 }
-.align-left{
+
+.align-left {
     float: left;
-    text-align:left;
+    text-align: left;
     width: 50%;
     padding-right: 200px;
 }
 
-.right-align{
-    float:right;
+.right-align {
+    float: right;
 }
 
-.index-p{
-    color:gold;
+.index-p {
+    color: gold;
 }
 
-.image-custom{
-    border-top:200px;
-    float:right;
-    height:200px;
-    width:200px;
+.image-custom {
+    border-top: 200px;
+    float: right;
+    height: 200px;
+    width: 200px;
 }
 
 @media only screen and (max-width: 1026px) {
@@ -136,10 +147,24 @@ th {
     }
 }
 
-.about{
-    color:black;
+.about {
+    color: black;
 }
 
-.myTable{
-    border:none
+.myTable {
+    border: none;
+}
+
+.thumbnail {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    /*transform: translate(-50%, -50%);*/
+    height: 100px;
+    width: 100px;
+}
+
+.news-display {
+    /*height: 400px;
+    width: 400px;*/
 }
