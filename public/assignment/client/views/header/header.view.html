@@ -27,8 +27,9 @@
                                  'inactive-header' : $location.url() != '/'}">Username</a>
                 </li>
                 <li>
-                    <a ng-class="{'active-header' : $location.url() == '/',
-                                 'inactive-header' : $location.url() != '/'}">Logout</a>
+                    <a href="#/login"
+                            ng-class="{'active-header' : $location.url() == '/',
+                                 'inactive-header' : $location.url() != '/'}" ng-click = "logout()">Logout</a>
                 </li>
             </ul>
         </div>

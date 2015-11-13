@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <tr class="table-bordered">
-                        <td><input type="text" placeholder="name" class="textbox-color" ng-model="formName" /></td>
+                        <td><input type="text" placeholder="name" class="textbox-color" ng-model="formName" required/></td>
                         <td>
                             <a ng-click="addForm()">
                                 <span class="big-glyphicon glyphicon glyphicon-plus"
@@ -29,7 +29,7 @@
                         </td>
                     </tr>
                     <tr class="table-bordered" ng-repeat="form in forms | orderBy:predicate:reverse">
-                        <td><a href="#/form-fields">{{form.name}}</a></td>
+                        <td><a href="#/form-fields">{{form.title}}</a></td>
                         <td>
                             <a ng-click="deleteForm(form.id)"><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                             &nbsp &nbsp &nbsp &nbsp &nbsp

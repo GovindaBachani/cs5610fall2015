@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="FormBuilderApp">
 <head>
     <title>Form Builder</title>
@@ -11,23 +11,23 @@
     <script src="app.js"></script>
     <script src="config.js"></script>
     <link href="css/style.css" rel="stylesheet" />
-    <script src="header/header.controller.js"></script>
-    <script src="sidebar/sidebar.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
     <link href="css/dashboard.css" rel="stylesheet" />
     <script src="service/FormService.js"></script>
     <script src="service/UserService.js"></script>
-    <script src="login/login.controller.js"></script>
-    <script src="register/register.controller.js"></script>
-    <script src="profile/profile.controller.js"></script>
-    <script src="form/form.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/form/form.controller.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="css/MetroUI-Apps-HTML-5-icon.png" />
 </head>
 <body class="body-custom">
-    <ng-include src="'header/header.view.html'"></ng-include>
+    <ng-include src="'views/header/header.view.html'"></ng-include>
     <div class="container-fluid container-custom-padding">
         <div class="row">
             <div class="col-md-2 col-lg-2 sidebar">
-                <ng-include src="'sidebar/sidebar.view.html'"></ng-include>
+                <ng-include src="'views/sidebar/sidebar.view.html'"></ng-include>
             </div>
             <div class="col-md-10 col-lg-10">
                 <div ng-view></div>
