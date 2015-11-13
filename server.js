@@ -1,9 +1,8 @@
 var express = require('express');
 var app = express();
-
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./public/assignment/server/app.js')(app);
 app.use(express.static(__dirname + '/public'));
