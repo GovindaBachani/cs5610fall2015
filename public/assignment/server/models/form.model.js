@@ -74,7 +74,7 @@ module.exports = function(app){
         for(var i = 0; i<forms.length; i++){
             if(id === forms[i].id){
                 forms[i].title = form.title;
-                forms[i].userId = form.userId;
+                forms[i].userId = form.userId
                 return forms[i];
             }
         }
