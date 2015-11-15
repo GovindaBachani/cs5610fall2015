@@ -9,7 +9,8 @@
             getFieldsForForm: getFieldsForForm,
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
-            updateField: updateField
+            updateField: updateField,
+            cloneField : cloneField
         }
 
         return service;
@@ -18,9 +19,7 @@
         function createFieldForForm(formId, field){
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field";
-            console.log(url);
-            $http.post(url, field).success(function(response){
-                console.log(response);
+           $http.post(url, field).success(function(response){
                 defer.resolve(response);
             });
             return defer.promise;
@@ -28,9 +27,7 @@
 
         function getFieldsForForm(formId){
             var defer = $q.defer();
-            console.log(formId);
             var url = "/api/assignment/form/" + formId + "/field";
-            console.log(url);
             $http.get(url).success(function(response){
                 defer.resolve(response);
             });
@@ -38,15 +35,39 @@
         }
 
         function getFieldForForm(formId, fieldId){
-
+            var defer = $q.defer();
+            var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
+            $http.get(url).success(function(response){
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function deleteFieldFromForm(formId, fieldId){
-
+            var defer = $q.defer();
+            var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
+            $http.delete(url).success(function(response){
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function updateField(formId, fieldId, field){
+            var defer = $q.defer();
+            var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
+            $http.put(url,field).success(function(response){
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
+        function cloneField(formId, field){
+            var defer = $q.defer();
+            var url = "/api/assignment/form/" + formId + "/field";
+            $http.post(url,field).success(function(response){
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
     }
 })();

@@ -10,11 +10,16 @@
         var userId = $routeParams.userId;
         var formId = $routeParams.formId;
 
+        $scope.fieldsOption = [{ name: "Single Line Text Field", id: 0 },
+            { name: "Multi Line Text Field", id: 1},
+            { name: "Date Field", id: 2},
+            { name: "Dropdown Field", id: 3},
+            { name: "CheckBoxes Field", id: 4 },
+            { name: "Radio Buttons Field", id: 5}];
+
         FieldService.getFieldsForForm(formId).then(function(fields){
             $scope.fields = fields;
-            console.log(fields);
-            console.log($scope.fields);
-        })
+        });
 
         $scope.addField = function(modelType){
             var textField = {"id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
@@ -35,12 +40,42 @@
                 [ {"label": "Option X", "value": "OPTION_X"},
                   {"label": "Option Y", "value": "OPTION_Y"},
                   {"label": "Option Z", "value": "OPTION_Z"} ]};
-            $scope.fieldItems = [textField, textAreaField, dateField, dropDownField, checkBoxField, radioBoxField];
-            var field = $scope.selection = $scope.items[0];
+            var field;
+
+            if(modelType === "Single Line Text Field"){
+                field = textField;
+            }
+            else if(modelType === "Multi Line Text Field"){
+                field = textAreaField;
+            }
+            else if(modelType === "Date Field"){
+                field = dateField;
+            }
+            else if(modelType === "Dropdown Field"){
+                field = dropDownField;
+            }
+            else if(modelType === "CheckBoxes Field"){
+                field = checkBoxField;
+            }
+            else if(modelType === "Radio Buttons Field"){
+                field = radioBoxField;
+            }
+
             console.log(field);
             FieldService.createFieldForForm(formId,field).then(function(fields){
-                console.log(fields);
                 $scope.fields =fields;
+            });
+        }
+
+        $scope.removeField = function(field){
+            FieldService.deleteFieldFromForm(formId,field.id).then(function(fields){
+                $scope.fields = fields;
+            });
+        }
+
+        $scope.clone = function(field){
+            FieldService.cloneField(formId,field).then(function(fields){
+                $scope.fields = fields;
             });
         }
     }
