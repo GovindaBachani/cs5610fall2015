@@ -20,8 +20,8 @@
                 .when("/admin", {
                     templateUrl: "views/admin/admin.view.html",
                 })
-                .when("/form-fields", {
-                    templateUrl: "views/form-fields/form-fields.view.html",
+                .when("/user/:userId/form/:formId/fields", {
+                    templateUrl: "views/field/field.view.html",
                 })
                 .otherwise({
                     redirectTo: "/home"

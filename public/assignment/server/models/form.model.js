@@ -20,7 +20,6 @@ module.exports = function(app){
     return api;
 
     function AddFormField(formId, field){
-        field.id = uid.v4();
         for(var i = 0; i<forms.length; i++) {
             if (formId === forms[i].id) {
                 if(forms[i].fields == null){
@@ -30,6 +29,7 @@ module.exports = function(app){
                 else{
                     forms[i].fields.push(field);
                 }
+                return forms[i].fields;
             }
         }
     }

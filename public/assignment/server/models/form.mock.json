@@ -23,21 +23,6 @@
         "placeholder": "Address"
       },
       {
-        "id": "444",
-        "label": "State",
-        "type": "OPTIONS",
-        "options": [
-          {
-            "label": "Massachussets",
-            "value": "MA"
-          },
-          {
-            "label": "New Hampshire",
-            "value": "NH"
-          }
-        ]
-      },
-      {
         "id": "555",
         "label": "ZIP",
         "type": "TEXT",

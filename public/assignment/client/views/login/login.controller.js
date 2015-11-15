@@ -8,10 +8,8 @@
                 userName: $scope.uName,
                 password: $scope.pwd
             };
-            console.log(user);
-            var currentUser = UserService.
+            UserService.
                 findUserByUsernameAndPassword(user.userName, user.password).then(function(currentUser){
-                    console.log(currentUser);
                     if(currentUser != null) {
                         $rootScope.loggedUser = currentUser;
                         $location.path("/profile");

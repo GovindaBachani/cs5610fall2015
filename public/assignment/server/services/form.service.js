@@ -6,7 +6,7 @@ module.exports = function(app,model){
         res.json(model.Create(req.body,req.params.userId));
     });
 
-    app.get("/api/assignment/user/:userId/form", function(req,res){
+        app.get("/api/assignment/user/:userId/form", function(req,res){
         var userId = req.params.userId;
         console.log(userId);
         res.json(model.FindFormsByUserId(userId));

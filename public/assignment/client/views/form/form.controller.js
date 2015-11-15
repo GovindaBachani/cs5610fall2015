@@ -3,7 +3,8 @@
     angular.module("FormBuilderApp")
            .controller("FormController", FormController);
 
-    function FormController($scope, FormService,$rootScope) {
+    function FormController($scope, FormService, $rootScope, $location) {
+        console.log($rootScope.loggedUser);
         FormService.findAllFormsForUser($rootScope.loggedUser.id).then(function (forms) {
             $scope.forms = forms;
         });
@@ -40,18 +41,25 @@
         }
 
         $scope.updateForm = function (selectedFormId, index) {
-            if(!angular.isUndefined($scope.formName) && $scope.formName != ""){
-                var formToBeUpdated = $scope.forms[index];
-                var newForm = {
-                    title: $scope.formName,
-                    userId: $rootScope.loggedUser.id
-                };
-                console.log(newForm);
-                FormService.updateFormById(selectedFormId, newForm).then(function (updatedForm) {
-                    $scope.forms[index] = updatedForm;
-                    $scope.formName = "";
-                })
+            if (!angular.isUndefined(index)) {
+                console.log(index);
+                if (!angular.isUndefined($scope.formName) && $scope.formName != "") {
+                    var formToBeUpdated = $scope.forms[index];
+                    var newForm = {
+                        title: $scope.formName,
+                        userId: $rootScope.loggedUser.id
+                    };
+                    console.log(newForm);
+                    FormService.updateFormById(selectedFormId, newForm).then(function (updatedForm) {
+                        $scope.forms[index] = updatedForm;
+                        $scope.formName = "";
+                    })
+                }
             }
+        }
+
+        $scope.navigate = function(index){
+            $location.path("/user/" + $rootScope.loggedUser.id + "/form/" + $scope.forms[index].id + "/fields");
         }
     }
 })();

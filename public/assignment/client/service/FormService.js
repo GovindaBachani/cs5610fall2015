@@ -62,5 +62,9 @@
             });
             return defer.promise;
         }
+
+        function getAllFieldsByFormId(formId){
+
+        }
     }
 })();

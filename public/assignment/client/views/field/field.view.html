@@ -1,0 +1,159 @@
+<h1>Forms : Registration Form</h1>
+<br />
+<div>
+    <ul class="nav nav-tabs">
+        <li><a href="#/form">Forms</a></li>
+        <li class="active"><a href="#Fields" data-toggle="tab">Fields</a></li>
+    </ul>
+</div>
+<div class="tab-content" ng-controller = "FieldController as controller">
+    <div class="tab-pane  active" id="Fields">
+        <div class="form-horizontal">
+            <div ng-repeat = "field in fields">
+                <ng-switch on="field.type" ng-model="field.type">
+                    <div ng-switch-when="TEXT">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <input type="TEXT" placeholder="{{field.placeholder}}" class="input-width" />
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="big-glyphicon glyphicon glyphicon-remove"
+                                                                   aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                    <div ng-switch-when="EMAIL">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <input type="TEXT" placeholder="{{field.placeholder}}" class="input-width" />
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="big-glyphicon glyphicon glyphicon-remove"
+                                                                   aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                    <div ng-switch-when="DATE">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <input type="date" placeholder="Select Date" class="input-width" />
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                    <div ng-switch-when="TEXTAREA">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <textarea placeholder="{{field.placeholder}}" class="input-width" />
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="big-glyphicon glyphicon glyphicon-remove"
+                                                                   aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                    <div ng-switch-when="OPTIONS">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <select class="input-width">
+                            <option value="{{option.value}}" ng-repeat="option in field.options">{{option.label}}
+                            </option>
+                        </select>
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="big-glyphicon glyphicon glyphicon-remove"
+                                                                   aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                    <div ng-switch-when="CHECKBOXES">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <div class="checkbox" ng-repeat="option in field.options">
+                            <label>
+                                <input type="checkbox" name="{{field.labrl}}+{{field.id}}">{{option.label}}
+                            </label>
+                        </div>
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="big-glyphicon glyphicon glyphicon-remove"
+                                                                   aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                    <div ng-switch-when="RADIOS">
+                        <div>
+                            <label>{{field.label}}</label>
+                        </div>
+                        <div class="radiobutton" ng-repeat="option in field.options">
+                            <label>
+                                <input type="radio" name="{{field.labrl}}+{{field.id}}"> {{option.label}}
+                            </label>
+                        </div>
+                        <label class="right-align">
+                            <a><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a><span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="big-glyphicon glyphicon glyphicon-remove"
+                                                                   aria-hidden="true"></span></a>
+                            <a>
+                                <span class="big-glyphicon glyphicon glyphicon-align-justify" aria-hidden="true">
+                                </span>
+                            </a>
+                        </label>
+                    </div>
+                </ng-switch>
+            </div>
+            <hr class="horizontal-line">
+            <div>
+                <div>
+                    <label>Add New Field:</label>
+                </div>
+                <select class="input-width" ng-model="model.fieldType">
+                    <option value="text">Single Line Text Field</option>
+                    <option value="textArea">Multi Line Text Field</option>
+                    <option value="date">Date Field</option>
+                    <option value="dropdown">Dropdown Field</option>
+                    <option value="checkboxes">CheckBoxes Field</option>
+                    <option value="radio-button">Radio Buttons Field</option>
+                </select>
+                <label class="right-align">
+                    <a ng-click = "addField(model.fieldType)">
+                        <span class="big-glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

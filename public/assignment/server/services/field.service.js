@@ -3,7 +3,7 @@
 module.exports = function(app,model){
 
     app.post("/api/assignment/form/:formId/field", function(req,res){
-        res.json(model.AddFormField(formId, req.body));
+        res.json(model.AddFormField(req.params.formId, req.body));
     });
 
     app.get("/api/assignment/form/:formId/field", function(req,res){
