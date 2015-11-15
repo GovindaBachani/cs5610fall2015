@@ -6,11 +6,11 @@
 </head>
 <body>
     <ul class="nav nav-sidebar"  ng-controller="SidebarController">
-        <li><a href="#/home"  ng-class="{'active-sidebar' : $location.url() == '/home'}">Home</a></li>
-        <li ><a href="#/profile" ng-class="{'active-sidebar' : $location.url() == '/profile'}">Profile</a></li>
-        <li ><a href="#/admin" ng-class="{'active-sidebar' : $location.url() == '/admin'}">Admin</a></li>
+        <li><a href="#/home"  ng-class="{'active-sidebar' : $location.url() == '/home'}" data-toggle="tooltip">Home</a></li>
+        <li ><a href="#/profile" ng-class="{'active-sidebar' : $location.url() == '/profile'}" data-toggle="tooltip">Profile</a></li>
+        <li ><a href="#/admin" ng-class="{'active-sidebar' : $location.url() == '/admin'}" data-toggle="tooltip">Admin</a></li>
         <li ><a href="#/form" 
-                ng-class="{'active-sidebar' : $location.url() == '/form' || $location.url() == '/form-fields'}">
+                ng-class="{'active-sidebar' : $location.url() == '/form' || $location.url() == '/form-fields'}" data-toggle="tooltip">
             Forms</a></li>
     </ul>
 </body>

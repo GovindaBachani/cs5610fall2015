@@ -15,20 +15,20 @@
                 <li>
                     <a href="#/register"
                        ng-class="{'active-header' : $location.url() == '/register',
-                                 'inactive-header' : $location.url() != '/register'}">Register</a>
+                                 'inactive-header' : $location.url() != '/register'}" data-toggle="tooltip">Register</a>
                 </li>
                 <li>
                     <a href="#/login"
                        ng-class="{'active-header' : $location.url() == '/login',
-                                 'inactive-header' : $location.url() != '/login'}">Login</a>
+                                 'inactive-header' : $location.url() != '/login'}" data-toggle="tooltip">Login</a>
                 </li>
                 <li>
                     <a ng-class="{'active-header' : $location.url() == '/',
-                                 'inactive-header' : $location.url() != '/'}">Username</a>
+                                 'inactive-header' : $location.url() != '/'}" data-toggle="tooltip">Username</a>
                 </li>
                 <li>
                     <a ng-class="{'active-header' : $location.url() == '/',
-                                 'inactive-header' : $location.url() != '/'}" ng-click = "logout()">Logout</a>
+                                 'inactive-header' : $location.url() != '/'}" ng-click = "logout()" data-toggle="tooltip">Logout</a>
                 </li>
             </ul>
         </div>
