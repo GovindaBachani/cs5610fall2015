@@ -3,13 +3,13 @@
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: gold;
+    color: gold;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover{
-  color: #a50808;
-  background-color: transparent;
-  text-decoration : underline;
+    color: #a50808;
+    background-color: transparent;
+    text-decoration : underline;
 }
 
 .active-sidebar{color:black;background-color:gold}
@@ -42,6 +42,7 @@ label{
 
 table, td, th {
     border: 1px solid green;
+    color: #095353;
 }
 
 th {    
@@ -50,18 +51,21 @@ th {
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td{
-   background-color: #faf6d4;
+    background-color: #cccccc;
+    color: #095353;
 }
 .table-striped > tbody > tr:nth-child(2n) > td{
-   background-color: white;
+    background-color: #fff1ef;
+    color: #095353;
 }
 
 .big-glyphicon{
     font-size:x-large;
+    color: #87509e;
 }
 
 .textbox-color{
-    border-color:black;
+    border-color:#095353;
 }
 
 .nav-justified > li {
@@ -87,14 +91,14 @@ th {
 
 
 .form-text {
-        -moz-box-sizing:border-box;
-        -webkit-box-sizing:border-box;
-        box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 .input-width{
-  width:50%;
-  box-sizing:border-box;
+    width:50%;
+    box-sizing:border-box;
 }
 
 .label-bold-custom{
@@ -136,5 +140,9 @@ th {
     .sidebar {
         display: none;
     }
+}
+
+.color-change{
+    color: #9e0151;
 }
 
