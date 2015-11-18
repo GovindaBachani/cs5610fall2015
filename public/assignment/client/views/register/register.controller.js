@@ -9,8 +9,10 @@
                 email : $scope.email
             }
             var currentUser = UserService.createUser(user).then(function(currentUser){
+                console.log(currentUser);
                 if (angular.isDefined(currentUser)) {
                     $rootScope.loggedUser = currentUser;
+                    $rootScope.$apply();
                     $location.path("/profile");
                 }
             });            

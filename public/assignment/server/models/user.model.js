@@ -1,8 +1,20 @@
 ﻿"use strict";
 
-var users = require("./user.mock.json");
+var mongoose = require("mongoose");
 
-var uid = require("uuid");
+var uSchema = require("./user.schema.js");
+
+console.log(uSchema);
+
+var UserSchema = new mongoose.Schema({
+    username : String,
+    firstName  :  String,
+    lastNAme  :  String,
+    email  :  String,
+    password : String
+});
+
+var userModel = mongoose.model('cs5610.assignment.user', UserSchema);
 
 module.exports = function(app){
     var api = {
@@ -18,14 +30,17 @@ module.exports = function(app){
     return api;
 
     function Create(user){
-        user.id = uid.v4();
-        console.log(user);
-        users.push(user);
-        return user;
+        userModel.create(user, function(err, results){
+            console.log(err);
+            console.log(err === null && typeof err === "object");
+            if(err === null && typeof err === "object"){
+                console.log(results);
+                return user;
+            }
+        });
     }
 
     function FindAll(){
-        console.log("2");
         return users;
     }
 
