@@ -12,7 +12,6 @@
                 console.log(currentUser);
                 if (angular.isDefined(currentUser)) {
                     $rootScope.loggedUser = currentUser;
-                    $rootScope.$apply();
                     $location.path("/profile");
                 }
             });            
