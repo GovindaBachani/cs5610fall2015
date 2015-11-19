@@ -16,7 +16,7 @@
                 username : $scope.uName,
                 email : $scope.email,
                 password : $scope.pwd,
-                id: $rootScope.loggedUser.id
+                id: $rootScope.loggedUser._id
             }
             UserService.updateUser(user, user.id).then(function(currentUser) {
                 console.log(currentUser);
