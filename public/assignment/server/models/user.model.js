@@ -35,7 +35,8 @@ module.exports = function(){
             var deferred = q.defer();
 
             userModel.create(user, function(err, doc){
-                userModel.findById(doc._id, function(err, user){
+                userModel.findById(doc._id, function (err, user) {
+                    console.log(err);
                     deferred.resolve(user);
                 });
             });
