@@ -2,18 +2,13 @@
 
 var q = require('q');
 
+var userSchemas = require('./user.schema.js');
+
 module.exports = function (mongoose,db) {
-    var mongoose = require('mongoose');
 
-    var UserSchema = new mongoose.Schema({
-        "firstName": String,
-        "lastName": String,
-        "username": String,
-        "password": String,
-        "email": String
-    });
+    var schemaInstance = new userSchemas(mongoose);
 
-    var userModel = mongoose.model('cs5610.assignment.user', UserSchema);
+    var userModel = mongoose.model('cs5610.assignment.user', schemaInstance.getSchema());
 
     var api = {
         Create: Create,

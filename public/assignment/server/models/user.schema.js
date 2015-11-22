@@ -1,12 +1,20 @@
 /**
  * Created by Govinda on 11/17/2015.
  */
-module.exports = function(mongoose){
-    var UserSchema= new mongoose.Schema({
-        firstName  :  { type: String, required: true},
-        lastNAme  :  { type: String, required: true},
-        email  :  { type: String, required: true, unique: true},
-        password : { type: String, required: true}
+var schema = function(mongoose){
+    var self = this;
+    var UserSchema = new mongoose.Schema({
+        "firstName": String,
+        "lastName": String,
+        "username": String,
+        "password": String,
+        "email": String
     });
+
+    self.getSchema = function(){
+        return UserSchema;
+    }
 };
+
+module.exports = schema;
 

@@ -1,23 +1,15 @@
 ﻿"use strict";
 var q = require('q');
+var formSchema = require('./form.schema.js');
 
 module.exports = function(mongoose,db){
-    var mongoose = require('mongoose');
 
-    var FieldSchema = new mongoose.Schema({
-        "label" : String,
-        "field" : {type : String, enum: ["TEXT", "TEXTAREA", "RADIO", "CHECKBOX", "SELECT", "DATE"]},
-        "options" : [{label: String, value: String}],
-        "placeholder" : String
-    });
 
-    var FormSchema = new mongoose.Schema({
-        "title": String,
-        "userId": String,
-        "fields": [FieldSchema]
-    });
+    var FormSchema = new formSchema(mongoose);
 
-    var formModel = mongoose.model('cs5610.assignment.form', FormSchema);
+    var fSchema = FormSchema.getSchema();
+
+    var formModel = mongoose.model('cs5610.assignment.form', fSchema);
 
     var api = {
         Create : Create,
