@@ -1,7 +1,7 @@
 ﻿"use strict";
 (function () {
     angular.module("FormBuilderApp").factory("UserService", UserService);
-    function UserService($http,$q) {
+    function UserService($http, $q) {
 
 
         var users = [
@@ -21,8 +21,7 @@
         function findUserByUsernameAndPassword(userName, password) {
             var defer = $q.defer();
             var url = "/api/assignment/user?username=" + userName + "&password=" + password;
-            console.log(url);
-            $http.get(url).success(function(response){
+            $http.get(url).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;
@@ -31,16 +30,16 @@
         function findAllUsers() {
             var defer = $q.defer();
             var url = '/api/assignment/user';
-            $http.get(uri).success(function(response){
+            $http.get(uri).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;
         }
 
-        function createUser(user){
+        function createUser(user) {
             var defer = $q.defer();
             var url = '/api/assignment/user';
-            $http.post(url,user).success(function(response){
+            $http.post(url, user).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;
@@ -49,8 +48,8 @@
 
         function deleteUserById(userId, callback) {
             var defer = $q.defer();
-            var url = '/api/assignment/user/'+ userid;
-            $http.delete(url,user).success(function(response){
+            var url = '/api/assignment/user/' + userid;
+            $http.delete(url, user).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;
@@ -58,9 +57,9 @@
 
         function updateUser(user, userid) {
             var defer = $q.defer();
-            var url = '/api/assignment/user/'+ userid;
+            var url = '/api/assignment/user/' + userid;
             console.log(url);
-            $http.put(url,user).success(function(response){
+            $http.put(url, user).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;

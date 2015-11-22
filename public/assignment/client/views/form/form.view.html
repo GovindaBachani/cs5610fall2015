@@ -22,13 +22,13 @@
                                   aria-hidden="true"></span>
                         </a>
                         &nbsp &nbsp &nbsp &nbsp &nbsp
-                        <a ng-click="updateForm(selectedFormId,index)"><span class="big-glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                        <a ng-click="updateForm(_id,index)"><span class="big-glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a>
                     </td>
                 </tr>
                 <tr class="table-bordered" ng-repeat="form in forms | orderBy:predicate:reverse">
                     <td><a ng-click="navigate($index)"  class="textbox-color">{{form.title}}</a></td>
                     <td>
-                        <a ng-click="deleteForm(form.id)"><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                        <a ng-click="deleteForm(form._id)"><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                         &nbsp &nbsp &nbsp &nbsp &nbsp
                         <a ng-click="selectForm($index)"><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                     </td>

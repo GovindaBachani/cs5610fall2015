@@ -18,25 +18,27 @@
             { name: "Radio Buttons Field", id: 5}];
 
         FieldService.getFieldsForForm(formId).then(function(fields){
+            console.log($routeParams);
+            console.log(fields);
             $scope.fields = fields;
         });
 
         $scope.addField = function(modelType){
-            var textField = {"id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
-            var textAreaField = {"id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
-            var dateField = {"id": null, "label": "New Date Field", "type": "DATE"};
-            var dropDownField = {"id": null, "label": "New Dropdown",
-                "type": "OPTIONS", "options":
+            var textField = {"label": "New Text Field", "field": "TEXT", "placeholder": "New Field"};
+            var textAreaField = {"label": "New Text Field", "field": "TEXTAREA", "placeholder": "New Field"};
+            var dateField = {"label": "New Date Field", "field": "DATE"};
+            var dropDownField = {"label": "New Dropdown",
+                "field": "SELECT", "options":
                     [ {"label": "Option 1", "value": "OPTION_1"},
                       {"label": "Option 2", "value": "OPTION_2"},
                       {"label": "Option 3", "value": "OPTION_3"} ]};
-            var checkBoxField = {"id": null, "label": "New Checkboxes",
-                "type": "CHECKBOXES", "options":
+            var checkBoxField = {"label": "New Checkboxes",
+                "field": "CHECKBOX", "options":
                 [ {"label": "Option A", "value": "OPTION_A"},
                   {"label": "Option B", "value": "OPTION_B"},
                   {"label": "Option C", "value": "OPTION_C"} ]};
-            var radioBoxField = {"id": null, "label": "New Radio Buttons",
-                "type": "RADIOS", "options":
+            var radioBoxField = {"label": "New Radio Buttons",
+                "field": "RADIO", "options":
                 [ {"label": "Option X", "value": "OPTION_X"},
                   {"label": "Option Y", "value": "OPTION_Y"},
                   {"label": "Option Z", "value": "OPTION_Z"} ]};
@@ -60,15 +62,15 @@
             else if(modelType === "Radio Buttons Field"){
                 field = radioBoxField;
             }
-
-            console.log(field);
-            FieldService.createFieldForForm(formId,field).then(function(fields){
-                $scope.fields =fields;
-            });
+            if(!(typeof field === 'undefined')) {
+                FieldService.createFieldForForm(formId, field).then(function (fields) {
+                    $scope.fields = fields;
+                });
+            }
         }
 
         $scope.removeField = function(field){
-            FieldService.deleteFieldFromForm(formId,field.id).then(function(fields){
+            FieldService.deleteFieldFromForm(formId,field._id).then(function(fields){
                 $scope.fields = fields;
             });
         }

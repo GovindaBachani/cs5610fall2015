@@ -10,7 +10,7 @@
     <div class="tab-pane  active" id="Fields">
         <div class="form-horizontal">
             <div ng-repeat = "field in fields">
-                <ng-switch on="field.type" ng-model="field.type">
+                <ng-switch on="field.field" ng-model="field.field">
                     <div ng-switch-when="TEXT">
                         <div>
                             <label>{{field.label}}</label>
@@ -78,7 +78,7 @@
                             </a>
                         </label>
                     </div>
-                    <div ng-switch-when="OPTIONS">
+                    <div ng-switch-when="SELECT">
                         <div>
                             <label>{{field.label}}</label>
                         </div>
@@ -99,7 +99,7 @@
                             </a>
                         </label>
                     </div>
-                    <div ng-switch-when="CHECKBOXES">
+                    <div ng-switch-when="CHECKBOX">
                         <div>
                             <label>{{field.label}}</label>
                         </div>
@@ -123,7 +123,7 @@
                             <br>
                         </div>
                     </div>
-                    <div ng-switch-when="RADIOS">
+                    <div ng-switch-when="RADIO">
                         <div>
                             <label>{{field.label}}</label>
                         </div>
