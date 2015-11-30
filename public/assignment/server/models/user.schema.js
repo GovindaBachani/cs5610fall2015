@@ -6,9 +6,9 @@ var schema = function(mongoose){
     var UserSchema = new mongoose.Schema({
         "firstName": String,
         "lastName": String,
-        "username": String,
-        "password": String,
-        "email": String
+        "username": {type : String, required : true, unique : true},
+        "password": {type : String, required : true},
+        "email": {type : String, required : true, unique : true}
     });
 
     self.getSchema = function(){

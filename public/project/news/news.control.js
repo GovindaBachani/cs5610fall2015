@@ -4,12 +4,10 @@
 
     function NewsController($scope, APIService, $rootScope, $location, $http) {
         {
-            APIService.getRecentNews(function (data) {
-                if (angular.isDefined(data)) {
-                    $scope.posts = data.posts;
-                    $scope.imgURL = "http://www.naturalhighsafaris.com/cdn/cache/made/cdn/uploads/country_images/India/North/Delhi/India-Gate--Delhi-Photos2_940_529_80_s_c1.jpg";
-                    $scope.$apply();
-                }
+            console.log("lolu");
+            APIService.getRecentNews().then(function(data) {
+                $scope.posts = data.responseData.results;
+                console.log($scope.posts);
             });
 
             $scope.newsClick = function (index) {

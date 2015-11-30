@@ -8,10 +8,10 @@
         <table class="table table-striped table-responsive myTable" id="league-table">
             <tbody id="container">
                 <tr id="row" ng-repeat="fix in data.dataArray">
-                    <td class="time">{{fix.myTime}}</td>
-                    <td class="hTeam">{{fix.homeTeamName}}</td>
-                    <td>vs</td>
-                    <td class="aTeam">{{fix.awayTeamName}}</td>
+                    <td class="timecolumn">{{fix.myTime}}</td>
+                    <td class="teamcolumn">{{fix.homeTeamName}}</td>
+                    <td class="vscolumn">vs</td>
+                    <td class="teamcolumn">{{fix.awayTeamName}}</td>
                 </tr>
             </tbody>
         </table>

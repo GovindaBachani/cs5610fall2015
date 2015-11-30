@@ -30,7 +30,7 @@
         function findAllUsers() {
             var defer = $q.defer();
             var url = '/api/assignment/user';
-            $http.get(uri).success(function (response) {
+            $http.get(url).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;

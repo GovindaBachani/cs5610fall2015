@@ -3,10 +3,22 @@
     angular.module("SoccerApp").controller("NewsDisplayController", NewsDisplayController);
 
     function NewsDisplayController($scope, APIService, $rootScope, $location, $http) {
-        {           
-            $scope.imageUrl = $rootScope.newsObject.thread.main_image;
-            $scope.title = $rootScope.newsObject.thread.title;
-            $scope.text = $rootScope.newsObject.text;
+        {
+            console.log($rootScope);
+            var url = $rootScope.newsObject.unescapedUrl;
+
+            console.log(url);
+
+            APIService.refineNews(url).then(function(data){
+                console.log(data.images[0].url);
+                console.log(data.title);
+                $scope.imageUrl = data.images[1].url;
+                $scope.title = data.title;
+                console.log(data);
+                $scope.text = data.text;
+            });
+            /*
+            $scope.text = $rootScope.newsObject.text;*/
         }
     }
 })();

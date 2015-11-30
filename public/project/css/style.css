@@ -168,3 +168,15 @@ th {
     /*height: 400px;
     width: 400px;*/
 }
+
+.teamcolumn{
+    width: 300px;
+}
+
+.timecolumn{
+    width: 200px;
+}
+
+.vscolumn{
+    width: 100px;
+}
