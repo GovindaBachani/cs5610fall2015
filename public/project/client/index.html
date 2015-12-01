@@ -16,7 +16,7 @@
     <script src="https://www.google.com/jsapi"></script>
 
     <!-- Diffbot API -->
-    <script src="js/diffbot.js"></script>
+    <script src="client/js/diffbot.js"></script>
 
     <!-- Config Files -->
     <script src="app.js"></script>
@@ -32,18 +32,18 @@
     <script src="service/APIService.js"></script>
 
     <!-- Controller -->
-    <script src="header/header.controller.js"></script>
-    <script src="login/login.controller.js"></script>
-    <script src="register/register.controller.js"></script>
-    <script src="fixtures/fixture.control.js"></script>
-    <script src="profile/profile.controller.js"></script>
-    <script src="result/result.control.js"></script>
-    <script src="table/table.controller.js"></script>
-    <script src="news/news.control.js"></script>
-    <script src="news-display/news-display.control.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/fixtures/fixture.control.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/result/result.control.js"></script>
+    <script src="views/table/table.controller.js"></script>
+    <script src="views/news/news.control.js"></script>
+    <script src="views/news-display/news-display.control.js"></script>
 </head>L-
 <body>
-    <ng-include src="'header/header.view.html'"></ng-include>
+    <ng-include src="'views/header/header.view.html'"></ng-include>
     <div class="container-fluid container-custom-padding">
         <div class="row">
             <div ng-view></div>

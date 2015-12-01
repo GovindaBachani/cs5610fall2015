@@ -3,42 +3,42 @@
     angular.module("SoccerApp").config(function ($routeProvider) {
         $routeProvider
                 .when("/home", {
-                templateUrl: "home/home.view.html",
+                templateUrl: "views/home/home.view.html",
                 })
                 .when("/login", {
-                templateUrl: "login/login.view.html",
+                templateUrl: "views/login/login.view.html",
                 })
                 .when("/register", {
-                    templateUrl: "register/register.view.html",
+                    templateUrl: "views/register/register.view.html",
                 })
                 .when("/contact", {
-                    templateUrl: "contact/contact.view.html",
+                    templateUrl: "views/contact/contact.view.html",
                 })
                 .when("/about", {
-                    templateUrl: "about/about.view.html",
+                    templateUrl: "views/about/about.view.html",
                 })
                 .when("/table", {
-                    templateUrl: "table/table.view.html",
+                    templateUrl: "views/table/table.view.html",
                     controller: "TableController"
                 })
                 .when("/news", {
-                templateUrl: "news/news.view.html",
+                templateUrl: "views/news/news.view.html",
                 })
                 .when("/fixtures", {
-                    templateUrl: "fixtures/fixture.view.html",
+                    templateUrl: "views/fixtures/fixture.view.html",
                 })
                 .when("/result", {
-                    templateUrl: "result/result.view.html",
+                    templateUrl: "views/result/result.view.html",
                 })
                 .when("/news-display", {
-                    templateUrl: "news-display/news-display.view.html",
+                    templateUrl: "views/news-display/news-display.view.html",
                 })
                 //})
                 //.when("/news-display/:title/:content", {
                 //    templateUrl: "news-display/news-display.view.html",
                 //})
                 .otherwise({
-                    redirectTo: "/home"
+                    redirectTo: "views//home"
                 });
     });
 })();
