@@ -7,6 +7,11 @@
 
         var teamId = $routeParams.teamid;
 
+        APIService.getTeamDetails(teamId).then(function (team) {
+            console.log(team);
+            $scope.teamname = team.name;
+        });
+
         $scope.navigateToTeam = function(){
             $location.path('/team/' + teamId);
         }

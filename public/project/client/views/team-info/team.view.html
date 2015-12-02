@@ -16,10 +16,10 @@
                  class="imageThumbnail">
         </div>
         <div class="col-md-9 col-sm-9 col-xs-9 col-lg-9">
-            <h5><b>Club Name: </b>{{team.name}}</h5>
-            <h5><b>Club Code: </b>{{team.code}}</h5>
-            <h5><b>Club ShortName: </b>{{team.shortName}}</h5>
-            <h5><b>Squad Market Value: </b>{{team.squadMarketValue}}</h5>
+            <h5 ng-if="team.name!=null"><b>Club Name: </b>{{team.name}}</h5>
+            <h5 ng-if="team.code!=null"><b>Club Code: </b>{{team.code}}</h5>
+            <h5 ng-if="team.shortName!=null"><b>Club ShortName: </b>{{team.shortName}}</h5>
+            <h5 ng-if="team.squadMarketValue!=null"><b>Squad Market Value: </b>{{team.squadMarketValue}}</h5>
             <div class="left">
                 <a ng-click="incrementLikeCount()">
                     <img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/thumbsup.png"

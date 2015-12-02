@@ -46,7 +46,6 @@ module.exports = function (app) {
             method: 'GET',
             headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
         }).then(function(response) {
-                console.log(response.getBody());
                 res.jsonp(response.getBody());
             }
         );
