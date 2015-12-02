@@ -226,8 +226,8 @@ th {
 
 
 
-@media (max-width:900px) {
-   .collapse {
+@media (min-width:1000px) {
+   .navbar-collapse {
        display: none !important;
    }
 }
