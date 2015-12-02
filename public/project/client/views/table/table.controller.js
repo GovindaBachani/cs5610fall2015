@@ -2,17 +2,25 @@
 (function () {
     angular.module("SoccerApp").controller("TableController", TableController);
 
-    function TableController($scope, APIService, $rootScope, $location, $http) {
+    function TableController($scope, $routeParams, APIService, $location) {
         {
-            var param = $location.search();
-            var leagueId = param["myVar"];
-            APIService.getTableContent(leagueId, function (table) {
+            var leagueId = $routeParams.leagueid;
+            console.log(leagueId);
+            APIService.getTableContent(leagueId).then(function (table) {
                 if (angular.isDefined(table)) {
                     $scope.teams = table.standing;
                     $scope.leagueName = table.leagueCaption;
-                    $scope.$apply();
                 }
             });
         }
+
+        $scope.toTeamPage = function(teamLink){
+            teamLink = String(teamLink);
+            var teamArr = teamLink.split('/');
+            console.log(teamArr);
+            var len = teamArr.length;
+            var teamId = teamArr[len-1];
+            $location.path('/team/' + teamId);
+        };
     }
 })();

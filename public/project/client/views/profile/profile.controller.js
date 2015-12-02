@@ -3,16 +3,14 @@
     angular.module("SoccerApp").controller("ProfileController", ProfileController);
     
     function ProfileController(UserService, $scope, $rootScope, $location) {
-        $scope.uName = $rootScope.loggedUser.userName;
+        $scope.uName = $rootScope.loggedUser.username;
         $scope.email = $rootScope.loggedUser.email;
         $scope.pwd = $rootScope.loggedUser.password;
-        $scope.fName = $rootScope.loggedUser.firstName;
-        $scope.lName = $rootScope.loggedUser.lastName;
+        $scope.fName = $rootScope.loggedUser.fullName;
 
         $scope.update = function () {
             var user= {
-                lastName : $scope.lName,
-                firstName : $scope.fName,
+                fullName : $scope.fName,
                 userName : $scope.uName,
                 email : $scope.email,
                 password : $scope.pwd,

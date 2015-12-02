@@ -19,7 +19,7 @@
         <tbody id="container">
             <tr id="row" ng-repeat="team in teams">
                 <td class="pos">{{team.position}}</td>
-                <td class="team">{{team.teamName}}</td>
+                <td class="team"><a ng-click="toTeamPage(team._links.team.href)">{{team.teamName}}</a></td>
                 <td class="pts">{{team.points}}</td>
                 <td class="p">{{team.playedGames}}</td>
                 <td class="gs">{{team.goals}}</td>

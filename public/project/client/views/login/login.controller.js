@@ -9,10 +9,15 @@
                 password: $scope.pwd
             }
             var currentUser = UserService.
-                findUserByUsernameAndPassword(user.userName, user.password, function (currentUser) {
-                    if (angular.isDefined(currentUser)) {
+                findUserByUsernameAndPassword(user.userName, user.password).then(function (currentUser) {
+                    if(currentUser != null) {
                         $rootScope.loggedUser = currentUser;
-                        $location.path("/profile");
+                        if($rootScope.loggedUser.role == 'admin'){
+                            $location.path("/admin");
+                        }
+                        else{
+                            $location.path("/profile");
+                        }
                     }
                 });
         }

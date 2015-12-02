@@ -2,11 +2,10 @@
 (function () {
     angular.module("SoccerApp").controller("ResultController", ResultController);
 
-    function ResultController($scope, APIService, $rootScope, $location, $http) {
+    function ResultController($scope, APIService, $routeParams, $rootScope, $location, $http) {
         {
-            var param = $location.search();
-            var leagueId = param["myVar"];
-            APIService.getFixtureDetails(leagueId, function (data) {
+            var leagueId = $routeParams.leagueid;
+            APIService.getFixtureDetails(leagueId).then(function (data) {
                 if (angular.isDefined(data)) {
                     var fixtures = data.fixtures;
                     var meaningFulFixtures = []
@@ -57,6 +56,16 @@
                     $scope.$apply();
                 }
             });
+
+            $scope.toTeamPage = function(teamLink){
+                console.log(teamLink);
+                teamLink = String(teamLink);
+                var teamArr = teamLink.split('/');
+                console.log(teamArr);
+                var len = teamArr.length;
+                var teamId = teamArr[len-1];
+                $location.path('/team/' + teamId);
+            };
         }
     }
 })();

@@ -9,9 +9,9 @@
             <tbody id="container">
                 <tr id="row" ng-repeat="fix in data.dataArray">
                     <td class="timecolumn">{{fix.myTime}}</td>
-                    <td class="teamcolumn">{{fix.homeTeamName}}</td>
+                    <td class="teamcolumn"><a ng-click="toTeamPage(fix._links.homeTeam.href)">{{fix.homeTeamName}}</a></td>
                     <td class="vscolumn">vs</td>
-                    <td class="teamcolumn">{{fix.awayTeamName}}</td>
+                    <td class="teamcolumn"><a ng-click="toTeamPage(fix._links.awayTeam.href)">{{fix.awayTeamName}}</a></td>
                 </tr>
             </tbody>
         </table>

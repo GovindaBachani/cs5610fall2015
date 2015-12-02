@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/assn';
+var connectionStringAssignment = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/cs5610';
 var mongoose = require("mongoose");
-var db = mongoose.connect(connectionString);
+var db = mongoose.connect(connectionStringAssignment);
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var expressSession = require('express-session');
@@ -19,6 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./public/assignment/server/app.js')(app,mongoose,db, passport, LocalStrategy);
+require('./public/project/server/app.js')(app,mongoose,db, passport, LocalStrategy);
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;

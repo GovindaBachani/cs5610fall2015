@@ -180,3 +180,54 @@ th {
 .vscolumn{
     width: 100px;
 }
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+.imageThumbnail{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+.icon-myStyle{
+    height : 30px;
+    width : 30px;
+}
+.iconDetails {
+    margin-left:2%;
+    float:left;
+    height:40px;
+    width:40px;
+}
+
+.left {
+    float: left;
+    text-align: right;
+    margin: 2px 10px;
+    display: inline
+}
+.right {
+    float: left;
+    text-align: left;
+    margin: 2px 10px;
+    display: inline
+}
+
+.avatar-style{
+    height: 50px;
+    width: 80px;
+}
+
+
+
+@media (max-width:900px) {
+   .collapse {
+       display: none !important;
+   }
+}

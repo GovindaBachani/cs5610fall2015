@@ -4,16 +4,18 @@
     function RegisterController($scope, UserService, $rootScope, $location){
         $scope.register = function(){
             var user = {
-                userName : $scope.uName,
+                username : $scope.uName,
                 password : $scope.pwd,
-                email : $scope.email
+                email : $scope.email,
+                fullName: $scope.fname
             }
-            var currentUser = UserService.createUser(user, function (currentUser) {
-                if (angular.isDefined(currentUser)) {
+            var currentUser = UserService.createUser(user).then(function (currentUser) {
+                console.log("1");
+                if(currentUser) {
                     $rootScope.loggedUser = currentUser;
                     $location.path("/profile");
                 }
-            });            
+            });
         }
     }
 })();

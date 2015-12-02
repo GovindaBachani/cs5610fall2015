@@ -1,0 +1,12 @@
+<div class="container" ng-controller="TFixtureController as controller">
+    <h1>{{team.name}}</h1>
+    <br />
+    <div>
+        <ul class="nav nav-pills">
+            <li><a ng-click="navigateToTeam()"  data-toggle="tab">Team-Info</a></li>
+            <li><a ng-click="navigateToResults()" data-toggle="tab">Results</a></li>
+            <li class="active"><a data-toggle="tab">Fixtures</a></li>
+            <li><a ng-click="navigateToSquad()" data-toggle="tab">Squad</a></li>
+        </ul>
+    </div>
+</div>
