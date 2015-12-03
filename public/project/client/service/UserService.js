@@ -13,7 +13,8 @@
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
-            updateUser: updateUser
+            updateUser: updateUser,
+            login: login
         }
 
         return service;
@@ -22,6 +23,16 @@
             var defer = $q.defer();
             var url = "/api/project/user?username=" + userName + "&password=" + password;
             $http.get(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function login(user) {
+            console.log(user);
+            var defer = $q.defer();
+            $http.post("/api/project/login", user)
+            .success(function (response) {
                 console.log(response);
                 defer.resolve(response);
             });

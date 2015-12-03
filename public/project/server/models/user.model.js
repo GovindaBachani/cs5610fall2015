@@ -4,7 +4,7 @@ var q = require('q');
 
 var userSchemas = require('./user.schema.js');
 
-module.exports = function (mongoose, db, passport, localStrategy) {
+module.exports = function (mongoose, db) {
 
     var schemaInstance = new userSchemas(mongoose);
 

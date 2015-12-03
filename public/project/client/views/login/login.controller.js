@@ -3,19 +3,17 @@
     angular.module("SoccerApp").controller("LoginController", LoginController);
 
     function LoginController($scope, UserService, $rootScope, $location) {
-        $scope.login = function () {
-            var user = {
-                userName: $scope.uName,
-                password: $scope.pwd
-            }
+        $scope.login = function (user) {
+
             var currentUser = UserService.
-                findUserByUsernameAndPassword(user.userName, user.password).then(function (currentUser) {
-                    if(currentUser != null) {
+                login(user).then(function (currentUser) {
+                    console.log(currentUser);
+                    if (currentUser != null) {
                         $rootScope.loggedUser = currentUser;
-                        if($rootScope.loggedUser.role == 'admin'){
+                        if ($rootScope.loggedUser.role == 'admin') {
                             $location.path("/admin");
                         }
-                        else{
+                        else {
                             $location.path("/profile");
                         }
                     }

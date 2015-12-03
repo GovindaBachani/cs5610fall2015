@@ -4,48 +4,9 @@ var q = require('q');
 
 var userSchemas = require('./user.schema.js');
 
-module.exports = function (mongoose, db, passport, localStrategy) {
+module.exports = function (mongoose, db) {
 
-    passport.serializeUser(function(user, done) {
-        done(null, user._id);
-    });
-
-    passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
-        });
-    });
-
-    passport.use(new localStrategy({
-            usernameField: 'email',
-            passwordField: 'password'
-        },
-        function(email,password,done) {
-            UserModel.findOne({email: email}, function (err, user) {
-                console.log('aunthenticating');
-                if (err) {
-                    console.log('error occured');
-                    return done(null, false, {message: 'Unable to Login'});
-                }
-                else if (user == null || user == "") {
-                    user = null
-                    return done(null, user);
-                }
-                else {
-                    console.log(user);
-                    if (password == user.password) {
-                        var user = {id: user._id, fname: user.fname, lname: user.lname, email: user.email};
-                        return done(null, user);
-                    }
-                    else {
-                        user = null
-                        return done(null, user);
-                    }
-                }
-
-
-            });
-        }));
+    
 
     var schemaInstance = new userSchemas(mongoose);
 

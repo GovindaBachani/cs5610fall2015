@@ -3,13 +3,69 @@
  */
 "use strict"
 
-module.exports = function (app, model) {
+module.exports = function (app, passport, model, LocalStrategy) {
+
+    var auth = function (req, res, next) {
+        if (!req.isAuthenticated()) {
+            res.send(401);
+        }
+        else {
+            next();
+        }
+    };
+
+    passport.use(new LocalStrategy(
+        function (username, password, done) {
+            var credentials = {
+                username: username,
+                password: password
+            };
+            model.FindUserByCredentials(credentials).then(function (user) {
+                if (!user) {
+                    return done(null, false);
+                }
+                return done(null, user);
+            })
+        }));
+
+    passport.serializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    app.post("/api/project/login", passport.authenticate('local'), function (req, res) {
+        var user = req.user;
+        res.json(user);
+    });
+
+    app.get('/api/project/loggedin', function (req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    });
+
+    app.post('/api/project/logout', function (req, res) {
+        req.logOut();
+        res.send(200);
+    });
 
     app.post("/api/project/user", addUser);
     app.put("/api/project/user/:id", updateUser);
     app.delete("/api/project/user/:id", deleteUser);
     app.get('/api/project/user', findUser);
     app.get("/api/project/user/:id", findById);
+
+
+
+    app.get('/api/project/loggedin', function (req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    });
+
+    app.post('/api/project/logout', function (req, res) {
+        req.logOut();
+        res.send(200);
+    });
 
     function findUser(req, res) {
         var username = req.param("username");
@@ -25,10 +81,10 @@ module.exports = function (app, model) {
                 password: password
             };
             model.FindUserByCredentials(credentials).then(function (user) {
-                if(user.role == 'admin'){
+                if (user.role == 'admin') {
                     res.send("admin");
                 }
-                else{
+                else {
                     res.json(user);
                 }
             });
@@ -59,7 +115,7 @@ module.exports = function (app, model) {
     };
 
     function addUser(req, res) {
-       var user = req.body;
+        var user = req.body;
         model.Create(user).then(function (user) {
             res.json(user);
         });
