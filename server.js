@@ -14,7 +14,11 @@ var logout = require('express-passport-logout');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
-app.use(expressSession({secret: 'this is the secret'}));
+app.use(expressSession({
+    secret: 'this is the secret',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(cookieParser())
 app.use(passport.initialize());
 app.use(passport.session());

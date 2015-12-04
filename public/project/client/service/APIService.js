@@ -2,41 +2,43 @@
 (function () {
     angular.module("SoccerApp").factory("APIService", APIService);
 
-    function APIService($q,$http) {
+    function APIService($q, $http) {
         var service = {
             getTableContent: getTableContent,
             getFixtureDetails: getFixtureDetails,
             getRecentNews: getRecentNews,
             refineNews: refineNews,
-            getTeamDetails: getTeamDetails
+            getTeamDetails: getTeamDetails,
+            getTeamId: getTeamId
         }
 
 
 
         function getFixtureDetails(leagueId) {
             var defer = $q.defer();
-            $http.get('/api/project/fixtures/'+leagueId).success(function (response) {
+            $http.get('/api/project/fixtures/' + leagueId).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;
         }
 
-        function getTeamDetails(teamId){
+        function getTeamDetails(teamId) {
             var defer = $q.defer();
             $http.get('/api/project/team/' + teamId).success(function (response) {
-                console.log(response);
                 defer.resolve(response);
             });
             return defer.promise;
         }
-        
+
         function getTableContent(leagueId) {
             var defer = $q.defer();
-            $http.get('/api/project/table/'+leagueId).success(function (response) {
+            $http.get('/api/project/table/' + leagueId).success(function (response) {
+                
                 defer.resolve(response);
             });
             return defer.promise;
         }
+
 
         function getRecentNews() {
             var defer = $q.defer();
@@ -61,6 +63,14 @@
             });
             return defer.promise;
         }
+
+        function getTeamId(teamLink) {
+            teamLink = String(teamLink);
+            var teamArr = teamLink.split('/');
+            var len = teamArr.length;
+            var teamId = teamArr[len - 1];
+            return teamId;
+        };
 
         return service;
     }
