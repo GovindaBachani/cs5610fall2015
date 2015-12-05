@@ -12,10 +12,42 @@
             updateUser: updateUser,
             login: login,
             checkLoggedInUser: checkLoggedInUser,
-            logout: logout
+            logout: logout,
+            sendMessage: sendMessage,
+            deleteMessage: deleteMessage,
+            getAllMessage: getAllMessage
         }
 
         return service;
+
+        function sendMessage(message) {
+            var defer = $q.defer();
+            var url = "/api/project/message";
+            console.log(url);
+            console.log(message);
+            $http.post(url, message).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function deleteMessage(id) {
+            var defer = $q.defer();
+            var url = "/api/project/message/" + id;
+            $http.delete(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function getAllMessage() {
+            var defer = $q.defer();
+            var url = "/api/project/message";
+            $http.get(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function logout() {
             var defer = $q.defer();

@@ -17,6 +17,7 @@
             })
             .when("/contact", {
                 templateUrl: "views/contact/contact.view.html",
+                
             })
             .when("/about", {
                 templateUrl: "views/about/about.view.html",
