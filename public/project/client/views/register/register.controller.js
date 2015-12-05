@@ -10,11 +10,10 @@
                 fullName: $scope.fname
             }
             var currentUser = UserService.createUser(user).then(function (currentUser) {
-                console.log("1");
-                if(currentUser) {
+                UserService.login(currentUser).then(function (loggedUser) {
                     $rootScope.loggedUser = currentUser;
                     $location.path("/profile");
-                }
+                });
             });
         }
     }

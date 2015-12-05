@@ -3,8 +3,8 @@
  */
 "use strict"
 
-module.exports = function (app, passport, model, LocalStrategy) {
-
+module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy, GoogleStrategy) {
+    
     var auth = function (req, res, next) {
         if (!req.isAuthenticated()) {
             res.send(401);
@@ -28,6 +28,75 @@ module.exports = function (app, passport, model, LocalStrategy) {
             })
         }));
 
+    passport.use(new FacebookStrategy({
+        clientID: '556162171199230',
+        clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',
+        callbackURL: 'http://localhost:3000/auth/facebook/callback',
+        enableProof: false
+    }, function (accessToken, refreshToken, profile, done) {
+        process.nextTick(function () {
+            console.log(profile);
+            var username = String(profile.id);
+            console.log('\n');
+            console.log(username);
+            model.FindUserByUsername(username).then(function (user) {
+                console.log(user);
+                if (user) {
+                    console.log(user);
+                    return done(null, user);
+                } else {
+
+                    var newUser = {
+                        username: profile.id,
+                        fullName: profile.displayName
+                    };
+                    console.log("in user service");
+                    //console.log(newUser);
+
+                    model.Create(newUser).then(function (user) {
+                        return done(null, user);
+                    });
+                }
+            });
+        });
+    }));
+
+    passport.use(new GoogleStrategy({
+
+        clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com',
+        clientSecret: 'QAh5T-KHYvNOceGZFlVsntff',
+        callbackURL: 'http://localhost:3000/auth/google/callback',
+
+    },
+    function (token, refreshToken, profile, done) {
+
+        // make the code asynchronous
+        // User.findOne won't fire until we have all our data back from Google
+        process.nextTick(function () {
+           
+            // try to find the user based on their google id
+            model.FindUserByUsername(profile.emails[0].value).then(function (user) {
+                if (user) {
+
+                    // if a user is found, log them in
+                    return done(null, user);
+                } else {
+                    // if the user isnt in our database, create a new user
+                    var newUser = {
+                        username: profile.emails[0].value,
+                        fullName: profile.displayName,
+                        email: profile.emails[0].value
+                    }
+
+                    // save the user
+                    model.Create(newUser).then(function (user) {
+                        return done(null, user);
+                    });
+                }
+            });
+        });
+    }));
+
     passport.serializeUser(function (user, done) {
         done(null, user);
     });
@@ -40,6 +109,27 @@ module.exports = function (app, passport, model, LocalStrategy) {
         var user = req.user;
         res.json(user);
     });
+
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }), function (req, res) {
+
+    });
+
+    app.get('/auth/facebook/callback',
+            passport.authenticate('facebook', {
+                successRedirect: '/profile',
+                failureRedirect: '/login'
+            }),
+            function (req, res) {
+                res.json(user);
+            });
+
+    app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+    app.get('/auth/google/callback',
+           passport.authenticate('google', {
+               successRedirect: '/project/client/#/profile',
+               failureRedirect: '/project/client/#/login'
+           }));
 
     app.get('/api/project/loggedin', function (req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
@@ -56,16 +146,6 @@ module.exports = function (app, passport, model, LocalStrategy) {
     app.get('/api/project/user', findUser);
     app.get("/api/project/user/:id", findById);
 
-
-
-    app.get('/api/project/loggedin', function (req, res) {
-        res.send(req.isAuthenticated() ? req.user : '0');
-    });
-
-    app.post('/api/project/logout', function (req, res) {
-        req.logOut();
-        res.send(200);
-    });
 
     function findUser(req, res) {
         var username = req.param("username");

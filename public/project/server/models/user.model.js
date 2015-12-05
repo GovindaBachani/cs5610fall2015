@@ -22,11 +22,14 @@ module.exports = function (mongoose, db) {
 
     return api;
 
-    function Create(user) {
+    function Create(newUser) {
         var deferred = q.defer();
-        user.followers = [];
-        user.following = [];
-        userModel.create(user, function (err, doc) {
+        newUser.followers = [];
+        newUser.following = [];
+        
+        userModel.create(newUser, function (err, doc) {
+            console.log(err);
+            console.log(doc);
             userModel.findById(doc._id, function (err, user) {
                 deferred.resolve(user);
             });

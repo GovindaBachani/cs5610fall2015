@@ -14,7 +14,8 @@
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser,
-            login: login
+            login: login,
+            facebookLogin: facebookLogin
         }
 
         return service;
@@ -32,6 +33,17 @@
             console.log(user);
             var defer = $q.defer();
             $http.post("/api/project/login", user)
+            .success(function (response) {
+                console.log(response);
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function facebookLogin() {
+            console.log("aexfgcgvh");
+            var defer = $q.defer();
+            $http.get("/auth/facebook")
             .success(function (response) {
                 console.log(response);
                 defer.resolve(response);
