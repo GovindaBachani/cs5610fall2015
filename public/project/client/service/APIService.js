@@ -9,10 +9,17 @@
             getRecentNews: getRecentNews,
             refineNews: refineNews,
             getTeamDetails: getTeamDetails,
-            getTeamId: getTeamId
+            getTeamId: getTeamId,
+            getLoggedInUser: getLoggedInUser
         }
 
-
+        function getLoggedInUser() {
+            var defer = $q.defer();
+            $http.get('/api/project/loggedin').success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function getFixtureDetails(leagueId) {
             var defer = $q.defer();
@@ -33,7 +40,7 @@
         function getTableContent(leagueId) {
             var defer = $q.defer();
             $http.get('/api/project/table/' + leagueId).success(function (response) {
-                
+
                 defer.resolve(response);
             });
             return defer.promise;

@@ -29,24 +29,28 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         }));
 
     passport.use(new FacebookStrategy({
-        //clientID: '556162171199230',
-        //clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',
-        //callbackURL: 'http://localhost:3000/auth/facebook/callback',
-        clientID: '333234730184863',
-        clientSecret: '65d2640dd0c72bd854f580ece8cd852d',
-        callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',
+        clientID: '556162171199230',
+        clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',
+        callbackURL: 'http://localhost:3000/auth/facebook/callback',
         profileFields: ["displayName", "email"],
-        enableProof: false
-    }, function (accessToken, refreshToken, profile, done) {
+        enableProof: false} || 
+        {clientID: '333234730184863',
+            clientSecret: '65d2640dd0c72bd854f580ece8cd852d',
+            callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',
+            profileFields: ["displayName", "email"],
+            enableProof: false}
+    , function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
-            var email = profile._json.email;
-            model.FindUserByUsername(email).then(function (user) {
+            var email = String(profile._json.email);
+            var arr = email.split('@');
+            var username = arr[0];
+            model.FindUserByUsername(username).then(function (user) {
                 if (user) {
                     console.log(user);
                     return done(null, user);
                 } else {
                     var newUser = {
-                        username: email,
+                        username: username,
                         fullName: profile.displayName,
                         email: email
                     };
@@ -71,7 +75,10 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         process.nextTick(function () {
 
             // try to find the user based on their google id
-            model.FindUserByUsername(profile.emails[0].value).then(function (user) {
+            var email = String(profile.emails[0].value);
+            var arr = email.split('@');
+            var username = arr[0];
+            model.FindUserByUsername(username).then(function (user) {
                 if (user) {
 
                     // if a user is found, log them in
@@ -79,7 +86,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
                 } else {
                     // if the user isnt in our database, create a new user
                     var newUser = {
-                        username: profile.emails[0].value,
+                        username: username,
                         fullName: profile.displayName,
                         email: profile.emails[0].value
                     }
