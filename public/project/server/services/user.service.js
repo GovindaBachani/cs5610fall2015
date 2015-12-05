@@ -28,17 +28,10 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
             })
         }));
 
-    passport.use(new FacebookStrategy({
-        clientID: '556162171199230',
-        clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',
-        callbackURL: 'http://localhost:3000/auth/facebook/callback',
-        profileFields: ["displayName", "email"],
-        enableProof: false} || 
-        {clientID: '333234730184863',
-            clientSecret: '65d2640dd0c72bd854f580ece8cd852d',
-            callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',
-            profileFields: ["displayName", "email"],
-            enableProof: false}
+    passport.use(new FacebookStrategy(
+        //{clientID: '556162171199230',clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',callbackURL: 'http://localhost:3000/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
+        
+        {clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
     , function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
             var email = String(profile._json.email);
