@@ -55,12 +55,10 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         });
     }));
 
-    passport.use(new GoogleStrategy({
-        clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com',
-        clientSecret: 'QAh5T-KHYvNOceGZFlVsntff',
-        callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'
-            || 'http://localhost:3000/auth/facebook/callback'
-    },
+    passport.use(new GoogleStrategy(
+        {clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'}
+        //{clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com',clientSecret: 'QAh5T-KHYvNOceGZFlVsntff',callbackURL: 'http://localhost:3000/auth/google/callback'}
+,
     function (token, refreshToken, profile, done) {
 
         // make the code asynchronous

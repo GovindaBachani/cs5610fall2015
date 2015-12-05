@@ -4,10 +4,6 @@
     function UserService($http, $q) {
 
 
-        var users = [
-            { id: 1, lastName: "Bachani", firstName: "Govinda", userName: "abcd", email: "goo@gmail.com", password: "abcd" }
-        ];
-
         var service = {
             findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findAllUsers: findAllUsers,
@@ -15,10 +11,29 @@
             deleteUserById: deleteUserById,
             updateUser: updateUser,
             login: login,
-            facebookLogin: facebookLogin
+            checkLoggedInUser: checkLoggedInUser,
+            logout: logout
         }
 
         return service;
+
+        function logout() {
+            var defer = $q.defer();
+            var url = "/api/project/logout";
+            $http.post(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function checkLoggedInUser() {
+            var defer = $q.defer();
+            var url = "/api/project/loggedin";
+            $http.get(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function findUserByUsernameAndPassword(userName, password) {
             var defer = $q.defer();
@@ -33,17 +48,6 @@
             console.log(user);
             var defer = $q.defer();
             $http.post("/api/project/login", user)
-            .success(function (response) {
-                console.log(response);
-                defer.resolve(response);
-            });
-            return defer.promise;
-        }
-
-        function facebookLogin() {
-            console.log("aexfgcgvh");
-            var defer = $q.defer();
-            $http.get("/auth/facebook")
             .success(function (response) {
                 console.log(response);
                 defer.resolve(response);
