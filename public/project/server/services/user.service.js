@@ -31,7 +31,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     passport.use(new FacebookStrategy({
         clientID: '556162171199230',
         clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',
-        callbackURL: 'http://localhost:3000/auth/facebook/callback',
+        callbackURL: process.env.google_callback || 'http://localhost:3000/auth/facebook/callback',
         enableProof: false
     }, function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
@@ -65,7 +65,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
         clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com',
         clientSecret: 'QAh5T-KHYvNOceGZFlVsntff',
-        callbackURL: 'http://localhost:3000/auth/google/callback',
+        callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback',
 
     },
     function (token, refreshToken, profile, done) {
