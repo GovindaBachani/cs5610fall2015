@@ -4,7 +4,7 @@
 "use strict"
 
 module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy, GoogleStrategy) {
-    
+
     var auth = function (req, res, next) {
         if (!req.isAuthenticated()) {
             res.send(401);
@@ -31,29 +31,22 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     passport.use(new FacebookStrategy({
         clientID: '556162171199230',
         clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',
-        callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'
-            || 'http://localhost:3000/auth/facebook/callback',
+        callbackURL: 'http://localhost:3000/auth/facebook/callback',
+        profileFields: ["displayName", "email"],
         enableProof: false
     }, function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
-            console.log(profile);
-            var username = String(profile.id);
-            console.log('\n');
-            console.log(username);
-            model.FindUserByUsername(username).then(function (user) {
-                console.log(user);
+            var email = profile._json.email;
+            model.FindUserByUsername(email).then(function (user) {
                 if (user) {
                     console.log(user);
                     return done(null, user);
                 } else {
-
                     var newUser = {
-                        username: profile.id,
-                        fullName: profile.displayName
+                        username: email,
+                        fullName: profile.displayName,
+                        email: email
                     };
-                    console.log("in user service");
-                    //console.log(newUser);
-
                     model.Create(newUser).then(function (user) {
                         return done(null, user);
                     });
@@ -63,18 +56,17 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     }));
 
     passport.use(new GoogleStrategy({
-
         clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com',
         clientSecret: 'QAh5T-KHYvNOceGZFlVsntff',
-        callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback',
-
+        callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'
+            || 'http://localhost:3000/auth/facebook/callback'
     },
     function (token, refreshToken, profile, done) {
 
         // make the code asynchronous
         // User.findOne won't fire until we have all our data back from Google
         process.nextTick(function () {
-           
+
             // try to find the user based on their google id
             model.FindUserByUsername(profile.emails[0].value).then(function (user) {
                 if (user) {
@@ -111,18 +103,13 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         res.json(user);
     });
 
-    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }), function (req, res) {
-
-    });
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
     app.get('/auth/facebook/callback',
             passport.authenticate('facebook', {
-                successRedirect: '/profile',
-                failureRedirect: '/login'
-            }),
-            function (req, res) {
-                res.json(user);
-            });
+                successRedirect: '/project/client/#/profile',
+                failureRedirect: '/project/client/#/login'
+            }));
 
     app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
