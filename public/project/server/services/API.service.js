@@ -13,6 +13,20 @@ module.exports = function (app) {
     app.get('/api/project/table/:id', getTable);
     app.get('/api/project/fixtures/:id', getFixtures);
     app.get('/api/project/team/:id', getTeamInfo)
+    app.get('/api/project/:leagueid/teams', getAllTeams);
+    function getAllTeams(req, res) {
+
+        var leagueId = req.param('leagueid');
+        console.log(leagueId);
+        var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId + '/teams';
+        requestify.request(url, {
+            method: 'GET',
+            headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
+        }).then(function (response) {
+            // Get the response body (JSON parsed or jQuery object for XMLs)
+            res.jsonp(response.getBody());
+        });
+    }
 
     function getFixtures(req, res) {
         var leagueID = req.param("id");
@@ -23,8 +37,7 @@ module.exports = function (app) {
         }).then(function (response) {
             // Get the response body (JSON parsed or jQuery object for XMLs)
             res.jsonp(response.getBody());
-        }
-        );
+        });
     }
 
     function getTable(req, res) {
@@ -36,7 +49,7 @@ module.exports = function (app) {
         }).then(function (response) {
             var standingsObj = response.getBody();
             //console.log(standingsObj.standing);
-            
+
             res.jsonp(standingsObj);
         });
     }

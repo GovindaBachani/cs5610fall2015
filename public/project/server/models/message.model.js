@@ -17,7 +17,9 @@ module.exports = function (mongoose, db) {
 
     function Create(message) {
         var deferred = q.defer();
+        console.log(message);
         messageModel.create(message, function (err, doc) {
+            console.log(doc);
             messageModel.findById(doc._id, function (err, message) {
                 deferred.resolve(message);
             });

@@ -10,7 +10,10 @@
             })
             .when("/login", {
                 templateUrl: "views/login/login.view.html",
-                controller: "LoginController"
+                controller: "LoginController",
+                resolve: {
+                    loggedin: checkLoggedLoginPage
+                }
             })
             .when("/register", {
                 templateUrl: "views/register/register.view.html",
@@ -38,8 +41,23 @@
             .when("/news-display", {
                 templateUrl: "views/news-display/news-display.view.html",
             })
-            .when("/admin", {
-                templateUrl: "views/admin/admin.view.html",
+            .when("/adminuser", {
+                templateUrl: "views/admin/adminuser.view.html",
+                resolve: {
+                    loggedin: checkAdmin
+                }
+            })
+            .when("/adminmessage", {
+                templateUrl: "views/admin/adminmessage.view.html",
+                resolve: {
+                    loggedin: checkAdmin
+                }
+            })
+            .when("/admincomment", {
+                templateUrl: "views/admin/admincomment.view.html",
+                resolve: {
+                    loggedin: checkAdmin
+                }
             })
             .when("/profile", {
                 templateUrl: "views/profile/profile.view.html",
@@ -65,6 +83,31 @@
             });
     });
 
+    var checkAdmin = function ($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        $http.get('/api/project/loggedin').success(function (user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                if (user.role == 'admin') {
+                    $rootScope.loggedUser = user;
+                    deferred.resolve();
+                }
+                else {
+                    deferred.reject();
+                    $location.url('/login');
+                }
+            }
+                
+            else {
+                deferred.reject();
+                $location.url('/login');
+            }
+        });
+
+        return deferred.promise;
+    }
+
     var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
@@ -79,7 +122,6 @@
             }
             // User is Not Authenticated
             else {
-                $rootScope.errorMessage = 'You need to log in.';
                 deferred.reject();
                 $location.url('/login');
             }
@@ -98,6 +140,25 @@
                 $rootScope.loggedUser = user;
             }
             deferred.resolve();
+        });
+
+        return deferred.promise;
+    };
+
+    var checkLoggedLoginPage = function ($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        $http.get('/api/project/loggedin').success(function (user) {
+            // User is Authenticated
+            if (user !== '0') {
+                console.log("1bdsbj");
+                $location.url('/home');
+                deferred.reject();
+            }
+            else {
+                deferred.resolve();
+                $location.url('/login');
+            }
         });
 
         return deferred.promise;

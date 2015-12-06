@@ -10,7 +10,17 @@
             refineNews: refineNews,
             getTeamDetails: getTeamDetails,
             getTeamId: getTeamId,
-            getLoggedInUser: getLoggedInUser
+            getLoggedInUser: getLoggedInUser,
+            getAllTeams: getAllTeams
+        }
+
+        function getAllTeams(leagueId) {
+            var defer = $q.defer();
+            $http.get('/api/project/' + leagueId + '/teams').success(function (response) {
+                console.log(response);
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function getLoggedInUser() {

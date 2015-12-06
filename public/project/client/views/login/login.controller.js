@@ -6,31 +6,15 @@
         $scope.login = function (user) {
 
             UserService.login(user).then(function (currentUser) {
+                console.log(currentUser);
                 if (currentUser != null) {
                     $rootScope.loggedUser = currentUser;
                     if ($rootScope.loggedUser.role == 'admin') {
-                        $location.path("/admin");
+                        $location.path("/adminuser");
                     }
                     else {
-                        $location.path("/profile");
-                    }
-                }
-            });
-        }
-
-        $scope.facebookLogin = function () {
-            //var openUrl = 'login/facebook';
-            //href = "/auth/facebook"
-            //window.$windowScope = $scope;
-            //window.open(openUrl, "Authenticate Account", "width=500, height=500")
-            UserService.facebookLogin().then(function (currentUser) {
-                if (currentUser != null) {
-                    $rootScope.loggedUser = currentUser;
-                    if ($rootScope.loggedUser.role == 'admin') {
-                        $location.path("/admin");
-                    }
-                    else {
-                        $location.path("/profile");
+                        $rootScope.loggedUser = currentUser;
+                        $location.path("/home");
                     }
                 }
             });

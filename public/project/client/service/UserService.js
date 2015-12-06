@@ -119,7 +119,6 @@
         function updateUser(user, userid) {
             var defer = $q.defer();
             var url = '/api/project/user/' + userid;
-            console.log(url);
             $http.put(url, user).success(function (response) {
                 defer.resolve(response);
             });

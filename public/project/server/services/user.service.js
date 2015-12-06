@@ -1,6 +1,10 @@
 /**
  * Created by Govinda on 11/30/2015.
  */
+
+//{clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'}
+//{clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
+
 "use strict"
 
 module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy, GoogleStrategy) {
@@ -29,36 +33,37 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         }));
 
     passport.use(new FacebookStrategy(
-        //{clientID: '556162171199230',clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4',callbackURL: 'http://localhost:3000/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
-        
-        {clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
-    , function (accessToken, refreshToken, profile, done) {
-        process.nextTick(function () {
-            var email = String(profile._json.email);
-            var arr = email.split('@');
-            var username = arr[0];
-            model.FindUserByUsername(username).then(function (user) {
-                if (user) {
-                    console.log(user);
-                    return done(null, user);
-                } else {
-                    var newUser = {
-                        username: username,
-                        fullName: profile.displayName,
-                        email: email
-                    };
-                    model.Create(newUser).then(function (user) {
+        //{ clientID: '556162171199230', clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4', callbackURL: 'http://localhost:3000/auth/facebook/callback', profileFields: ["displayName", "email"], enableProof: false }
+        //{clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'}
+{clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
+        , function (accessToken, refreshToken, profile, done) {
+            process.nextTick(function () {
+                console.log(profile);
+                var email = String(profile._json.email);
+                var arr = email.split('@');
+                var username = arr[0];
+                model.FindUserByUsername(username).then(function (user) {
+                    if (user) {
+                        console.log(user);
                         return done(null, user);
-                    });
-                }
+                    } else {
+                        var newUser = {
+                            username: username,
+                            fullName: profile.displayName,
+                            email: email
+                        };
+                        model.Create(newUser).then(function (user) {
+                            return done(null, user);
+                        });
+                    }
+                });
             });
-        });
-    }));
+        }));
 
     passport.use(new GoogleStrategy(
-        {clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'}
-        //{clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com',clientSecret: 'QAh5T-KHYvNOceGZFlVsntff',callbackURL: 'http://localhost:3000/auth/google/callback'}
-,
+       // { clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com', clientSecret: 'QAh5T-KHYvNOceGZFlVsntff', callbackURL: 'http://localhost:3000/auth/google/callback' },
+{clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'},
+//{clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
     function (token, refreshToken, profile, done) {
 
         // make the code asynchronous
@@ -107,18 +112,31 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
     app.get('/auth/facebook/callback',
-            passport.authenticate('facebook', {
-                successRedirect: '/project/client/#/profile',
-                failureRedirect: '/project/client/#/login'
-            }));
+            passport.authenticate('facebook', { failureRedirect: '/project/client/#/login' }),
+        function (req, res) {
+            // successful auth, user is set at req.user.  redirect as necessary.
+            if (req.user.team) {
+                res.redirect('/project/client/#/home');
+            }
+            else {
+                res.redirect('/project/client/#/profile');
+            }
+        });
 
     app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
     app.get('/auth/google/callback',
-           passport.authenticate('google', {
-               successRedirect: '/project/client/#/profile',
-               failureRedirect: '/project/client/#/login'
-           }));
+        passport.authenticate('google', { failureRedirect: '/project/client/#/login' }),
+        function (req, res) {
+            // successful auth, user is set at req.user.  redirect as necessary.
+            if (req.user.team) {
+                res.redirect('/project/client/#/home');
+            }
+            else {
+                res.redirect('/project/client/#/profile');
+            }
+        });
+
 
     app.get('/api/project/loggedin', function (req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');

@@ -1,24 +1,32 @@
-﻿<div ng-controller="ContactController">
+﻿<ng-include src="'views/header/header.view.html'"></ng-include>
+
+<div ng-controller="ContactController">
     <h1 class="col-lg-offset-1">Contact Me</h1>
     <br />
     <br />
-    <form class="form-horizontal form-group">
+    <form class="form-horizontal form-group" name="frm">
         <div class="form-group">
             <label for="Username" class="control-label col-lg-2 col-md-2">Email Id</label>
             <div class="col-lg-7 col-md-7">
-                <input type="text" class="form-control" placeholder="Email Id"
-                       ng-model="emailId" />
+                <input type="email" name="email" class="form-control" placeholder="Email Id"
+                       ng-model="emailId" required /> 
+                <span style="color:#a30d0d" 
+                      ng-show="frm.email.$dirty && frm.email.$error.required">* Email is Required</span>              
             </div>
         </div>
         <div class="form-group">
             <label for="Password" class="col-md-2 col-lg-2 control-label">Message</label>
             <div class="col-lg-7 col-md-7">
-                <textarea class="form-control" placeholder="Message..." ng-model="message"></textarea>
+                <textarea class="form-control" name="message" 
+                          placeholder="Message..." ng-model="message" required></textarea>
+                <span style="color:#a30d0d"
+                      ng-show="frm.message.$dirty && frm.message.$error.required">* Message is Required</span> 
             </div>
         </div>
         <div class="form-group">
             <div class="col-lg-offset-2 col-md-offset-2 col-lg-7 col-md-7">
-                <a class="btn btn-primary btn-group-justified" ng-click="sendMessage()">Send Message</a>
+                <a class="btn btn-primary btn-group-justified" ng-disabled="frm.$invalid"
+                   ng-click="sendMessage()">Send Message</a>
             </div>
         </div>
     </form>

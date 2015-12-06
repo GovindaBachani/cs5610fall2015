@@ -64,14 +64,18 @@ module.exports = function (mongoose, db) {
     }
 
     function Update(id, user) {
+        console.log(user);
         var deferred = q.defer();
-        userModel.findById(id, function (err, userUpdate) {
-            userUpdate.lastName = user.lastName;
-            userUpdate.firstName = user.firstName;
+        userModel.findOne({username: user.username}, function (err, userUpdate) {
+            userUpdate.username = user.username;
+            userUpdate.fullName = user.fullName;
             userUpdate.email = user.email;
             userUpdate.password = user.password;
-            userUpdate.username = user.username;
+            userUpdate.league = user.league;
+            userUpdate.team = user.team;
+            console.log(userUpdate);
             userUpdate.save(function (err, doc) {
+                console.log(err);
                 deferred.resolve(doc);
             });
         });
