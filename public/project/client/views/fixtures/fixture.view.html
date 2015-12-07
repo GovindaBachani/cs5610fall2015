@@ -6,14 +6,16 @@
     </h1>
 
     <div id="date" ng-repeat="data in groupedDataByDate">
-        <h3>{{data.date}}</h3>
-        <table class="table table-striped table-responsive myTable" id="league-table">
+        <h3 style="color:#f2c517">{{data.date}}</h3>
+        <table class="table table-striped table-responsive" id="league-table">
             <tbody id="container">
                 <tr id="row" ng-repeat="fix in data.dataArray">
                     <td class="timecolumn">{{fix.myTime}}</td>
-                    <td class="teamcolumn"><a ng-click="toTeamPage(fix._links.homeTeam.href)">{{fix.homeTeamName}}</a></td>
-                    <td class="vscolumn">vs</td>
-                    <td class="teamcolumn"><a ng-click="toTeamPage(fix._links.awayTeam.href)">{{fix.awayTeamName}}</a></td>
+                    <td class="teamcolumn" align="right"><a ng-click="toTeamPage(fix._links.homeTeam.href)">{{fix.homeTeamName}}</a></td>
+                    <td class="crestcolumn"><img class="crest" src="{{fix.homeCrestUrl}}"/></td>
+                    <td class="vscolumn" align="center">vs</td>
+                    <td class="crestcolumn"><img class="crest" src="{{fix.awayCrestUrl}}"/></td>
+                    <td class="teamcolumn" align="left"><a ng-click="toTeamPage(fix._links.awayTeam.href)">{{fix.awayTeamName}}</a></td>
                 </tr>
             </tbody>
         </table>

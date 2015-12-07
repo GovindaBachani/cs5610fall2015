@@ -157,6 +157,8 @@ th {
     width: 300px;
 }
 
+
+
 .timecolumn {
     width: 200px;
 }
@@ -327,7 +329,6 @@ label {
 }
 
 table, td, th {
-    border: 1px solid #39436b;
     color: #095353;
 }
 
@@ -454,4 +455,9 @@ th {
 
 .img-pad{
     padding: 20px;
+}
+
+.crest{
+    width:30px;
+    height:30px;
 }

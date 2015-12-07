@@ -85,7 +85,9 @@ module.exports = function (mongoose, db, passport, localStrategy) {
             if (err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(status);
+                newsModel.find({}, function (err, users) {
+                    deferred.resolve(users);
+                });
             }
         });
 

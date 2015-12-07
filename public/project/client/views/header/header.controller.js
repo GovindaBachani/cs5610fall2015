@@ -19,6 +19,7 @@
                 console.log(user == 200);
                 console.log(user);
                 if (user == 'OK') {
+                    $location.path('/login');
                     location.reload();
                 }
             });

@@ -107,10 +107,10 @@
         }
 
 
-        function deleteUserById(userId, callback) {
+        function deleteUserById(userId) {
             var defer = $q.defer();
-            var url = '/api/project/user/' + userid;
-            $http.delete(url, user).success(function (response) {
+            var url = '/api/project/user/' + userId;
+            $http.delete(url).success(function (response) {
                 defer.resolve(response);
             });
             return defer.promise;

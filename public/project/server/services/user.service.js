@@ -35,7 +35,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     passport.use(new FacebookStrategy(
         //{ clientID: '556162171199230', clientSecret: '8f05c6710e6454ff1e19a88df6f70eb4', callbackURL: 'http://localhost:3000/auth/facebook/callback', profileFields: ["displayName", "email"], enableProof: false }
         //{clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'}
-{clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
+        { clientID: '333234730184863', clientSecret: '65d2640dd0c72bd854f580ece8cd852d', callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback', profileFields: ["displayName", "email"], enableProof: false }
         , function (accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
                 console.log(profile);
@@ -61,8 +61,8 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         }));
 
     passport.use(new GoogleStrategy(
-       // { clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com', clientSecret: 'QAh5T-KHYvNOceGZFlVsntff', callbackURL: 'http://localhost:3000/auth/google/callback' },
-{clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com',clientSecret: 'muYbd9eJfIljR0R71pNmKYAt',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback'},
+      // { clientID: '392985991485-idb2ehamkiulhlnmk6vbqf7rsb2r1moc.apps.googleusercontent.com', clientSecret: 'QAh5T-KHYvNOceGZFlVsntff', callbackURL: 'http://localhost:3000/auth/google/callback' },
+{ clientID: '1022999842621-1a7idb394i442kr46ook1ml5f1d2ggee.apps.googleusercontent.com', clientSecret: 'muYbd9eJfIljR0R71pNmKYAt', callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/google/callback' },
 //{clientID: '333234730184863',clientSecret: '65d2640dd0c72bd854f580ece8cd852d',callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback',profileFields: ["displayName", "email"],enableProof: false}
     function (token, refreshToken, profile, done) {
 
@@ -185,6 +185,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     function deleteUser(req, res) {
         model.Delete(req.params.id).then(function (users) {
+            console.log(users);
             res.json(users);
         });
     };

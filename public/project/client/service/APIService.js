@@ -11,7 +11,16 @@
             getTeamDetails: getTeamDetails,
             getTeamId: getTeamId,
             getLoggedInUser: getLoggedInUser,
-            getAllTeams: getAllTeams
+            getAllTeams: getAllTeams,
+            getTeamCrest: getTeamCrest
+        }
+
+        function getTeamCrest(teamId) {
+            var defer = $q.defer();
+            $http.get('/api/project/' + teamId).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function getAllTeams(leagueId) {
@@ -50,7 +59,7 @@
         function getTableContent(leagueId) {
             var defer = $q.defer();
             $http.get('/api/project/table/' + leagueId).success(function (response) {
-
+                
                 defer.resolve(response);
             });
             return defer.promise;

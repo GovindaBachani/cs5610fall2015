@@ -2,7 +2,7 @@
 (function () {
     angular.module("SoccerApp").controller("FixtureController", FixtureController);
 
-    function FixtureController($scope, APIService, $routeParams, $rootScope, $location, $http) {
+    function FixtureController($q, $scope, APIService, $routeParams, $rootScope, $location, $http) {
         var leagueId = $routeParams.leagueid;
         APIService.getFixtureDetails(leagueId).then(function (data) {
             if (angular.isDefined(data)) {
@@ -47,20 +47,39 @@
                 element.date = meaningFulFixtures[meaningFulFixtures.length - 1].myDate;
                 element.dataArray = groupData;
                 groupedDataByDate.push(element);
-                console.log(meaningFulFixtures);
-                console.log(groupedDataByDate);
                 $scope.groupedDataByDate = groupedDataByDate;
+                angular.forEach($scope.groupedDataByDate, function (date) {
+                    angular.forEach(date.dataArray, function (fixture) {
+                        var awayTeam = fixture._links.awayTeam;
+                        var homeTeam = fixture._links.homeTeam;
+                        var awayCrest = getTeamCrest(awayTeam);
+                        var homeCrest = getTeamCrest(homeTeam);
+                        awayCrest.then(function (res) {
+                            fixture.awayCrestUrl = res.crestUrl;
+                        });
+                        homeCrest.then(function (res) {
+                            fixture.homeCrestUrl = res.crestUrl;
+                        });
+                    });
+                });
             }
         });
 
         $scope.toTeamPage = function(teamLink){
-            console.log(teamLink);
             teamLink = String(teamLink);
             var teamArr = teamLink.split('/');
-            console.log(teamArr);
             var len = teamArr.length;
             var teamId = teamArr[len-1];
             $location.path('/team/' + teamId);
         };
+
+        function getTeamCrest(team) {
+            var d = $q.defer();
+            var teamId = APIService.getTeamId(team.href);
+            APIService.getTeamCrest(teamId).then(function (teamCrest) {
+                d.resolve(teamCrest);
+            });
+            return d.promise;
+        }
     }
 })();

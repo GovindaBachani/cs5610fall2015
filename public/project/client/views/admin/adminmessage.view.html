@@ -1,1 +1,38 @@
 ﻿<ng-include src="'views/header/header.view.html'"></ng-include>
+
+<div class="container" ng-controller="AdminMessageController">
+    <h1>Admin</h1>
+    <h2>Messages</h2>
+    <br />
+    <div>
+        <ul class="nav nav-pills">
+            <li><a href="#/adminuser" data-toggle="tab">Users</a></li>
+            <li><a href="#/admincomment" data-toggle="tab">Comments</a></li>
+            <li class="active"><a data-toggle="tab">Messages</a></li>
+        </ul>
+    </div><ng-include src="'views/header/header.view.html'"></ng-include>
+
+    <br />
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr class="table-bordered">
+                <th class="table-bordered">EmailId</th>
+                <th class="table-bordered">Message</th>
+                <th class="table-bordered">Action</th>
+            </tr>
+
+            <tr class="table-bordered" ng-repeat="message in messages">
+                <td>{{message.emailId}}</td>
+                <td>{{message.message}}</td>
+                <td>
+                    <a ng-click="remove(message._id)">
+                        <span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>&nbsp; &nbsp;
+                    <a ng-href="mailto:{{message.emailId}}" target="_blank">
+                        <span class="big-glyphicon glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

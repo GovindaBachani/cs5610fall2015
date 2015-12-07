@@ -1,38 +1,22 @@
 <ng-include src="'views/header/header.view.html'"></ng-include>
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '556162171199230',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 <div class="container" ng-controller= "TeamController as controller">
     <h1>{{team.name}}</h1>
     <br />
     <div>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab">Team Details</a></li>
             <li><a ng-click="navigateToResults()" data-toggle="tab">Results</a></li>
             <li><a ng-click="navigateToFixtures()" data-toggle="tab">Fixtures</a></li>
             <li><a ng-click="navigateToSquad()" data-toggle="tab">Squad</a></li>
         </ul>
     </div>
+    <br />
     <div class="tab-content">
-        <div class="tab-pane active nav-tabs-justified col-md-3 col-sm-3 col-xs-3 col-lg-3">
-            <img  src="{{team.crestUrl}}"
-                  onerror="this.src = 'http://www.thewoodjoynt.com/Content/Images/Products/NoImageAvailable.jpg';"
-                 class="imageThumbnail">
+        <div class=" active  col-md-2 col-sm-2 col-xs-2 col-lg-2">
+            <img src="{{team.crestUrl}}"
+                 onerror="this.src = 'http://www.thewoodjoynt.com/Content/Images/Products/NoImageAvailable.jpg';"
+                 class="thumbnail" />
         </div>
         <div class="col-md-9 col-sm-9 col-xs-9 col-lg-9">
             <h5 ng-if="team.name!=null"><b>Club Name: </b>{{team.name}}</h5>

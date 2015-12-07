@@ -8,12 +8,41 @@ var requestify = require('requestify');
 
 
 
-module.exports = function (app) {
+module.exports = function (app, teamModel) {
 
     app.get('/api/project/table/:id', getTable);
     app.get('/api/project/fixtures/:id', getFixtures);
     app.get('/api/project/team/:id', getTeamInfo)
     app.get('/api/project/:leagueid/teams', getAllTeams);
+
+    app.post('/api/project/:leagueId', saveAllTeams);
+
+    app.get('/api/project/:teamId', getTeamCrest);
+
+    function getTeamCrest(req, res) {
+        var teamId = req.param("teamId");
+        console.log(teamId);
+        teamModel.FindByTeamUrl(teamId).then(function (team) {
+            res.json(team);
+        });
+    }
+
+    function saveAllTeams(req, res) {
+        var leagueId = req.param('leagueId');
+        var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId + '/teams';
+        requestify.request(url, {
+            method: 'GET',
+            headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
+        }).then(function (response) {
+            var teamsObj = response.getBody();
+            var teams = teamsObj.teams;
+            for (var i = 0 ; i < teams.length; i++) {
+                teamModel.Create(teams[i]);
+            }
+            res.json(response.getBody());
+
+        });
+    }
     function getAllTeams(req, res) {
 
         var leagueId = req.param('leagueid');
