@@ -4,10 +4,10 @@
     <h1>
         Results
     </h1>
+    <div class="table-responsive">
+        <div id="date" ng-repeat="data in groupedDataByDate">
+            <h3 style="color:#f2c517">{{data.date}}</h3>
 
-    <div id="date" ng-repeat="data in groupedDataByDate">
-        <h3 style="color:#f2c517">{{data.date}}</h3>
-        <div class="table-responsive">
             <table class="table table-striped myTable" id="league-table">
                 <tbody id="container">
                     <tr id="row" ng-repeat="fix in data.dataArray">
