@@ -4,11 +4,33 @@
     <h1>{{teamname}}</h1>
     <br />
     <div>
-        <ul class="nav nav-pills">
-            <li><a ng-click="navigateToTeam()"  data-toggle="tab">Team-Info</a></li>
-            <li class="active"><a data-toggle="tab">Results</a></li>
-            <li><a ng-click="navigateToFixtures()" data-toggle="tab">Fixtures</a></li>
+        <ul class="nav nav-tabs">
+            <li><a ng-click="navigateToTeam()" data-toggle="tab">Team-Info</a></li>
+            <li class="active"><a ng-click="navigateToResults()" data-toggle="tab">Results</a></li>
+            <li><a data-toggle="tab" ng-click="navigateToFixtures()">Fixtures</a></li>
             <li><a ng-click="navigateToSquad()" data-toggle="tab">Squad</a></li>
         </ul>
+    </div>
+
+    <h1>
+        Results
+    </h1>
+
+    <div id="date" ng-repeat="data in groupedDataByDate">
+        <h3 style="color:#f2c517">{{data.date}}</h3>
+        <div class="table-responsive">
+            <table class="table table-striped" id="league-table">
+                <tbody id="container">
+                    <tr id="row" ng-repeat="fix in data.dataArray">
+                        <td class="timecolumn">{{fix.myTime}}</td>
+                        <td class="teamcolumn" align="right"><a ng-click="toTeamPage(fix._links.homeTeam.href)">{{fix.homeTeamName}}</a></td>
+                        <td class="crestcolumn"><img class="crest" src="{{fix.homeCrestUrl}}" /></td>
+                        <td class="vscolumn" align="center">{{fix.res}}</td>
+                        <td class="crestcolumn"><img class="crest" src="{{fix.awayCrestUrl}}" /></td>
+                        <td class="teamcolumn" align="left"><a ng-click="toTeamPage(fix._links.awayTeam.href)">{{fix.awayTeamName}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

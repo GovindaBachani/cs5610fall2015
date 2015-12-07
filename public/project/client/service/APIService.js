@@ -12,7 +12,17 @@
             getTeamId: getTeamId,
             getLoggedInUser: getLoggedInUser,
             getAllTeams: getAllTeams,
-            getTeamCrest: getTeamCrest
+            getTeamCrest: getTeamCrest,
+            getLeagueDetails: getLeagueDetails,
+            getTeamFixtures: getTeamFixture
+        }
+
+        function getTeamFixture(teamId) {
+            var defer = $q.defer();
+            $http.get('/api/project/teamFix/' + teamId).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function getTeamCrest(teamId) {
@@ -26,6 +36,15 @@
         function getAllTeams(leagueId) {
             var defer = $q.defer();
             $http.get('/api/project/' + leagueId + '/teams').success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function getLeagueDetails(leagueUrl) {
+            var defer = $q.defer();
+            var leagueId = getTeamId(leagueUrl);
+            $http.get('/api/project/league/' + leagueId).success(function (response) {
                 console.log(response);
                 defer.resolve(response);
             });
@@ -59,7 +78,7 @@
         function getTableContent(leagueId) {
             var defer = $q.defer();
             $http.get('/api/project/table/' + leagueId).success(function (response) {
-                
+
                 defer.resolve(response);
             });
             return defer.promise;

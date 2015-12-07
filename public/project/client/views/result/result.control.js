@@ -6,7 +6,14 @@
         {
             var leagueId = $routeParams.leagueid;
             APIService.getFixtureDetails(leagueId).then(function (data) {
+                
                 if (angular.isDefined(data)) {
+                    var soccerSeasonUrl = data._links[1].soccerseason;
+                    console.log(soccerSeasonUrl);
+                    APIService.getLeagueDetails(soccerSeasonUrl).then(function (response) {
+                        console.log(response);
+                        $scope.leagueName = response.caption;
+                    });
                     var fixtures = data.fixtures;
                     var meaningFulFixtures = []
                     for (var i = 0; i < fixtures.length; i++) {

@@ -17,6 +17,7 @@ module.exports = function (mongoose, db) {
     function FindByTeamUrl(teamIdR) {
         var deferred = q.defer();
         teamModel.findOne({ teamId: teamIdR }, function (err, doc) {
+            console.log(doc);
             deferred.resolve(doc);
         });
         return deferred.promise;
@@ -26,7 +27,8 @@ module.exports = function (mongoose, db) {
         var teamId = getTeamId(team._links.self.href);
         var teamObj = {
             teamId: teamId,
-            crestUrl: team.crestUrl
+            crestUrl: team.crestUrl,
+            teamName: team.name
         };
         console.log(teamObj);
         var deferred = q.defer();

@@ -19,10 +19,38 @@ module.exports = function (app, teamModel) {
 
     app.get('/api/project/:teamId', getTeamCrest);
 
+    app.get('/api/project/league/:leagueId', getLeagueDetails);
+
+    app.get('/api/project/teamFix/:teamId', function (req, res) {
+        var teamId = req.param('teamId');
+        var url = 'http://api.football-data.org/alpha/teams/' + teamId + '/fixtures';
+        console.log(url);
+        requestify.request(url, {
+            method: 'GET',
+            headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
+        }).then(function (response) {
+            res.json(response.getBody());
+        });
+    });
+
+
+
+    function getLeagueDetails(req, res) {
+        var leagueId = req.param('leagueId');
+        console.log(leagueId);
+        var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId;
+        requestify.request(url, {
+            method: 'GET',
+            headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
+        }).then(function (response) {
+            res.json(response.getBody());
+        });
+    }
+
     function getTeamCrest(req, res) {
         var teamId = req.param("teamId");
-        console.log(teamId);
         teamModel.FindByTeamUrl(teamId).then(function (team) {
+
             res.json(team);
         });
     }
@@ -46,7 +74,6 @@ module.exports = function (app, teamModel) {
     function getAllTeams(req, res) {
 
         var leagueId = req.param('leagueid');
-        console.log(leagueId);
         var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId + '/teams';
         requestify.request(url, {
             method: 'GET',

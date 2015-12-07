@@ -6,8 +6,6 @@
     function HeaderController($scope, $location, UserService) {
         $scope.$location = $location;
         UserService.checkLoggedInUser().then(function (user) {
-            console.log(user);
-            console.log(user == 0);
             $scope.user = user;
             if (user != 0) {
                 $scope.fullName = user.fullName;
