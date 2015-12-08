@@ -33,6 +33,18 @@ module.exports = function (app, teamModel) {
         });
     });
 
+    app.get('/api/project/teamPlayers/:teamId', function (req, res) {
+        var teamId = req.param('teamId');
+        var url = 'http://api.football-data.org/alpha/teams/' + teamId + '/players';
+        console.log(url);
+        requestify.request(url, {
+            method: 'GET',
+            headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
+        }).then(function (response) {
+            res.json(response.getBody());
+        });
+    });
+
 
 
     function getLeagueDetails(req, res) {

@@ -5,12 +5,61 @@
     <br />
     <div>
         <ul class="nav nav-pills">
-            <li><a ng-click="navigateToTeam()"  data-toggle="tab">Team-Info</a></li>
+            <li><a ng-click="navigateToTeam()" data-toggle="tab">Team-Info</a></li>
             <li><a ng-click="navigateToResults()" data-toggle="tab">Results</a></li>
             <li><a ng-click="navigateToFixtures()" data-toggle="tab">Fixtures</a></li>
-            <li class="active"><a data-toggle="tab">Squad</a></li>
+            <li class="active"><a data-toggle="tab">First Team</a></li>
         </ul>
     </div>
+
+    <h1>
+        First Team Squad
+    </h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped" id="league-table">
+            <thead>
+                <tr>
+                    <th>position</th>
+                    <th>name</th>
+                    <th>jerseyNumber</th>
+                    <th>dateOfBirth</th>
+                    <th>nationality</th>
+                    <th>contractUntil</th>
+                    <th>marketValue</th>
+                </tr>
+            </thead>
+            <tbody id="container">
+                <tr id="row" ng-repeat="player in players | orderBy: 'jerseyNumber'">
+                    <td>{{player.jerseyNumber}}</td>
+                    <td>{{player.name}}</td>
+                    <td>{{player.position}}</td>
+                    <td>{{player.dateOfBirth}}</td>
+                    <td>{{player.nationality}}</td>
+                    <td>{{player.contractUntil}}</td>
+                    <td>{{player.marketValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<!--<div class="tab-content">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr class="table-bordered">
+                <th class="table-bordered"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Form Name</th>
+                <th class="table-bordered"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
+            </tr>
+            <tr class="table-bordered" ng-repeat="form in forms | orderBy:predicate:reverse">
+                <td><a ng-click="navigate($index)" class="textbox-color"></a></td>
+                <td>
+                    <a ng-click="deleteForm(form._id)"><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <a ng-click="selectForm($index)"><span class="big-glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>-->
 
 <hr />

@@ -14,6 +14,11 @@
             $scope.teamname = team.name;
         });
 
+        APIService.getFirstTeam(teamId).then(function (squad) {
+            $scope.players = squad.players;
+            console.log($scope.palayers);
+        });
+
 
         $scope.navigateToResults = function(){
             $location.path('/teamResult/' + teamId);
