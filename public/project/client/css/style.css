@@ -154,7 +154,7 @@ th {
 }
 
 .teamcolumn {
-    width: 300px;
+    width: 200px;
 }
 
 
@@ -306,7 +306,7 @@ body {
 }
 
 h1 {
-    color: yellow;
+    color: #daf204;
 }
 
 h2 {
@@ -454,4 +454,23 @@ th {
 .crest{
     width:30px;
     height:30px;
+}
+
+
+.nav-tabs > li > a{
+  border: medium none;
+  color:black;
+}
+.nav-tabs > li > a:hover{
+  background-color: #5c4646 !important;
+    border: medium none;
+    border-radius: 0;
+    color:#221e1e;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover{background-color: #303136 !important;
+    border: medium none;
+    border-radius: 0;
+    color:#fff;
 }

@@ -42,6 +42,13 @@ module.exports = function (mongoose, db) {
         var pwd = credentials.password;
         var deferred = q.defer();
         userModel.findOne({ username: usr, password: pwd }, function (err, user) {
+            
+            if (user) {
+                deferred.resolve(user);
+            }
+            else {
+                deferred.resolve(user);
+            }
             deferred.resolve(user);
         });
         return deferred.promise;

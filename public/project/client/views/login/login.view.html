@@ -3,25 +3,32 @@
 <h1 class="col-lg-offset-1">Login</h1>
 <br />
 <br />
-<form class="form-horizontal text-center center-block">
+<form class="form-horizontal text-center center-block" name="frm">
     
     <div class="form-group col-lg-offset-3 col-md-offset-3">
         <label for="Username" class="control-label col-lg-2 col-md-2">Username:</label>
         <div class="col-lg-5 col-md-5">
             <input type="text" class="form-control" placeholder="Username"
-                   ng-model="user.username" />
+                   ng-model="user.username" name="userName" required/>
+            <span style="color:#a30d0d"
+                  ng-show="frm.userName.$dirty && frm.userName.$error.required">* UserName is Required</span>
         </div>
+        
     </div>
     <div class="form-group">
         <label for="Password" class="col-md-2 col-lg-2 control-label">Password:</label>
         <div class="col-lg-5 col-md-5">
             <input type="password" placeholder="Password" class="form-control"
-                   ng-model="user.password" />
+                   ng-model="user.password" name="pwd" required/>
+            <span style="color:#a30d0d"
+                  ng-show="frm.pwd.$dirty && frm.pwd.$error.required">* Password is Required</span>
         </div>
+        
     </div>
+    <h5 style="{{errorMessage}}"></h5>
     <div class="form-group">
         <div class="col-lg-offset-2 col-md-offset-2 col-lg-5 col-md-5">
-            <a class="btn btn-block btn-primary" ng-click="login(user)">Login</a>
+            <a class="btn btn-block btn-primary" ng-click="login(user)" ng-disabled="frm.$invalid">Login</a>
             <a class="btn btn-block btn-social btn-facebook btn-lg" href="/auth/facebook">
                 <span class="fa fa-facebook-square"></span> Sign in with Facebook
             </a>

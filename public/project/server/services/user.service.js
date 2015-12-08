@@ -26,7 +26,9 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
             };
             model.FindUserByCredentials(credentials).then(function (user) {
                 if (!user) {
-                    return done(null, false);
+                    return done(null, false, {
+                        error: 'Incorrect username or password.'
+                    });
                 }
                 return done(null, user);
             })
@@ -106,6 +108,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     app.post("/api/project/login", passport.authenticate('local'), function (req, res) {
         var user = req.user;
+        console.log(user);
         res.json(user);
     });
 

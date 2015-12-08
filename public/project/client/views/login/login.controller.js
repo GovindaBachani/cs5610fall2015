@@ -8,6 +8,7 @@
             UserService.login(user).then(function (currentUser) {
                 console.log(currentUser);
                 if (currentUser != null) {
+                    
                     $rootScope.loggedUser = currentUser;
                     if ($rootScope.loggedUser.role == 'admin') {
                         $location.path("/adminuser");

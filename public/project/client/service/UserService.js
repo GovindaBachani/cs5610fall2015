@@ -15,10 +15,44 @@
             logout: logout,
             sendMessage: sendMessage,
             deleteMessage: deleteMessage,
-            getAllMessage: getAllMessage
+            getAllMessage: getAllMessage,
+            postComment: postComment,
+            deleteComment: deleteComment,
+            getAllTeamContent: getAllTeamContent
         }
 
         return service;
+
+        function postComment(comment, teamId) {
+            var defer = $q.defer();
+            var url = "/api/project/comment/" + teamId;
+            console.log(url);
+            console.log(comment);
+            $http.post(url, comment).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function deleteComment(commentId, teamId) {
+            var defer = $q.defer();
+            var url = "/api/project/comment/" + teamId + '/' + commentId;
+            console.log(url);
+            $http.delete(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function getAllTeamContent(teamId) {
+            var defer = $q.defer();
+            var url = "/api/project/comment/" + teamId;
+            console.log(url);
+            $http.get(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function sendMessage(message) {
             var defer = $q.defer();
@@ -80,9 +114,12 @@
             console.log(user);
             var defer = $q.defer();
             $http.post("/api/project/login", user)
-            .success(function (response) {
+            .then(function successCallback(response) {
                 console.log(response);
                 defer.resolve(response);
+            },
+            function errorCallback(response) {
+                defer.reject(response);
             });
             return defer.promise;
         }
