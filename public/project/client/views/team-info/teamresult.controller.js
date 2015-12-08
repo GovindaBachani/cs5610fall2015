@@ -3,7 +3,7 @@
     angular.module("SoccerApp").controller("TResultController", TResultController);
 
     function TResultController
-    ($q, $scope, APIService, $routeParams, $location) {
+    ($q, $scope, APIService, $routeParams, $location, UserService) {
         var teamId = $routeParams.teamid;
 
         
@@ -12,6 +12,19 @@
 
             APIService.getTeamCrest(teamId).then(function (teamCrest) {
                 $scope.teamname = teamCrest.teamName;
+            });
+
+            UserService.checkLoggedInUser().then(function (user) {
+                $scope.user = user;
+            });
+
+            UserService.getAllTeamContent(teamId).then(function (team) {
+                console.log(team);
+                $scope.comments = team.comments;
+                var commentCount = team.comments.length;
+                console.log(commentCount);
+                $scope.commentSection = commentCount + " comments";
+                console.log($scope.commentSection);
             });
 
             //var a = getTeamCrest(teamId)
@@ -111,6 +124,8 @@
             return d.promise;
         }
 
+
+
         $scope.navigateToTeam = function () {
             $location.path('/team/' + teamId);
         }
@@ -122,6 +137,48 @@
         $scope.navigateToSquad = function () {
             $location.path('/teamSquad/' + teamId);
         }
+
+        $scope.addComment = function () {
+            console.log($scope.comment);
+            if ($scope.comment !== undefined || $scope.comment == "") {
+                if ($scope.user == '0') {
+                    $scope.error = 'Please login to Comment';
+                    console.log("abcd");
+                }
+                else {
+                    var d = new Date();
+                    var dt = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+                    var commentObj = {
+                        username: $scope.user.fullName,
+                        date: dt,
+                        commentText: $scope.comment,
+                        email: $scope.user.email
+                    }
+
+                    UserService.postComment(commentObj, teamId).then(function (comments) {
+                        $scope.comment = "";
+                        $scope.comments = comments;
+                        var commentCount = comments.length;
+                        console.log(commentCount);
+                        $scope.commentSection = commentCount + " comments";
+                        console.log($scope.commentSection);
+                    });
+                }
+            }
+        }
+
+        $scope.deleteComment = function (commentId) {
+            console.log(commentId);
+            UserService.deleteComment(commentId, teamId).then(function (comments) {
+                $scope.comment = "";
+                $scope.comments = comments;
+                var commentCount = comments.length;
+                console.log(commentCount);
+                $scope.commentSection = commentCount + " comments";
+                console.log($scope.commentSection);
+            });
+        }
+
     };
 })();
 

@@ -3,9 +3,23 @@
     angular.module("SoccerApp").controller("TFixtureController", TFixtureController);
 
     function TFixtureController
-    ($q,$scope, APIService, $routeParams,$location){
+    ($q, $scope, APIService, $routeParams, $location, UserService) {
 
+        $scope.comments = [];
+        if (window.stButtons) { stButtons.locateElements(); }
         var teamId = $routeParams.teamid;
+        UserService.checkLoggedInUser().then(function (user) {
+            $scope.user = user;
+        });
+
+        UserService.getAllTeamContent(teamId).then(function (team) {
+            console.log(team);
+            $scope.comments = team.comments;
+            var commentCount = team.comments.length;
+            console.log(commentCount);
+            $scope.commentSection = commentCount + " comments";
+            console.log($scope.commentSection);
+        });
 
         APIService.getTeamFixtures(teamId).then(function (data) {
             APIService.getTeamCrest(teamId).then(function (teamCrest) {
@@ -75,12 +89,13 @@
                             }
                             else {
                                 fixture.homeCrestUrl = res.crestUrl;
-                            }                            
+                            }
                         });
                     });
                 });
             }
         });
+       
 
         $scope.toTeamPage = function (teamLink) {
             teamLink = String(teamLink);
@@ -99,17 +114,59 @@
             return d.promise;
         }
 
-        $scope.navigateToTeam = function(){
+        $scope.navigateToTeam = function () {
             $location.path('/team/' + teamId);
         }
 
-        $scope.navigateToResults = function(){
+        $scope.navigateToResults = function () {
             $location.path('/teamResult/' + teamId);
         }
 
-        $scope.navigateToSquad = function(){
+        $scope.navigateToSquad = function () {
             $location.path('/teamSquad/' + teamId);
         }
+
+        $scope.addComment = function () {
+            console.log($scope.comment);
+            if ($scope.comment !== undefined || $scope.comment == "") {
+                if ($scope.user == '0') {
+                    $scope.error = 'Please login to Comment';
+                    console.log("abcd");
+                }
+                else {
+                    var d = new Date();
+                    var dt = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+                    var commentObj = {
+                        username: $scope.user.fullName,
+                        date: dt,
+                        commentText: $scope.comment,
+                        email: $scope.user.email
+                    }
+
+                    UserService.postComment(commentObj, teamId).then(function (comments) {
+                        $scope.comment = "";
+                        $scope.comments = comments;
+                        var commentCount = comments.length;
+                        console.log(commentCount);
+                        $scope.commentSection = commentCount + " comments";
+                        console.log($scope.commentSection);
+                    });
+                }
+            }
+        }
+
+        $scope.deleteComment = function (commentId) {
+            console.log(commentId);
+            UserService.deleteComment(commentId, teamId).then(function (comments) {
+                $scope.comment = "";
+                $scope.comments = comments;
+                var commentCount = comments.length;
+                console.log(commentCount);
+                $scope.commentSection = commentCount + " comments";
+                console.log($scope.commentSection);
+            });
+        }
+    
     };
 })();
 

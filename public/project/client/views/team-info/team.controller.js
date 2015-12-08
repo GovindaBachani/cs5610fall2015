@@ -7,7 +7,7 @@
         $scope.comments = [];
         if (window.stButtons) { stButtons.locateElements(); }
         var teamId = $routeParams.teamid;
-        APIService.getTeamDetails(teamId).then(function(team){
+        APIService.getTeamDetails(teamId).then(function (team) {
             console.log(team);
             $scope.team = team;
             document.title = team.name;
@@ -26,17 +26,17 @@
             console.log($scope.commentSection);
         });
 
-        $scope.navigateToResults = function(){
+        $scope.navigateToResults = function () {
             console.log("navigating to Result");
             $location.path('/teamResult/' + teamId);
         }
 
-        $scope.navigateToFixtures = function(){
+        $scope.navigateToFixtures = function () {
             console.log("navigating to Fixtures");
             $location.path('/teamFixture/' + teamId);
         }
 
-        $scope.navigateToSquad = function(){
+        $scope.navigateToSquad = function () {
             console.log("navigating to Squad");
             $location.path('/teamSquad/' + teamId);
         }
@@ -67,7 +67,7 @@
                         console.log($scope.commentSection);
                     });
                 }
-            }            
+            }
         }
 
         $scope.deleteComment = function (commentId) {
