@@ -24,6 +24,7 @@
         APIService.getTeamDetails(teamId).then(function (team) {
             console.log(team);
             $scope.teamname = team.name;
+            document.title = team.name;
         });
 
         APIService.getFirstTeam(teamId).then(function (squad) {

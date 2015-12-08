@@ -3,7 +3,7 @@
     angular.module("SoccerApp").controller("ContactController", ContactController);
 
     function ContactController(UserService, $scope, $rootScope, $location) {
-
+        document.title = 'Contact Me'
 
         $scope.sendMessage = function () {
             console.log($scope.emailId + " " + $scope.message);

@@ -8,7 +8,6 @@
         if (window.stButtons) { stButtons.locateElements(); }
         var teamId = $routeParams.teamid;
         APIService.getTeamDetails(teamId).then(function (team) {
-            console.log(team);
             $scope.team = team;
             document.title = team.name;
         });
@@ -18,11 +17,22 @@
         });
 
         UserService.getAllTeamContent(teamId).then(function (team) {
-            console.log(team);
-            $scope.comments = team.comments;
-            var commentCount = team.comments.length;
-            console.log(commentCount);
-            $scope.commentSection = commentCount + " comments";
+            if (team) {
+                console.log(team);
+                $scope.comments = team.comments;
+                var commentCount = team.comments.length;
+                console.log(commentCount);
+                $scope.commentSection = commentCount + " comments";
+                $scope.like = team.likes.length;
+                $scope.dislike = team.dislikes.length;
+            }
+            else {
+                console.log(team);
+                $scope.commentSection = 0 + " comments";
+                $scope.like = 0;
+                $scope.dislike = 0;
+            }
+            
             console.log($scope.commentSection);
         });
 
@@ -58,10 +68,12 @@
                         email: $scope.user.email
                     }
 
-                    UserService.postComment(commentObj, teamId).then(function (comments) {
+                    UserService.postComment(commentObj, teamId).then(function (team) {
                         $scope.comment = "";
-                        $scope.comments = comments;
-                        var commentCount = comments.length;
+                        $scope.comments = team.comments;
+                        $scope.like = team.likes.length;
+                        $scope.dislike = team.dislikes.length;
+                        var commentCount = team.comments.length;
                         console.log(commentCount);
                         $scope.commentSection = commentCount + " comments";
                         console.log($scope.commentSection);
@@ -72,14 +84,53 @@
 
         $scope.deleteComment = function (commentId) {
             console.log(commentId);
-            UserService.deleteComment(commentId, teamId).then(function (comments) {
+            UserService.deleteComment(commentId, teamId).then(function (team) {
                 $scope.comment = "";
-                $scope.comments = comments;
-                var commentCount = comments.length;
+                $scope.comments = team.comments;
+                $scope.like = team.likes.length;
+                $scope.dislike = team.dislikes.length;
+                var commentCount = team.comments.length;
                 console.log(commentCount);
                 $scope.commentSection = commentCount + " comments";
                 console.log($scope.commentSection);
             });
+        }
+
+        $scope.increaseDislike = function () {
+            if ($scope.user.email) {
+                UserService.increaseDislike(teamId, $scope.user.email).then(function (team) {
+                    $scope.comment = "";
+                    $scope.comments = team.comments;
+                    $scope.like = team.likes.length;
+                    $scope.dislike = team.dislikes.length;
+                    var commentCount = team.comments.length;
+                    console.log(commentCount);
+                    $scope.commentSection = commentCount + " comments";
+                    console.log($scope.commentSection);
+                });
+            }
+            else {
+                $scope.error = "Please login to like dislike teams.";
+            }
+            
+        }
+
+        $scope.increaseLike = function () {
+            if ($scope.user.email) {
+                UserService.increaseLike(teamId, $scope.user.email).then(function (team) {
+                    $scope.comment = "";
+                    $scope.comments = team.comments;
+                    $scope.like = team.likes.length;
+                    $scope.dislike = team.dislikes.length;
+                    var commentCount = team.comments.length;
+                    console.log(commentCount);
+                    $scope.commentSection = commentCount + " comments";
+                    console.log($scope.commentSection);
+                });
+            }
+            else {
+                $scope.error = "Please login to like dislike teams.";
+            }
         }
     };
 })();

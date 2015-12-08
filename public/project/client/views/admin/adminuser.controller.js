@@ -3,6 +3,7 @@
     angular.module("SoccerApp").controller("AdminUserController", AdminUserController);
 
     function AdminUserController($scope, UserService, $rootScope, $location) {
+        document.title = 'Admin'
         UserService.findAllUsers().then(function (response) {
             console.log(response);
 

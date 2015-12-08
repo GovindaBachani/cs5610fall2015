@@ -3,6 +3,7 @@
     angular.module("SoccerApp").controller("LoginController", LoginController);
 
     function LoginController($scope, UserService, $rootScope, $location) {
+        document.title = 'Login';
         $scope.login = function (user) {
 
             UserService.login(user).then(function (currentUser) {

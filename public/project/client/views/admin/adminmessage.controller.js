@@ -3,6 +3,7 @@
     angular.module("SoccerApp").controller("AdminMessageController", AdminMessageController);
 
     function AdminMessageController($scope, UserService, $rootScope, $location) {
+        document.title = 'Admin'
         UserService.getAllMessage().then(function (messages) {
             $scope.messages = messages;
         });

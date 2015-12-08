@@ -1,7 +1,8 @@
 ﻿"use strict";
 (function () {
     angular.module("SoccerApp").controller("RegisterController", RegisterController);
-    function RegisterController($scope, UserService, $rootScope, $location){
+    function RegisterController($scope, UserService, $rootScope, $location) {
+        document.title = 'Register';
         $scope.register = function(){
             var user = {
                 username : $scope.uName,

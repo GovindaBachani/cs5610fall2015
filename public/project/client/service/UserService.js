@@ -18,10 +18,32 @@
             getAllMessage: getAllMessage,
             postComment: postComment,
             deleteComment: deleteComment,
-            getAllTeamContent: getAllTeamContent
+            getAllTeamContent: getAllTeamContent,
+            increaseLike: increaseLike,
+            increaseDislike: increaseDislike
         }
 
         return service;
+
+        function increaseDislike(teamId, emailId) {
+            var defer = $q.defer();
+            var url = "/api/project/dislike/" + emailId + "/" + teamId;
+            console.log(url);
+            $http.post(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
+
+        function increaseLike(teamId, emailId) {
+            var defer = $q.defer();
+            var url = "/api/project/like/" + emailId + "/" + teamId;
+            console.log(url);
+            $http.post(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function postComment(comment, teamId) {
             var defer = $q.defer();

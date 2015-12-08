@@ -13,6 +13,7 @@
                     APIService.getLeagueDetails(soccerSeasonUrl).then(function (response) {
                         console.log(response);
                         $scope.leagueName = response.caption;
+                        document.title = response.caption;
                     });
                     var fixtures = data.fixtures;
                     var meaningFulFixtures = []

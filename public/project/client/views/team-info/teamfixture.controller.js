@@ -21,10 +21,14 @@
             console.log($scope.commentSection);
         });
 
+        APIService.getTeamDetails(teamId).then(function (team) {
+            console.log(team);
+            $scope.teamname = team.name;
+            document.title = team.name;
+        });
+
         APIService.getTeamFixtures(teamId).then(function (data) {
-            APIService.getTeamCrest(teamId).then(function (teamCrest) {
-                $scope.teamname = teamCrest.teamName;
-            });
+            
             if (angular.isDefined(data)) {
                 console.log(data);
                 var fixtures = data.fixtures;

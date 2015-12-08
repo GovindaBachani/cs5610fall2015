@@ -49,9 +49,7 @@ th {
     background-color: white;
 }
 
-.big-glyphicon {
-    font-size: x-large;
-}
+
 
 .textbox-color {
     border-color: black;
@@ -182,8 +180,8 @@ th {
 
 
 .icon-myStyle {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 305px;
 }
 
 .iconDetails {
@@ -343,7 +341,7 @@ th {
 
 .big-glyphicon {
     font-size: x-large;
-    color: #87509e;
+    color: #3b0202;
 }
 
 .textbox-color {

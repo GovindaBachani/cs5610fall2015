@@ -19,7 +19,7 @@
     <div id="date" ng-repeat="data in groupedDataByDate">
         <h3 style="color:#f2c517">{{data.date}}</h3>
         <div class="table-responsive">
-            <table class="table table-striped" id="league-table">
+            <table class="table table-striped col-lg-8" id="league-table">
                 <tbody id="container">
                     <tr id="row" ng-repeat="fix in data.dataArray">
                         <td class="timecolumn">{{fix.myTime}}</td>

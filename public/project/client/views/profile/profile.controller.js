@@ -3,6 +3,7 @@
     angular.module("SoccerApp").controller("ProfileController", ProfileController);
 
     function ProfileController(UserService, $scope, $rootScope, $location, APIService) {
+        document.title = 'Profile';
         var leaguesOption = [
             {
                 name: 'Premier League',

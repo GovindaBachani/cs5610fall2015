@@ -8,10 +8,10 @@ module.exports = function (mongoose, db) {
     var schemaInstance = new teamSchemas(mongoose);
 
     var teamModel = mongoose.model('team', schemaInstance.getSchema());
-    
+
     var api = {
         Create: Create,
-        FindByTeamUrl:FindByTeamUrl
+        FindByTeamUrl: FindByTeamUrl
     }
 
     function FindByTeamUrl(teamIdR) {
@@ -38,13 +38,7 @@ module.exports = function (mongoose, db) {
         return deferred.promise;
     }
 
-    function getTeamId(teamLink) {
-        teamLink = String(teamLink);
-        var teamArr = teamLink.split('/');
-        var len = teamArr.length;
-        var teamId = teamArr[len - 1];
-        return teamId;
-    };
+    
 
     return api;
 };

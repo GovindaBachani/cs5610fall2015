@@ -29,28 +29,28 @@
                 <br />
                 <div class="container">
                     <div class="left col-md-1">
-                        <a ng-click="like()">
+                        <a ng-click="increaseLike()">
                             <span>
-                                <i class="glyphicon glyphicon-thumbs-down big-glyphicon icon-myStyle iconDetails">
+                                <i class="fa fa-thumbs-down big-glyphicon icon-myStyle iconDetails">
                                 </i>
                             </span>
                         </a>
                         <div style='margin-left:60px;'>
-                            <h5>0</h5>
+                            <h5>{{like}}</h5>
                         </div>
                         <div class="row">
                             <a style='margin-right:50px;' ng-if="unlike==true" ng-click="unlikeEvent()">Unlike</a>
                         </div>
                     </div>
                     <div class="right col-md-1">
-                        <a ng-click="displayAlert()">
+                        <a ng-click="increaseDislike()">
                             <span>
-                                <i class="glyphicon glyphicon-thumbs-up big-glyphicon icon-myStyle iconDetails">
+                                <i class="fa fa-thumbs-up big-glyphicon icon-myStyle iconDetails">
                                 </i>
                             </span>
                         </a>
                         <div style='margin-left:60px;'>
-                            <h5>0</h5>
+                            <h5>{{dislike}}</h5>
                         </div>
                     </div>
                 </div>

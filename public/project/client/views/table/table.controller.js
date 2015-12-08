@@ -16,6 +16,7 @@
             $scope.teams = response.standing;
             $scope.leagueName = response.leagueCaption;
             $scope.matchDay = 'MatchDay ' + response.matchday;
+            document.title = response.leagueCaption;
             angular.forEach($scope.teams, function (team) {
                 var teamInfo = getTeamCrest(team);
                 teamInfo.then(function (res) {
