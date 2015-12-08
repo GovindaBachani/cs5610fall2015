@@ -19,7 +19,7 @@
             <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3">
                 <img src="{{team.crestUrl}}"
                      onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
-                     style="width:200px;height:200px" />
+                     style="width:100%;" />
             </div>
             <div class="col-md-9 col-sm-9 col-xs-9 col-lg-9">
                 <h5 ng-if="team.name!=null"><b>Club Name: </b>{{team.name}}</h5>
@@ -57,15 +57,16 @@
             </div>
         </div>
     </div>
-    <hr class="col-lg-11">
-    <div class="container col-lg-12">
+    <hr class="col-md-11 col-sm-11 col-xs-11 col-lg-11">
+    <div class="container col-md-12 col-sm-12 col-xs-12 col-lg-12">
         <h4>Leave a comment</h4>
         <div class="row">
-            <img src="http://demo.patternlab.io/images/fpo_avatar.png" class="col-md-1 avatar-style">
-            <textarea placeHolder="Write a Comment" class="col-md-8" ng-model="comment"></textarea>
+            <img src="http://demo.patternlab.io/images/fpo_avatar.png" 
+                 class="col-md-1 col-sm-1 col-xs-1 col-lg-1 avatar-style">
+            <textarea placeHolder="Write a Comment" class="col-md-8 col-sm-8 col-xs-8 col-lg-8" ng-model="comment"></textarea>
         </div>
         <br />
-        <div align="right" class="col-md-9">
+        <div align="right" class="col-md-9 col-sm-9 col-xs-9 col-lg-9">
             <button class="btn-primary" value="Post"
                     ng-click="addComment()">
                 Post
@@ -83,7 +84,7 @@
         <div class="col-md-9" ng-repeat="comment in comments">
             <div class="col-md-1">
                 <div>
-                    <img src="http://demo.patternlab.io/images/fpo_avatar.png" class="imageThumbnail" />
+                    <img src="http://demo.patternlab.io/images/fpo_avatar.png" class="col-md-1 avatar-style" />
                 </div>
             </div>
             <div class="col-md-8">
