@@ -129,6 +129,10 @@
         $scope.navigateToSquad = function () {
             $location.path('/teamSquad/' + teamId);
         }
+        $scope.navigateToNews = function () {
+            console.log("navigating to Squad");
+            $location.path('/teamnews/' + teamId);
+        }
 
         $scope.addComment = function () {
             console.log($scope.comment);
@@ -147,10 +151,12 @@
                         email: $scope.user.email
                     }
 
-                    UserService.postComment(commentObj, teamId).then(function (comments) {
+                    UserService.postComment(commentObj, teamId).then(function (team) {
                         $scope.comment = "";
-                        $scope.comments = comments;
-                        var commentCount = comments.length;
+                        $scope.comments = team.comments;
+                        $scope.like = team.likes.length;
+                        $scope.dislike = team.dislikes.length;
+                        var commentCount = team.comments.length;
                         console.log(commentCount);
                         $scope.commentSection = commentCount + " comments";
                         console.log($scope.commentSection);
@@ -161,10 +167,12 @@
 
         $scope.deleteComment = function (commentId) {
             console.log(commentId);
-            UserService.deleteComment(commentId, teamId).then(function (comments) {
+            UserService.deleteComment(commentId, teamId).then(function (team) {
                 $scope.comment = "";
-                $scope.comments = comments;
-                var commentCount = comments.length;
+                $scope.comments = team.comments;
+                $scope.like = team.likes.length;
+                $scope.dislike = team.dislikes.length;
+                var commentCount = team.comments.length;
                 console.log(commentCount);
                 $scope.commentSection = commentCount + " comments";
                 console.log($scope.commentSection);

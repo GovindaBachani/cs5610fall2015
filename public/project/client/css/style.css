@@ -13,6 +13,25 @@
         text-decoration: underline;
     }
 
+.image {
+    position: relative;
+    width: 100%; 
+}
+
+.news {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+}
+
+.newsdiv {
+    width: 800px;
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+}
+
 .active-sidebar {
     color: black;
     background-color: gold;
@@ -125,6 +144,12 @@ th {
 
 @media only screen and (max-width: 1026px) {
     .sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1026px) {
+    .avatar {
         display: none;
     }
 }
@@ -438,37 +463,40 @@ th {
 .img {
     position: relative;
     float: left;
-    width:  100px;
+    width: 100px;
     height: 100px;
     background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.img-pad{
+.img-pad {
     padding: 20px;
 }
 
-.crest{
-    width:30px;
-    height:30px;
+.crest {
+    width: 30px;
+    height: 30px;
 }
 
 
-.nav-tabs > li > a{
-  border: medium none;
-  color:black;
-}
-.nav-tabs > li > a:hover{
-  background-color: #5c4646 !important;
+.nav-tabs > li > a {
     border: medium none;
-    border-radius: 0;
-    color:#221e1e;
+    color: black;
 }
+
+    .nav-tabs > li > a:hover {
+        background-color: #5c4646 !important;
+        border: medium none;
+        border-radius: 0;
+        color: #221e1e;
+    }
+
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover{background-color: #303136 !important;
+.nav-tabs > li.active > a:hover {
+    background-color: #303136 !important;
     border: medium none;
     border-radius: 0;
-    color:#fff;
+    color: #fff;
 }

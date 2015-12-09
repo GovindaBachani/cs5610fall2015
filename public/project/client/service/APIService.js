@@ -2,12 +2,11 @@
 (function () {
     angular.module("SoccerApp").factory("APIService", APIService);
 
-    function APIService($q, $http) {
+    function APIService($q, $http, NewsService) {
         var service = {
             getTableContent: getTableContent,
             getFixtureDetails: getFixtureDetails,
             getRecentNews: getRecentNews,
-            refineNews: refineNews,
             getTeamDetails: getTeamDetails,
             getTeamId: getTeamId,
             getLoggedInUser: getLoggedInUser,
@@ -102,18 +101,6 @@
                 success: function (data) {
                     defer.resolve(data);
                 }
-            });
-            return defer.promise;
-        }
-
-        function refineNews(url) {
-            var defer = $q.defer();
-            var diffBot = new DiffBot("dca05365819414bb472b23e8b35f0e32");
-            diffBot.analyze.get({
-                url: url
-            }, function (response) {
-                console.log(response);
-                defer.resolve(response);
             });
             return defer.promise;
         }

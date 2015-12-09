@@ -38,7 +38,7 @@
             .when("/result/:leagueid", {
                 templateUrl: "views/result/result.view.html",
             })
-            .when("/news-display", {
+            .when("/news-display/:newsId", {
                 templateUrl: "views/news-display/news-display.view.html",
             })
             .when("/adminuser", {
@@ -71,6 +71,9 @@
             })
             .when("/teamResult/:teamid", {
                 templateUrl: "views/team-info/teamresult.view.html",
+            })
+            .when("/teamnews/:teamid", {
+                templateUrl: "views/team-info/teamnews.view.html",
             })
             .when("/teamFixture/:teamid", {
                 templateUrl: "views/team-info/teamfixture.view.html",

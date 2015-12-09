@@ -51,6 +51,11 @@
             $location.path('/teamSquad/' + teamId);
         }
 
+        $scope.navigateToNews = function () {
+            console.log("navigating to Squad");
+            $location.path('/teamnews/' + teamId);
+        }
+
         $scope.addComment = function () {
             console.log($scope.comment);
             if ($scope.comment !== undefined || $scope.comment == "") {

@@ -5,7 +5,7 @@
 
 module.exports = function (app, mongoose, db, passport, LocalStrategy, FacebookStrategy, GoogleStrategy) {
 
-    var newsModel = require("./models/news.model.js")(mongoose, db, passport, LocalStrategy);
+    var newsModel = require("./models/news.model.js")(mongoose,db);
     var userModel = require("./models/user.model.js")(mongoose, db, passport, LocalStrategy);
     var messageModel = require("./models/message.model.js")(mongoose, db);
     var teamModel = require("./models/team.model.js")(mongoose, db);

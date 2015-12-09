@@ -1,0 +1,19 @@
+﻿<ng-include src="'views/header/header.view.html'"></ng-include>
+
+<div class="container" style="background-color:#808080" ng-controller="TeamNewsController as controller">
+    <h1>{{teamname}}</h1>
+    <br />
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <ul class="nav nav-tabs">
+            <li><a ng-click="navigateToTeam()" data-toggle="tab">Team-Info</a></li>
+            <li><a ng-click="navigateToResults()" data-toggle="tab">Results</a></li>
+            <li><a ng-click="navigateToFixtures()" data-toggle="tab">Fixtures</a></li>
+            <li><a ng-click="navigateToSquad()" data-toggle="tab">First Team</a></li>
+            <li class="active"><a data-toggle="tab">Team News</a></li>
+        </ul>
+    </div>
+
+    <h1>
+        First Team Squad
+    </h1>
+</div>

@@ -1,8 +1,4 @@
-/**
- * Created by Govinda on 12/1/2015.
- */
-
-var schema = function(mongoose){
+var schema = function (mongoose) {
     var self = this;
     var comment = mongoose.Schema({
         username: { type: String, required: true },
@@ -11,14 +7,17 @@ var schema = function(mongoose){
         email: { type: String }
     });
     var NewsSchema = new mongoose.Schema({
-        "url": String,
-        "text": String,
-        "like": {type : String, required : true, unique : true},
-        "dislike": {type : String, required : true},
-        "comments":[comment]
+        "newsId": { type: String, required: true, unique: true },
+        "content": { type: String, required: true },
+        "imageUrl": { type: String, required: true },
+        "titleNoFormatting": { type: String, required: true },
+        "unescapedUrl": { type: String, required: true },
+        "comments": [comment],
+        "likes": [{ type: String, unique: true }],
+        "dislikes": [{ type: String, unique: true }],
     });
 
-    self.getSchema = function(){
+    self.getSchema = function () {
         return NewsSchema;
     }
 };

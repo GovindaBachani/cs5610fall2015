@@ -4,62 +4,80 @@
 "use strict"
 
 module.exports = function (app, model) {
-
     app.post("/api/project/news", addNews);
-    app.put("/api/project/project/:url", updateUser);
-    app.get('/api/project/news/:id', findUser);
+    app.post("/api/project/project/:newsId", addComment);
+    app.delete("/api/project/news/:newsId/:commentId", deleteComment)
+    app.post('/api/project/news/like/:newsId/:emailId', incrementLike);
+    app.post('/api/project/news/dislike/:newsId/:emailId', decrementLike);
+    app.get('/api/project/news/:newsId', getNews);
 
-    function findUser(req, res) {
-        var username = req.param("username");
-        var password = req.param("password");
-        if (typeof username === 'undefined' && typeof password === 'undefined') {
-            model.FindAll().then(function (users) {
-                res.json(users);
-            });
-        }
-        else if (username != null && password != null) {
-            var credentials = {
-                username: username,
-                password: password
-            };
-            model.FindUserByCredentials(credentials).then(function (user) {
-                if(user.role == 'admin'){
-                    res.send("admin");
-                }
-                else{
-                    res.json(user);
-                }
-            });
-        }
-        else {
-            model.FindUserByUsername(username).then(function (user) {
-                res.json(user);
-            });
-        }
+    function incrementLike (req, res) {
+        var newsId = req.params.newsId;
+        var emailId = req.params.emailId;
+        model.increaseLikeCount(newsId, emailId).then(function (team) {
+            console.log(news);
+            res.json(news);
+        })
+    }
+
+    function decrementLike(req, res) {
+        var newsId = req.params.newsId;
+        var emailId = req.params.emailId;
+        model.increasedisLikeCount(newsId, emailId).then(function (team) {
+            console.log(news);
+            res.json(news);
+        })
     };
 
-    function deleteUser(req, res) {
-        model.Delete(req.params.id).then(function (users) {
-            res.json(users);
+    function addNews(req,res) {
+        var news = req.body;
+        model.CreateNews(news).then(function (news) {
+            console.log(news);
+            res.json(news);
+        })
+    }
+
+    function addComment(req, res) {
+        var newsId = req.params.newsId;
+        var comment = req.body;
+        model.addComment(comment, newsId).then(function (news) {
+            console.log(news);
+            res.json(news);
         });
-    };
+    }
 
-    function updateUser(req, res) {
-        model.Update(req.params.id, req.body).then(function (user) {
-            res.json(user);
+    function deleteComment(req, res) {
+        var newsId = req.params.newsId;
+        var commentId = req.params.commentId;
+        model.deleteComment(commentId, newsId).then(function (news) {
+            console.log(news);
+            res.json(news);
         });
-    };
+    }
 
-    function findById(req, res) {
-        model.FindById(req.params.id).then(function (user) {
-            res.json(user);
-        });
-    };
+    function incrementLike(req, res) {
+        var newsId = req.params.newsId;
+        var emailId = req.params.emailId;
+        model.increaseLikeCount(newsId, emailId).then(function (news) {
+            console.log(news);
+            res.json(news);
+        })
+    }
 
-    function addNews(req, res) {
-        var user = req.body;
-        model.Create(user).then(function (user) {
-            res.json(user);
+    function decrementLike(req, res) {
+        var newsId = req.params.newsId;
+        var emailId = req.params.emailId;
+        model.increaseDislikeCount(newsId, emailId).then(function (news) {
+            console.log(news);
+            res.json(news);
+        })
+    }
+
+    function getNews(req, res) {
+        var newsId = req.params.newsId;
+        model.getNewsContent(newsId).then(function(news){
+            console.log(news);
+            res.json(news);
         });
-    };
+    }
 };
