@@ -80,7 +80,7 @@
                         <li>
                             <a href="#/about">About</a>
                         </li>
-                        
+
                         <li ng-if="user.role=='admin'">
                             <a href="#/adminuser">Admin</a>
                         </li>
@@ -88,13 +88,12 @@
                             <div id="the-basics" style="padding-top:10px">
                                 <input class="typeahead form-control" type="text"
                                        placeholder="Search Team" ng-model="teamName">
+                                <button style="" class="btn btn-default" 
+                                        ng-click="toTeamPage()">
+                                <i class="glyphicon glyphicon-search"></i></button>
                             </div>
                         </li>
-                        <li>
-                            <div style="padding-top:10px; padding-left:10px">
-                                <button style="" class="btn btn-default" ng-click="toTeamPage()"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </li>
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -195,13 +194,12 @@
                         </li>
                         <li>
                             <div id="the-basics" style="padding-top:10px">
-                                <input  class="typeahead form-control" type="text"
+                                <input class="typeahead form-control" type="text"
                                        placeholder="Search Team" ng-model="teamName">
-                            </div>
-                        </li>
-                        <li>
-                            <div style="padding-top:10px; padding-left:10px">
-                                <button style="" class="btn btn-default" ng-click="toTeamPage()"><i class="glyphicon glyphicon-search"></i></button>
+                                <button style="" class="btn btn-default"
+                                        ng-click="toTeamPage()">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
                             </div>
                         </li>
                         <li ng-if="user.role=='admin'">
@@ -209,7 +207,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        
+
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">{{fullName}}<span class="caret"></span></a>
