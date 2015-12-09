@@ -102,12 +102,16 @@
         }
 
 
-        function getRecentNews() {
+        function getRecentNews(teamName) {
+            console.log(teamName);
+            teamName = encodeURIComponent(teamName.trim()); 
             var defer = $q.defer();
             $.ajax({
-                url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=Manchester%20United',
+
+                url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=' + teamName + '&language=en',
                 dataType: 'jsonp',
                 success: function (data) {
+                    console.log(data);
                     defer.resolve(data);
                 }
             });

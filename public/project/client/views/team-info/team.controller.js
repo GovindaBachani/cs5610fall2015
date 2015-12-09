@@ -10,6 +10,7 @@
         APIService.getTeamDetails(teamId).then(function (team) {
             $scope.team = team;
             document.title = team.name;
+            
         });
 
         UserService.checkLoggedInUser().then(function (user) {
