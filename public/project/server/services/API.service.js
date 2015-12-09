@@ -11,6 +11,7 @@ var requestify = require('requestify');
 module.exports = function (app, teamModel) {
 
     app.get('/api/project/teams', function (req, res) {
+
         teamModel.FindAll().then(function (teams) {
             res.json(teams);
         });
@@ -76,6 +77,7 @@ module.exports = function (app, teamModel) {
     function saveAllTeams(req, res) {
         var leagueId = req.param('leagueId');
         var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId + '/teams';
+        console.log(url);
         requestify.request(url, {
             method: 'GET',
             headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }

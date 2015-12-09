@@ -48,6 +48,14 @@ module.exports = function (mongoose, db) {
         return deferred.promise;
     }
 
+    function getTeamId(teamLink) {
+        teamLink = String(teamLink);
+        var teamArr = teamLink.split('/');
+        var len = teamArr.length;
+        var teamId = teamArr[len - 1];
+        return teamId;
+    };
+
     
 
     return api;
