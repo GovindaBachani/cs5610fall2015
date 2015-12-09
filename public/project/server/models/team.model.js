@@ -11,12 +11,22 @@ module.exports = function (mongoose, db) {
 
     var api = {
         Create: Create,
-        FindByTeamUrl: FindByTeamUrl
+        FindByTeamUrl: FindByTeamUrl,
+        FindAll: FindAll
     }
 
     function FindByTeamUrl(teamIdR) {
         var deferred = q.defer();
         teamModel.findOne({ teamId: teamIdR }, function (err, doc) {
+            console.log(doc);
+            deferred.resolve(doc);
+        });
+        return deferred.promise;
+    }
+
+    function FindAll() {
+        var deferred = q.defer();
+        teamModel.find({}, function (err, doc) {
             console.log(doc);
             deferred.resolve(doc);
         });

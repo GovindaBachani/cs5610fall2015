@@ -10,6 +10,12 @@ var requestify = require('requestify');
 
 module.exports = function (app, teamModel) {
 
+    app.get('/api/project/teams', function (req, res) {
+        teamModel.FindAll().then(function (teams) {
+            res.json(teams);
+        });
+    });
+
     app.get('/api/project/table/:id', getTable);
     app.get('/api/project/fixtures/:id', getFixtures);
     app.get('/api/project/team/:id', getTeamInfo)

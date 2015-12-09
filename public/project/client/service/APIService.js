@@ -14,7 +14,16 @@
             getTeamCrest: getTeamCrest,
             getLeagueDetails: getLeagueDetails,
             getTeamFixtures: getTeamFixture,
-            getFirstTeam : getFirstTeam
+            getFirstTeam: getFirstTeam,
+            FindAllTeams: FindAllTeams
+        }
+
+        function FindAllTeams() {
+            var defer = $q.defer();
+            $http.get('/api/project/teams').success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function getFirstTeam(teamId) {

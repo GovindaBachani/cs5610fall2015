@@ -1,4 +1,4 @@
-﻿var app = angular.module("SoccerApp", ["ngRoute", "ngSanitize"]);
+﻿var app = angular.module("SoccerApp", ["ngRoute", "ngSanitize", "ui.bootstrap"]);
 
 app.filter('reverse', function () {
     return function (items) {
