@@ -17,7 +17,9 @@
         APIService.FindAllTeams().then(function (teams) {
             $scope.allTeams = teams;
             $scope.allTeamNames = getTeamName($scope.allTeams);
+
             var allTeams = $scope.allTeamNames;
+            console.log(allTeams);
             var substringMatcher = function (strs) {
                 return function findMatches(q, cb) {
                     var matches, substrRegex;
