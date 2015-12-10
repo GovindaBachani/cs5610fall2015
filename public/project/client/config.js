@@ -59,6 +59,12 @@
                     loggedin: checkAdmin
                 }
             })
+            .when("/adminnews", {
+                templateUrl: "views/admin/adminnews.view.html",
+                resolve: {
+                    loggedin: checkAdmin
+                }
+            })
             .when("/profile", {
                 templateUrl: "views/profile/profile.view.html",
                 controller: "ProfileController",

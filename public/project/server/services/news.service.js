@@ -20,6 +20,12 @@ module.exports = function (app, model) {
         })
     }
 
+    app.get("/api/project/admin/news/comments", function (req, res) {
+        model.getAllNewsWithNonZeroComment().then(function (teams) {
+            res.json(teams);
+        })
+    });
+
     function decrementLike(req, res) {
         var newsId = req.params.newsId;
         var emailId = req.params.emailId;

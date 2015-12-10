@@ -1,14 +1,14 @@
 ﻿<ng-include src="'views/header/header.view.html'"></ng-include>
 
-<div class="container" ng-controller="AdminCommentController">
+<div class="container" ng-controller="AdminNewsController">
     <h1>Admin</h1>
     <h2>Comments</h2>
     <br />
     <div>
         <ul class="nav nav-pills">
             <li><a href="#/adminuser" data-toggle="tab">Users</a></li>
-            <li class="active"><a data-toggle="tab">Team Comments</a></li>
-            <li><a href="#/adminnews" data-toggle="tab">News Comments</a></li>
+            <li><a href="#/admincomment" data-toggle="tab">Team Comments</a></li>
+            <li class="active"><a data-toggle="tab">News Comments</a></li>
             <li><a href="#/adminmessage" data-toggle="tab">Messages</a></li>
         </ul>
     </div>
@@ -24,28 +24,28 @@
                     <th class="table-bordered">Action</th>
                 </tr>
             </thead>
-            <tbody ng-repeat='team in teams'>
+            <tbody ng-repeat='new in news'>
                 <tr class="table-bordered">
-                    <td rowspan="{{team.comments.length}}">
-                        <a ng-click="toTeamPage(team.teamId)">{{team.teamId}}</a>
+                    <td rowspan="{{new.comments.length}}">
+                        <a ng-click="toNewsPage(new.newsId)">{{new.titleNoFormatting}}</a>
                     </td>
-                    <td>{{team.comments[0].email}}</td>
-                    <td>{{team.comments[0].commentText}}</td>
+                    <td>{{new.comments[0].email}}</td>
+                    <td>{{new.comments[0].commentText}}</td>
                     <td>
                         <a>
                             <span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"
-                                  ng-click="delete(team,team.comments[0])"></span>
+                                  ng-click="delete(new,new.comments[0])"></span>
                         </a>
                     </td>
                 </tr>
                 <tr class="table-bordered"
-                    ng-repeat='comment in  team.comments' ng-show="$index > 0">
+                    ng-repeat='comment in  new.comments' ng-show="$index > 0">
                     <td>{{comment.email}}</td>
                     <td>{{comment.commentText}}</td>
                     <td>
                         <a>
                             <span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"
-                                  ng-click="delete(team,comment)"></span>
+                                  ng-click="delete(new,comment)"></span>
                         </a>
                     </td>
                 </tr>

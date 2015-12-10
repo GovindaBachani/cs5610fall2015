@@ -20,9 +20,8 @@ module.exports = function (mongoose, db) {
         console.log(message);
         messageModel.create(message, function (err, doc) {
             console.log(doc);
-            messageModel.findById(doc._id, function (err, message) {
-                deferred.resolve(message);
-            });
+            
+                deferred.resolve(doc);
         });
         return deferred.promise;
     }

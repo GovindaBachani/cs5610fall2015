@@ -19,7 +19,6 @@
             $scope.allTeamNames = getTeamName($scope.allTeams);
 
             var allTeams = $scope.allTeamNames;
-            console.log(allTeams);
             var substringMatcher = function (strs) {
                 return function findMatches(q, cb) {
                     var matches, substrRegex;
@@ -48,10 +47,8 @@
             }, { name: 'teams', source: substringMatcher(allTeams) });
 
             myTypeAhead.on('typeahead:selected', function (evt, data) {
-                console.log(data);
                 $scope.teamName = data; //selected datum object
                 $rootScope.teamName = data;
-                console.log($scope.teamName);
             });
         });
 
@@ -66,9 +63,7 @@
         }
 
         $scope.toTeamPage = function () {
-            console.log($rootScope);
             var teamId = getTeamId($rootScope.teamName);
-            console.log(teamId);
             if (teamId) {
                 $location.path('/team/' + teamId);
             }
@@ -86,8 +81,6 @@
 
         $scope.logout = function () {
             UserService.logout().then(function (user) {
-                console.log(user == 200);
-                console.log(user);
                 if (user == 'OK') {
                     $location.path('/login');
                     location.reload();

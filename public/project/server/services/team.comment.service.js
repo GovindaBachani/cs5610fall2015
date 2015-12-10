@@ -10,6 +10,12 @@ module.exports = function (app, model) {
         })
     });
 
+    app.get("/api/project/admin/team/comments", function (req, res) {
+        model.getAllTeamsWithNonZeroComment().then(function (teams) {
+            res.json(teams);
+        })
+    });
+
     app.post("/api/project/like/:emailId/:teamId", function (req, res) {
         var teamId = req.params.teamId;
         var emailId = req.params.emailId;

@@ -20,10 +20,21 @@
             deleteComment: deleteComment,
             getAllTeamContent: getAllTeamContent,
             increaseLike: increaseLike,
-            increaseDislike: increaseDislike
+            increaseDislike: increaseDislike,
+            getAllTeamsWithNonZeroComment: getAllTeamsWithNonZeroComment
         }
 
         return service;
+
+        function getAllTeamsWithNonZeroComment() {
+            var defer = $q.defer();
+            var url = '/api/project/admin/team/comments';
+            console.log(url);
+            $http.get(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function increaseDislike(teamId, emailId) {
             var defer = $q.defer();
@@ -78,7 +89,7 @@
 
         function sendMessage(message) {
             var defer = $q.defer();
-            var url = "/api/project/message";
+            var url = "/api/project/message/send";
             console.log(url);
             console.log(message);
             $http.post(url, message).success(function (response) {
@@ -98,7 +109,7 @@
 
         function getAllMessage() {
             var defer = $q.defer();
-            var url = "/api/project/message";
+            var url = "/api/project/admin/message";
             $http.get(url).success(function (response) {
                 defer.resolve(response);
             });

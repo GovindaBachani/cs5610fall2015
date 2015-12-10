@@ -1,8 +1,8 @@
 ﻿"use strict"
 
 module.exports = function (app, model) {
-    app.post('/api/project/message', addMessage);
-    app.get('/api/project/message', getAllMessages);
+    app.post('/api/project/message/send', addMessage);
+    app.get('/api/project/admin/message', getAllMessages);
     app.delete('/api/project/message/:id', deleteMessage);
 
     function addMessage(req, res) {

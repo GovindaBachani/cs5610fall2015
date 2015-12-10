@@ -10,12 +10,21 @@
             DeleteComment: DeleteComment,
             increaseLike: increaseLike,
             increaseDislike: increaseDislike,
-            GetNews: GetNews
+            GetNews: GetNews,
+            getAllNewsWithNonZeroComment: getAllNewsWithNonZeroComment
         };
 
         function GetNews(newsId) {
             var deferred = $q.defer();
             $http.get('/api/project/news/' + newsId).success(function (news) {
+                deferred.resolve(news);
+            });
+            return deferred.promise;
+        }
+
+        function getAllNewsWithNonZeroComment(newsId) {
+            var deferred = $q.defer();
+            $http.get("/api/project/admin/news/comments").success(function (news) {
                 deferred.resolve(news);
             });
             return deferred.promise;

@@ -20,7 +20,8 @@ module.exports = function (mongoose, db) {
         addComment: addComment,
         deleteComment: deleteComment,
         increaseDislikeCount: increasedisLikeCount,
-        increaseLikeCount: increaseLikeCount
+        increaseLikeCount: increaseLikeCount,
+        getAllNewsWithNonZeroComment: getAllNewsWithNonZeroComment
 
     }
 
@@ -148,6 +149,14 @@ module.exports = function (mongoose, db) {
                     });
                 }
             }
+        });
+        return deferred.promise;
+    }
+
+    function getAllNewsWithNonZeroComment() {
+        var deferred = q.defer();
+        newsModel.find({ comments: { $exists: true, $ne: [] } }, function (err, doc) {
+            deferred.resolve(doc);
         });
         return deferred.promise;
     }

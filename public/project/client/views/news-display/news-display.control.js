@@ -5,6 +5,9 @@
 
     function NewsDisplayController($scope, APIService,$sce, $routeParams, $location, $http, NewsService, UserService) {
         {
+            if (window.stButtons) {
+                stButtons.locateElements();
+            }
             var newsId = $routeParams.newsId;
             NewsService.GetNews(newsId).then(function (news) {
                 document.title = news.titleNoFormatting;

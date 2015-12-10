@@ -14,8 +14,8 @@ module.exports = function (mongoose, db) {
         FindAll: FindAll,
         Delete: Delete,
         increaseLikeCount: increaseLikeCount,
-        increasedisLikeCount: increasedisLikeCount
-
+        increasedisLikeCount: increasedisLikeCount,
+        getAllTeamsWithNonZeroComment: getAllTeamsWithNonZeroComment
     }
 
     function Create(comment, teamId) {
@@ -138,6 +138,14 @@ module.exports = function (mongoose, db) {
                     });
                 }
             }
+        });
+        return deferred.promise;
+    }
+
+    function getAllTeamsWithNonZeroComment() {
+        var deferred = q.defer();
+        teamCommentModel.find({ comments: { $exists: true, $ne: [] } }, function (err, doc) {
+            deferred.resolve(doc);
         });
         return deferred.promise;
     }
