@@ -338,7 +338,7 @@ h1 {
 }
 
 h2 {
-    color: yellow;
+    color: #daf204;
 }
 
 
@@ -557,4 +557,21 @@ th {
 .tt-suggestion.tt-is-under-cursor {
 color: #000000;
 background-color:#91c0fe;
+}
+.large{
+    height:100%
+}
+
+.carousel-caption {
+      max-width: 550px;
+      padding-bottom:50px;
+      margin:0 auto;
+      margin-top: 200px;
+      text-align:left;
+}
+
+#UniformImage{
+  width: auto;
+  height: 500px;
+  max-height: 600px;
 }

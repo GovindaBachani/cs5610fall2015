@@ -14,7 +14,7 @@
         table.then(function (response) {
             console.log(response);
             $scope.teams = response.standing;
-            $scope.leagueName = response.leagueCaption;
+            $scope.leagueName = response.leagueCaption + "!!";
             $scope.matchDay = 'MatchDay ' + response.matchday;
             document.title = response.leagueCaption;
             angular.forEach($scope.teams, function (team) {

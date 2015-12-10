@@ -12,7 +12,7 @@
             document.title = team.name;
             console.log(team.name);
             APIService.getRecentNews($scope.team.name).then(function (data) {
-                $scope.posts = data.responseData.results;
+                $scope.posts = data;
                 console.log($scope.posts);
             });
         });
@@ -26,12 +26,14 @@
 
         $scope.newsClick = function (index) {
             var news = $scope.posts[index];
+            var str = news.titleNoFormatting;
+            str = str.replace(/[^\w\s]/gi, '');
             var hash = HashCode($scope.posts[index].unescapedUrl);
             var newsObj = {
                 "newsId": hash,
                 "content": news.content,
                 "imageUrl": news.image.url,
-                "titleNoFormatting": news.titleNoFormatting,
+                "titleNoFormatting": str,
                 "unescapedUrl": news.unescapedUrl,
                 "comments": [],
                 "likes": [],

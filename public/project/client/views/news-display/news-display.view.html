@@ -16,30 +16,18 @@
     <hr style="width:75%;" align="left" />
     <div class="col-sm-8 col-lg-8 col-md-8 col-xs-8">
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <a ng-click="increaseLike()">
-                <span>
-                    <i class="fa fa-thumbs-down big-glyphicon icon-myStyle iconDetails">
-                    </i>
-                </span>
-            </a>
-            <div>
-                <h5><b>{{like}}</b></h5>
-            </div>
-            <div class="row">
-                <a ng-if="unlike==true" ng-click="unlikeEvent()">Unlike</a>
-            </div>
+            <button type="button" class="btn btn-success" ng-click="increaseLike()"
+                    aria-label="Left Align">
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>&nbsp;
+                <span>{{like}}</span>
+            </button>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <a ng-click="increaseDislike()">
-                <span>
-                    <i class="fa fa-thumbs-up big-glyphicon icon-myStyle iconDetails">
-                    </i>
-                </span>
-            </a>
-            <div>
-                <h5><b>{{dislike}}</b></h5>
-            </div>
-
+            <button type="button" class="btn btn-danger" ng-click="increaseDislike()"
+                    aria-label="Left Align">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;
+                <span>{{dislike}}</span>
+            </button>
         </div>
         <span class='st_facebook_large' displayText='Facebook'></span>
         <span class='st_twitter_large' displayText='Tweet'></span>
@@ -68,7 +56,7 @@
     <div class="container row" style="padding-top:20px">
 
         <h4>{{commentSection}}</h4>
-        <hr style="width:75%"  align="left"/>
+        <hr style="width:75%" align="left" />
         <div class="col-md-9" ng-repeat="comment in comments">
             <div class="col-md-1">
                 <div>

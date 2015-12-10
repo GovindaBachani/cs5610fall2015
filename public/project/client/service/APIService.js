@@ -111,8 +111,16 @@
                 url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=' + teamName + '&language=en',
                 dataType: 'jsonp',
                 success: function (data) {
-                    console.log(data);
-                    defer.resolve(data);
+                    console.log(data.responseData.results);
+                    var news = data.responseData.results;
+                    console.log(news);
+                    for (var i = 0; i < news.length; i++) {
+                        var properTitle = news[i].titleNoFormatting.replace(/&#39;/g, "'");
+                        var properContent = news[i].content.replace(/&#39;/g, "'");
+                        news[i].titleNoFormatting = properTitle;
+                        news[i].content = properContent;
+                    }
+                    defer.resolve(news);
                 }
             });
             return defer.promise;

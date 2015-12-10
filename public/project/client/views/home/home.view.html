@@ -1,10 +1,61 @@
 ﻿<ng-include src="'views/header/header.view.html'"></ng-include>
 
-<div class="container">
-    <h1>Welcome!</h1>
+<div class="container" ng-controller="HomeController">
+    <br />
+    <div class="col-md-12 col-lg-12">
+        <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
+
+            <div id="corousel" class="carousel slide">
+                <ol class="carousel-indicators">
+
+                    <li data-target="#corousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#corousel" data-slide-to="1"></li>
+                    <li data-target="#corousel" data-slide-to="2"></li>
+                    <li data-target="#corousel" data-slide-to="3"></li>
+                </ol>
+
+                <div class="carousel-inner">
+
+                    <div class="item" ng-repeat="slide in slides" ng-class="{active : $first}">
+                        <img id="UniformImage" src={{slide.image.url}}
+                             alt="Manc" class="img-responsive" />
+                        <div class="carousel-caption">
+                            <a ng-click="newsClick(slide)">
+                                <h3 style="background:#000000">{{slide.titleNoFormatting}}</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3" style="height:500px;overflow:auto;">
+
+            <div class="table-responsive">
+                <table class="table table-striped timg" id="league-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th></th>
+                            <th>Team</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody id="container">
+                        <tr id="row" ng-repeat="team in teams">
+                            <td class="pos">{{team.position}}</td>
+                            <td class="crestcolumn">
+                                <img class="crest" src="{{team.crestUrl.crestUrl}}"
+                                     onerror="this.src = 'http://www.thewoodjoynt.com/Content/Images/Products/NoImageAvailable.jpg';" />
+                            </td>
+                            <td class="team"><a ng-click="toTeamPage(team._links.team.href)">{{team.teamName}}</a></td>
+                            <td class="pts">{{team.points}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+    </div>
 </div>
-<div class="container">
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.
-    </p>
-</div>
+

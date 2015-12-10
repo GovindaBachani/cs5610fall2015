@@ -103,7 +103,9 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     });
 
     passport.deserializeUser(function (user, done) {
-        done(null, user);
+        model.FindById(user._id).then(function (userU) {
+            done(null, userU);
+        });        
     });
 
     app.post("/api/project/login", passport.authenticate('local'), function (req, res) {
