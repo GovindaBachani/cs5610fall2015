@@ -29,9 +29,12 @@ module.exports = function (mongoose, db) {
         newUser.following = [];
         
         userModel.create(newUser, function (err, doc) {
-            userModel.findById(doc._id, function (err, user) {
-                deferred.resolve(user);
-            });
+            if (err) {
+                defer.resolve(err);
+            }
+            else {
+                deferred.resolve(doc);
+            }            
         });
         return deferred.promise;
     }

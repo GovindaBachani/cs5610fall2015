@@ -103,7 +103,6 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     passport.deserializeUser(function (user, done) {
         model.FindById(user._id).then(function (userU) {
-            //UserU.password = "******";
             done(null, userU);
         });        
     });
@@ -144,8 +143,9 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     app.get('/api/project/loggedin', function (req, res) {
         if (req.isAuthenticated()) {
-            req.user.password = "*******";
-            res.send(req.user);
+            var user = req.user;
+            user.password = "******";
+            res.send(user);
         }
         else {
             res.send('0');
@@ -166,7 +166,6 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     app.get("/api/project/user/find/:email", function (req, res) {
         var email = req.param("email");
         model.FindUserByEmail(email).then(function (user) {
-            user.password = "********";
             res.json(user);
         });
     });
@@ -221,7 +220,9 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     function addUser(req, res) {
         var user = req.body;
+        console.log(user);
         model.Create(user).then(function (user) {
+            console.log(user);
             res.json(user);
         });
     };
