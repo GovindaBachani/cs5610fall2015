@@ -31,32 +31,21 @@
                 <h5 ng-if="team.squadMarketValue!=null"><b>Squad Market Value: </b>{{team.squadMarketValue}}</h5>
                 <br />
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <a ng-click="increaseLike()">
-                        <span>
-                            <i class="fa fa-thumbs-down big-glyphicon icon-myStyle iconDetails">
-                            </i>
-                        </span>
-                    </a>
-                    <div >
-                        <h5><b>{{like}}</b></h5>
-                    </div>
-                    <div class="row">
-                        <a  ng-if="unlike==true" ng-click="unlikeEvent()">Unlike</a>
-                    </div>
+                    <button type="button" class="btn btn-success" ng-click="increaseLike()"
+                            aria-label="Left Align">
+                        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>&nbsp;
+                        <span>{{like}}</span>
+                    </button>
+                                       
                 </div>
                 
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-left:30px">
-                    <a ng-click="increaseDislike()" >
-                        <span>
-                            <i class="fa fa-thumbs-up big-glyphicon icon-myStyle iconDetails">
-                            </i>
-                        </span>
-                    </a>
-                    <div >
-                        <h5><b>{{dislike}}</b></h5>
-                    </div>
+                    <button type="button" class="btn btn-danger" ng-click="increaseDislike()"
+                            aria-label="Left Align">
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;
+                        <span>{{dislike}}</span>
+                    </button>                    
                 </div>
-
             </div>
         </div>
     </div>

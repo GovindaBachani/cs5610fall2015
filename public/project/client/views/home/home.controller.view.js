@@ -86,7 +86,6 @@
                             $scope.teams = response.standing;
                             $scope.leagueName = response.leagueCaption + "!!";
                             $scope.matchDay = 'MatchDay ' + response.matchday;
-                            document.title = response.leagueCaption;
                             angular.forEach($scope.teams, function (team) {
                                 var teamInfo = getTeamCrest(team._links.team.href);
                                 teamInfo.then(function (res) {
@@ -154,7 +153,6 @@
                             $scope.teams = response.standing;
                             $scope.leagueName = response.leagueCaption + "!!";
                             $scope.matchDay = 'MatchDay ' + response.matchday;
-                            document.title = response.leagueCaption;
                             angular.forEach($scope.teams, function (team) {
                                 var teamInfo = getTeamCrest(team._links.team.href);
                                 teamInfo.then(function (res) {
@@ -259,6 +257,10 @@
 
         $scope.toTeamPage = function (teamLink) {
             var teamId = APIService.getTeamId(teamLink);
+            $location.path('/team/' + teamId);
+        };
+
+        $scope.toTeamPageI = function (teamId) {
             $location.path('/team/' + teamId);
         };
     }

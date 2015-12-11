@@ -1,9 +1,9 @@
 ﻿<ng-include src="'views/header/header.view.html'"></ng-include>
 
-<div class="container" ng-controller="HomeController">
+<div class="container" style="background:#645f5f" ng-controller="HomeController">
     <br />
-    <div class="col-md-12 col-lg-12">
-        <div class="col-md-9 col-lg-9">
+    <div class="col-md-12 col-lg-12" style="background:#645f5f;">
+        <div class="col-md-9 col-lg-9" style="border:double;background:#000000">
 
             <div id="corousel" class="carousel slide">
                 <ol class="carousel-indicators">
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 col-lg-3" style="height:500px;overflow:auto;">
+        <div class="col-md-3 col-lg-3" style="height:506px;overflow:auto;border:double;background:#000000">
             <div class="hidden-lg hidden-md">&nbsp;</div>
             <h4 style="color:gold">League Standings</h4>
             <div class="table-responsive">
@@ -56,51 +56,111 @@
                 </table>
             </div>
         </div>
-        <br />
-        <br />
-        <div style="margin-top:5px;margin-left:15px;background:#645f5f" class="col-md-5 col-lg-5">
-            <div class="hidden-lg hidden-md">&nbsp;</div>
+
+        <div class="col-sm-6" style="background-color:#000000;margin-top:10px;border:double">
             <h3 style="color:gold">Previous Result</h3>
             <h4 style="color:gold">{{rDate}}</h4>
             <h5 style="color:gold">{{rmyTime}}</h5>
-            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                <img src="{{resultHomeCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
-                     style="width:100%"/>
-                <h4><a class="hyperlink">{{resultHomeCrest.teamName}}</a></h4>
-            </div>
-            <div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
-                <h5 style="width:100%">{{res}}</h5>
-            </div>
-            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                <img src="{{resultAwayCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
-                     style="width:100%"/>
-                <h4><a class="hyperlink">{{resultAwayCrest.teamName}}</a></h4>
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="center" class="teamHome">
+                            <img src="{{resultHomeCrest.crestUrl}}" class="homeImage"
+                                 onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                                 ng-click="toTeamPageI(resultHomeCrest.teamId)" />
+                        </td>
+                        <td class="result" align="center"><h4><b><u>{{res}}</u></b></h4></td>
+                        <td align="center" class="teamHome">
+                            <img src="{{resultAwayCrest.crestUrl}}" class="homeImage"
+                                 onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                                 ng-click="toTeamPageI(resultAwayCrest.teamId)" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="teamHome">
+                            <a ng-click="toTeamPageI(resultHomeCrest.teamId)"
+                               class="hyperlink">
+                                {{resultHomeCrest.teamName}}
+                            </a>
+                        </td>
+                        <td class="result"></td>
+                        <td align="center" class="teamHome">
+                            <a ng-click="toTeamPageI(resultAwayCrest.teamId)"
+                               class="hyperlink">
+                                {{resultAwayCrest.teamName}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <!--<div class="divider" />-->
-        <div class="col-md-5 col-lg-5 col-lg-offset-1 col-md-offset-1"  style="background:#645f5f;margin-top:5px;">
-            <div class="hidden-lg hidden-md">&nbsp;</div>
+        <div class="col-sm-6" style="background-color:#000000;margin-top:10px;border:double">
+            <h3 style="color:gold">Coming Result</h3>
+            <h4 style="color:gold">{{fDate}}</h4>
+            <h5 style="color:gold">{{fmyTime}}</h5>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="center" class="teamHome">
+                            <img src="{{fixtureHomeCrest.crestUrl}}" class="homeImage"
+                                 onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                                 ng-click="toTeamPageI(fixtureHomeCrest.teamId)" />
+                        </td>
+                        <td class="result" align="center"><h4><b><u>{{vs}}</u></b></h4></td>
+                        <td align="center" class="teamHome">
+                            <img src="{{fixtureAwayCrest.crestUrl}}" class="homeImage"
+                                 onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                                 ng-click="toTeamPageI(fixtureAwayCrest.teamId)" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="teamHome">
+                            <a ng-click="toTeamPageI(fixtureHomeCrest.teamId)"
+                               class="hyperlink">
+                                {{fixtureHomeCrest.teamName}}
+                            </a>
+                        </td>
+                        <td class="result"></td>
+                        <td align="center" class="teamHome">
+                            <a ng-click="toTeamPageI(fixtureAwayCrest.teamId)"
+                               class="hyperlink">
+                                {{fixtureAwayCrest.teamName}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--<div class="col-sm-6" style="background-color:#000000;margin-top:10px;border:double">
             <h3 style="color:gold">Upcoming Fixture</h3>
             <h4 style="color:gold">{{fDate}}</h4>
             <h5 style="color:gold">{{fmyTime}}</h5>
-            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                <img src="{{fixtureHomeCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
-                     style="width:100%"/>
-                <h4><a class="hyperlink">{{fixtureHomeCrest.teamName}}</a></h4>
+            <div class="col-xs-5">
+                <img src="{{fixtureHomeCrest.crestUrl}}"
+                     onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                     style="width:100%;max-height:150px" />
+                <div style="padding-left:40px">
+                    <h5>
+                        <a ng-click="toTeamPageI(resultHomeCrest.teamId)"
+                           class="hyperlink">{{fixtureHomeCrest.teamName}}</a>
+                    </h5>
+                </div>
             </div>
-            <div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
-                <h5>{{vs}}</h5>
+            <div class="col-xs-2" style="padding-top:60px;padding-left:30px;color:#750000">
+                <h4><b><u>{{vs}}</u></b></h4>
             </div>
-            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                <img src="{{fixtureAwayCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
-                     style="width:100%"/>
-                <h4><a class="hyperlink">{{fixtureAwayCrest.teamName}}</a></h4>
+            <div class="col-xs-5">
+                <img src="{{fixtureAwayCrest.crestUrl}}"
+                     onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                     style="width:100%;max-height:150px" />
+                <div style="">
+                    <h5>
+                        <a ng-click="toTeamPageI(resultHomeCrest.teamId)"
+                           class="hyperlink">{{fixtureAwayCrest.teamName}}</a>
+                    </h5>
+                </div>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+        </div>-->
     </div>
 </div>
 
