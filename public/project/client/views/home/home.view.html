@@ -5,19 +5,23 @@
     <div class="col-md-12 col-lg-12" style="background:#645f5f;">
         <div class="col-md-9 col-lg-9" style="border:double;background:#000000">
 
-            <div id="corousel" class="carousel slide" data-interval="3000">
+            <div id="corousel" class="carousel slide" data-interval="3000" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#corousel" data-slide-to="0" class="active"></li>
                     <li data-target="#corousel" data-slide-to="1"></li>
                     <li data-target="#corousel" data-slide-to="2"></li>
                     <li data-target="#corousel" data-slide-to="3"></li>
+                    <li data-target="#corousel" data-slide-to="4"></li>
+                    <li data-target="#corousel" data-slide-to="5"></li>
+                    <li data-target="#corousel" data-slide-to="6"></li>
+                    <li data-target="#corousel" data-slide-to="7"></li>
                 </ol>
 
                 <div class="carousel-inner">
 
                     <div class="item" ng-repeat="slide in slides" ng-class="{active : $first}">
                         <img id="UniformImage" src={{slide.image.url}}
-                             alt="Manc"/>
+                             alt="Manc" />
                         <div class="carousel-caption">
                             <a ng-click="newsClick(slide)">
                                 <h3 style="background:#000000">{{slide.titleNoFormatting}}</h3>
@@ -33,6 +37,7 @@
                 </div>
             </div>
         </div>
+        
 
         <div class="col-md-3 col-lg-3" style="height:506px;overflow:auto;border:double;background:#000000">
             <div class="hidden-lg hidden-md">&nbsp;</div>
@@ -139,4 +144,3 @@
         </div>
     </div>
 </div>
-

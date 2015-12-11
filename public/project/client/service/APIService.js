@@ -106,7 +106,7 @@
             var defer = $q.defer();
             $.ajax({
 
-                url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&hl=en&q=' + teamName + '&language=en',
+                url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=' + teamName + '&rsz=large',
                 dataType: 'jsonp',
                 success: function (data) {
                     var news = data.responseData.results;
@@ -116,6 +116,7 @@
                         news[i].titleNoFormatting = properTitle;
                         news[i].content = properContent;
                     }
+                    console.log(news);
                     defer.resolve(news);
                 }
             });
