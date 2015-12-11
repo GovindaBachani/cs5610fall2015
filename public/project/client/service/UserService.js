@@ -163,7 +163,8 @@
                 defer.resolve(response);
             },
             function errorCallback(response) {
-                defer.reject(response);
+                console.log(response);
+                defer.resolve(response);
             });
             return defer.promise;
         }

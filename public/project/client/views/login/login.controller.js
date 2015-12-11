@@ -9,14 +9,18 @@
             UserService.login(user).then(function (currentUser) {
                 console.log(currentUser);
                 if (currentUser != null) {
-                    
-                    $rootScope.loggedUser = currentUser;
-                    if ($rootScope.loggedUser.role == 'admin') {
-                        $location.path("/adminuser");
+                    if (currentUser.status != 401) {
+                        $rootScope.loggedUser = currentUser;
+                        if ($rootScope.loggedUser.role == 'admin') {
+                            $location.path("/adminuser");
+                        }
+                        else {
+                            $rootScope.loggedUser = currentUser;
+                            $location.path("/home");
+                        }
                     }
                     else {
-                        $rootScope.loggedUser = currentUser;
-                        $location.path("/home");
+                        $scope.errorMessage = "*Invalid Credentials"
                     }
                 }
             });
