@@ -19,7 +19,7 @@
                 In the News
             </h2>
             <br />
-            <div class="col-md-9 col-lg-9" style="border:double;background:#000000">
+            <div class="col-md-12 col-lg-12" style="border:double;background:#000000">
 
                 <div id="corousel" class="carousel slide">
                     <ol class="carousel-indicators">
@@ -34,7 +34,7 @@
 
                         <div class="item" ng-repeat="news in posts" ng-class="{active : $first}">
                             <img id="UniformImage" src={{news.image.url}}
-                                 alt="Manc" class="img-responsive" />
+                                 alt="Manc" width="100%"/>
                             <div class="carousel-caption">
                                 <a ng-click="newsClick(news)">
                                     <h3 style="background:#000000">{{news.titleNoFormatting}}</h3>
@@ -42,10 +42,10 @@
                             </div>
                         </div>
                         <span data-target="#corousel" class="left carousel-control" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>&lsaquo;
+                            <span class="glyphicon glyphicon-chevron-left"></span>
                         </span>
                         <span data-target="#corousel" class="right carousel-control" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>&lsaquo;
+                            <span class="glyphicon glyphicon-chevron-right"></span>
                         </span>
                     </div>
                 </div>

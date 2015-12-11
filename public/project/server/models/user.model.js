@@ -29,8 +29,6 @@ module.exports = function (mongoose, db) {
         newUser.following = [];
         
         userModel.create(newUser, function (err, doc) {
-            console.log(err);
-            console.log(doc);
             userModel.findById(doc._id, function (err, user) {
                 deferred.resolve(user);
             });
@@ -72,7 +70,6 @@ module.exports = function (mongoose, db) {
     }
 
     function Update(id, user) {
-        console.log(user);
         var deferred = q.defer();
         userModel.findOne({username: user.username}, function (err, userUpdate) {
             userUpdate.username = user.username;
@@ -81,9 +78,7 @@ module.exports = function (mongoose, db) {
             userUpdate.password = user.password;
             userUpdate.league = user.league;
             userUpdate.team = user.team;
-            console.log(userUpdate);
             userUpdate.save(function (err, doc) {
-                console.log(err);
                 deferred.resolve(doc);
             });
         });

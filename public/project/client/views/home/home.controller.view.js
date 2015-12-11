@@ -5,15 +5,12 @@
     function HomeController($q, $scope, NewsService, UserService, APIService, $routeParams, $rootScope, $location, $http) {
         document.title = 'Home';
         UserService.checkLoggedInUser().then(function (user) {
-            console.log(user);
             if (user == 0) {
-                console.log("not Logged In");
                 APIService.getRecentNews("Manchester United").then(function (data) {
 
                     $scope.slides = data;
                     var table = APIService.getTableContent(398);
                     table.then(function (response) {
-                        console.log(response);
                         $scope.teams = response.standing;
                         $scope.leagueName = response.leagueCaption + "!!";
                         $scope.matchDay = 'MatchDay ' + response.matchday;
@@ -22,7 +19,6 @@
                             var teamInfo = getTeamCrest(team._links.team.href);
                             teamInfo.then(function (res) {
                                 team.crestUrl = res;
-                                console.log(team);
                             });
                         })
                     });
@@ -76,13 +72,10 @@
             }
             else {
                 if (user.team) {
-                    console.log("logged in team Present");
-                    console.log(user.team.name);
                     APIService.getRecentNews(user.team.name).then(function (data) {
                         $scope.slides = data;
                         var table = APIService.getTableContent(user.league.leagueId);
                         table.then(function (response) {
-                            console.log(response);
                             $scope.teams = response.standing;
                             $scope.leagueName = response.leagueCaption + "!!";
                             $scope.matchDay = 'MatchDay ' + response.matchday;
@@ -90,7 +83,6 @@
                                 var teamInfo = getTeamCrest(team._links.team.href);
                                 teamInfo.then(function (res) {
                                     team.crestUrl = res;
-                                    console.log(team);
                                 });
                             })
                         });
@@ -144,12 +136,10 @@
                     });
                 }
                 else {
-                    console.log("logged in team Not Present");
                     APIService.getRecentNews("Manchester United").then(function (data) {
                         $scope.slides = data;
                         var table = APIService.getTableContent(398);
                         table.then(function (response) {
-                            console.log(response);
                             $scope.teams = response.standing;
                             $scope.leagueName = response.leagueCaption + "!!";
                             $scope.matchDay = 'MatchDay ' + response.matchday;
@@ -157,7 +147,6 @@
                                 var teamInfo = getTeamCrest(team._links.team.href);
                                 teamInfo.then(function (res) {
                                     team.crestUrl = res;
-                                    console.log(team);
                                 });
                             })
                         });
@@ -228,7 +217,6 @@
 
             NewsService.CreateNews(newsObj).then(function (savedNews) {
                 var url = '/news-display/' + savedNews.newsId;
-                console.log(url);
                 $location.path(url);
             });
         }
@@ -248,7 +236,6 @@
 
             var d = $q.defer();
             var teamId = APIService.getTeamId(teamLink);
-            console.log(teamId);
             APIService.getTeamCrest(teamId).then(function (teamCrest) {
                 d.resolve(teamCrest);
             });

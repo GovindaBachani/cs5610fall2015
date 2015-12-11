@@ -6,12 +6,10 @@
         document.title = 'Contact Me'
 
         $scope.sendMessage = function () {
-            console.log($scope.emailId + " " + $scope.message);
             var message = {
                 emailId: $scope.emailId,
                 message: $scope.message
             }
-            console.log(message);
             UserService.sendMessage(message).then(function (message) {
                 $scope.emailId = undefined;
                 $scope.message = undefined;

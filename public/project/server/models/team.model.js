@@ -18,7 +18,6 @@ module.exports = function (mongoose, db) {
     function FindByTeamUrl(teamIdR) {
         var deferred = q.defer();
         teamModel.findOne({ teamId: teamIdR }, function (err, doc) {
-            console.log(doc);
             deferred.resolve(doc);
         });
         return deferred.promise;
@@ -27,7 +26,6 @@ module.exports = function (mongoose, db) {
     function FindAll() {
         var deferred = q.defer();
         teamModel.find({}, function (err, doc) {
-            console.log(doc);
             deferred.resolve(doc);
         });
         return deferred.promise;
@@ -40,7 +38,6 @@ module.exports = function (mongoose, db) {
             crestUrl: team.crestUrl,
             teamName: team.name
         };
-        console.log(teamObj);
         var deferred = q.defer();
         teamModel.create(teamObj, function (err, doc) {
             deferred.resolve(doc);

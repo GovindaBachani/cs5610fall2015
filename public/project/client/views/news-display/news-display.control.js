@@ -3,7 +3,7 @@
     "use strict";
     angular.module("SoccerApp").controller("NewsDisplayController", NewsDisplayController);
 
-    function NewsDisplayController($scope, APIService,$sce, $routeParams, $location, $http, NewsService, UserService) {
+    function NewsDisplayController($scope, APIService, $sce, $routeParams, $location, $http, NewsService, UserService) {
         {
             if (window.stButtons) {
                 stButtons.locateElements();
@@ -19,7 +19,6 @@
                 $scope.dislike = news.dislikes.length;
                 $scope.comments = news.comments;
                 var commentCount = news.comments.length;
-                console.log(commentCount);
                 $scope.commentSection = commentCount + " comments";
                 stWidget.addEntry({
                     "service": "sharethis",
@@ -39,11 +38,9 @@
 
 
             $scope.addComment = function () {
-                console.log($scope.comment);
                 if ($scope.comment !== undefined || $scope.comment == "") {
                     if ($scope.user == '0') {
                         $scope.error = 'Please login to Comment';
-                        console.log("abcd");
                     }
                     else {
                         var d = new Date();
@@ -54,8 +51,6 @@
                             commentText: $scope.comment,
                             email: $scope.user.email
                         }
-                        console.log(commentObj);
-                        console.log(newsId);
 
                         NewsService.postComment(commentObj, newsId).then(function (news) {
                             $scope.comment = "";
@@ -67,16 +62,13 @@
                             $scope.dislike = news.dislikes.length;
                             $scope.comments = news.comments;
                             var commentCount = news.comments.length;
-                            console.log(commentCount);
                             $scope.commentSection = commentCount + " comments";
-                            console.log($scope.news);
                         });
                     }
                 }
             }
 
             $scope.deleteComment = function (commentId) {
-                console.log(commentId);
                 NewsService.DeleteComment(commentId, newsId).then(function (news) {
                     $scope.imageurl = news.imageUrl;
                     $scope.content = news.content;
@@ -86,9 +78,7 @@
                     $scope.dislike = news.dislikes.length;
                     $scope.comments = news.comments;
                     var commentCount = news.comments.length;
-                    console.log(commentCount);
                     $scope.commentSection = commentCount + " comments";
-                    console.log($scope.news);
                 });
             }
 
@@ -99,8 +89,6 @@
             $scope.increaseDislike = function () {
                 if ($scope.user.email) {
                     NewsService.increaseDislike(newsId, $scope.user.email).then(function (news) {
-                        console.log(news);
-                        
                         $scope.imageurl = news.imageUrl;
                         $scope.content = news.content;
                         $scope.titleNoFormatting = news.titleNoFormatting;
@@ -109,9 +97,7 @@
                         $scope.dislike = news.dislikes.length;
                         $scope.comments = news.comments;
                         var commentCount = news.comments.length;
-                        console.log(commentCount);
                         $scope.commentSection = commentCount + " comments";
-                        console.log($scope.news);
                     });
                 }
                 else {
@@ -131,9 +117,7 @@
                         $scope.dislike = news.dislikes.length;
                         $scope.comments = news.comments;
                         var commentCount = news.comments.length;
-                        console.log(commentCount);
                         $scope.commentSection = commentCount + " comments";
-                        console.log($scope.news);
                     });
                 }
                 else {

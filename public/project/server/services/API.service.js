@@ -31,7 +31,6 @@ module.exports = function (app, teamModel) {
     app.get('/api/project/teamFix/:teamId', function (req, res) {
         var teamId = req.param('teamId');
         var url = 'http://api.football-data.org/alpha/teams/' + teamId + '/fixtures';
-        console.log(url);
         requestify.request(url, {
             method: 'GET',
             headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
@@ -43,7 +42,6 @@ module.exports = function (app, teamModel) {
     app.get('/api/project/teamPlayers/:teamId', function (req, res) {
         var teamId = req.param('teamId');
         var url = 'http://api.football-data.org/alpha/teams/' + teamId + '/players';
-        console.log(url);
         requestify.request(url, {
             method: 'GET',
             headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
@@ -56,7 +54,6 @@ module.exports = function (app, teamModel) {
 
     function getLeagueDetails(req, res) {
         var leagueId = req.param('leagueId');
-        console.log(leagueId);
         var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId;
         requestify.request(url, {
             method: 'GET',
@@ -77,7 +74,6 @@ module.exports = function (app, teamModel) {
     function saveAllTeams(req, res) {
         var leagueId = req.param('leagueId');
         var url = 'http://api.football-data.org/alpha/soccerseasons/' + leagueId + '/teams';
-        console.log(url);
         requestify.request(url, {
             method: 'GET',
             headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
@@ -124,8 +120,6 @@ module.exports = function (app, teamModel) {
             headers: { 'X-Auth-Token': '0c987cef968b4e5e827a9d2e3f88e9f3' }
         }).then(function (response) {
             var standingsObj = response.getBody();
-            //console.log(standingsObj.standing);
-
             res.jsonp(standingsObj);
         });
     }

@@ -62,7 +62,6 @@
             var defer = $q.defer();
             var leagueId = getTeamId(leagueUrl);
             $http.get('/api/project/league/' + leagueId).success(function (response) {
-                console.log(response);
                 defer.resolve(response);
             });
             return defer.promise;
@@ -103,17 +102,14 @@
 
 
         function getRecentNews(teamName) {
-            console.log(teamName);
             teamName = encodeURIComponent(teamName.trim()); 
             var defer = $q.defer();
             $.ajax({
 
-                url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=' + teamName + '&language=en',
+                url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&hl=en&q=' + teamName + '&language=en',
                 dataType: 'jsonp',
                 success: function (data) {
-                    console.log(data.responseData.results);
                     var news = data.responseData.results;
-                    console.log(news);
                     for (var i = 0; i < news.length; i++) {
                         var properTitle = news[i].titleNoFormatting.replace(/&#39;/g, "'");
                         var properContent = news[i].content.replace(/&#39;/g, "'");

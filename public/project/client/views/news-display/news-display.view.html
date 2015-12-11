@@ -15,23 +15,26 @@
     </div>
     <hr style="width:67%;" align="left" />
     <div class="col-lg-8 col-md-8">
-        <div class="col-md-2 col-lg-2">
-            <button type="button" class="btn btn-success" ng-click="increaseLike()"
+        <div class="col-md-2 col-lg-2 col-xs-2">
+            <button type="button" class="btn btn-danger" ng-click="increaseLike()"
                     aria-label="Left Align">
                 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>&nbsp;
                 <span>{{like}}</span>
             </button>
         </div>
-        <div class="col-lg-2 col-md-2">
-            <button type="button" class="btn btn-danger" ng-click="increaseDislike()"
+        <div class="col-lg-2 col-md-2 col-xs-2">
+            <button type="button" class="btn btn-success" ng-click="increaseDislike()"
                     aria-label="Left Align">
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;
                 <span>{{dislike}}</span>
             </button>
         </div>
-        <span class='st_facebook_large' displayText='Facebook'></span>
-        <span class='st_twitter_large' displayText='Tweet'></span>
-        <span class='st_email_large' displayText='Email'></span>
+        <div style="padding-left:30px" class="col-xs-4">
+            <span class='st_facebook_large' displayText='Facebook'></span>
+            <span class='st_twitter_large' displayText='Tweet'></span>
+
+            <span class='st_email_large' displayText='Email'></span>
+        </div>
     </div>
     <hr style="width:67%;" align="left" />
     <div class="container col-md-12 col-sm-12 col-xs-12 col-lg-12">

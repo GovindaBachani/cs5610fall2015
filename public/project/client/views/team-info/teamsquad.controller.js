@@ -13,23 +13,18 @@
         });
 
         UserService.getAllTeamContent(teamId).then(function (team) {
-            console.log(team);
             $scope.comments = team.comments;
             var commentCount = team.comments.length;
-            console.log(commentCount);
             $scope.commentSection = commentCount + " comments";
-            console.log($scope.commentSection);
         });
 
         APIService.getTeamDetails(teamId).then(function (team) {
-            console.log(team);
             $scope.teamname = team.name;
             document.title = team.name;
         });
 
         APIService.getFirstTeam(teamId).then(function (squad) {
             $scope.players = squad.players;
-            console.log($scope.palayers);
         });
 
 
@@ -46,7 +41,6 @@
         }
 
         $scope.navigateToNews = function () {
-            console.log("navigating to Squad");
             $location.path('/teamnews/' + teamId);
         }
 
@@ -55,11 +49,9 @@
         };
 
         $scope.addComment = function () {
-            console.log($scope.comment);
             if ($scope.comment !== undefined || $scope.comment == "") {
                 if ($scope.user == '0') {
                     $scope.error = 'Please login to Comment';
-                    console.log("abcd");
                 }
                 else {
                     var d = new Date();
@@ -77,25 +69,20 @@
                         $scope.like = team.likes.length;
                         $scope.dislike = team.dislikes.length;
                         var commentCount = team.comments.length;
-                        console.log(commentCount);
                         $scope.commentSection = commentCount + " comments";
-                        console.log($scope.commentSection);
                     });
                 }
             }
         }
 
         $scope.deleteComment = function (commentId) {
-            console.log(commentId);
             UserService.deleteComment(commentId, teamId).then(function (team) {
                 $scope.comment = "";
                 $scope.comments = team.comments;
                 $scope.like = team.likes.length;
                 $scope.dislike = team.dislikes.length;
                 var commentCount = team.comments.length;
-                console.log(commentCount);
                 $scope.commentSection = commentCount + " comments";
-                console.log($scope.commentSection);
             });
         }
 

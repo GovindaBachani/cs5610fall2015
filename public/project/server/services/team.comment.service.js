@@ -5,7 +5,6 @@ module.exports = function (app, model) {
         var teamId = req.params.teamId;
         var comment = req.body;
         model.Create(comment, teamId).then(function (comments) {
-            console.log(comments);
             res.json(comments);
         })
     });
@@ -20,7 +19,6 @@ module.exports = function (app, model) {
         var teamId = req.params.teamId;
         var emailId = req.params.emailId;
         model.increaseLikeCount(teamId, emailId).then(function (team) {
-            console.log(team);
             res.json(team);
         })
     });
@@ -29,7 +27,6 @@ module.exports = function (app, model) {
         var teamId = req.params.teamId;
         var emailId = req.params.emailId;
         model.increasedisLikeCount(teamId, emailId).then(function (team) {
-            console.log(team);
             res.json(team);
         })
     });
@@ -43,9 +40,7 @@ module.exports = function (app, model) {
     app.delete('/api/project/comment/:teamId/:commentId', function (req, res) {
         var teamId = req.params.teamId;
         var commentId = req.params.commentId;
-        console.log(commentId);
         model.Delete(teamId, commentId).then(function (comments) {
-            console.log(comments);
             res.json(comments);
         });
     });

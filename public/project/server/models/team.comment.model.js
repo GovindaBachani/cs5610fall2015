@@ -46,7 +46,6 @@ module.exports = function (mongoose, db) {
 
     function FindAll(teamId) {
         var deferred = q.defer();
-        console.log(teamId);
         teamCommentModel.findOne({ teamId: teamId }, function (err, team) {
             deferred.resolve(team);
         });
@@ -109,7 +108,6 @@ module.exports = function (mongoose, db) {
         var deferred = q.defer();
         teamCommentModel.findOne({ teamId: teamId }, function (err, doc) {
             if (!doc) {
-                console.log("err");
                 var team = {
                     teamId: teamId,
                     comments: [],

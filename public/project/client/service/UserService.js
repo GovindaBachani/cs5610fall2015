@@ -22,7 +22,7 @@
             increaseLike: increaseLike,
             increaseDislike: increaseDislike,
             getAllTeamsWithNonZeroComment: getAllTeamsWithNonZeroComment,
-            getUserByEmail : getUserByEmail
+            getUserByEmail: getUserByEmail
         }
 
         return service;
@@ -30,7 +30,6 @@
         function getUserByEmail(email) {
             var defer = $q.defer();
             var url = '/api/project/user/find/' + email;
-            console.log(url);
             $http.get(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -40,7 +39,6 @@
         function getAllTeamsWithNonZeroComment() {
             var defer = $q.defer();
             var url = '/api/project/admin/team/comments';
-            console.log(url);
             $http.get(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -50,7 +48,6 @@
         function increaseDislike(teamId, emailId) {
             var defer = $q.defer();
             var url = "/api/project/dislike/" + emailId + "/" + teamId;
-            console.log(url);
             $http.post(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -60,7 +57,6 @@
         function increaseLike(teamId, emailId) {
             var defer = $q.defer();
             var url = "/api/project/like/" + emailId + "/" + teamId;
-            console.log(url);
             $http.post(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -70,8 +66,6 @@
         function postComment(comment, teamId) {
             var defer = $q.defer();
             var url = "/api/project/comment/" + teamId;
-            console.log(url);
-            console.log(comment);
             $http.post(url, comment).success(function (response) {
                 defer.resolve(response);
             });
@@ -81,7 +75,6 @@
         function deleteComment(commentId, teamId) {
             var defer = $q.defer();
             var url = "/api/project/comment/" + teamId + '/' + commentId;
-            console.log(url);
             $http.delete(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -91,7 +84,6 @@
         function getAllTeamContent(teamId) {
             var defer = $q.defer();
             var url = "/api/project/comment/" + teamId;
-            console.log(url);
             $http.get(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -101,8 +93,6 @@
         function sendMessage(message) {
             var defer = $q.defer();
             var url = "/api/project/message/send";
-            console.log(url);
-            console.log(message);
             $http.post(url, message).success(function (response) {
                 defer.resolve(response);
             });
@@ -155,15 +145,12 @@
         }
 
         function login(user) {
-            console.log(user);
             var defer = $q.defer();
             $http.post("/api/project/login", user)
             .then(function successCallback(response) {
-                console.log(response);
                 defer.resolve(response);
             },
             function errorCallback(response) {
-                console.log(response);
                 defer.resolve(response);
             });
             return defer.promise;
@@ -181,7 +168,6 @@
         function createUser(user) {
             var defer = $q.defer();
             var url = '/api/project/user';
-            console.log(url);
             $http.post(url, user).success(function (response) {
                 defer.resolve(response);
             });

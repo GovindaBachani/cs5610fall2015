@@ -4,10 +4,8 @@
 
     function NewsController($scope, APIService, $rootScope, $location, $http, NewsService) {
         {
-            console.log("lolu");
-            APIService.getRecentNews().then(function(data) {
+            APIService.getRecentNews().then(function (data) {
                 $scope.posts = data.responseData.results;
-                console.log($scope.posts);
             });
 
             $scope.newsClick = function (index) {
@@ -26,9 +24,8 @@
 
                 NewsService.CreateNews(newsObj).then(function (savedNews) {
                     var url = '/news-display/' + savedNews.newsId;
-                    console.log(url);
                     $location.path(url);
-                });                
+                });
             }
 
             function HashCode(url) {

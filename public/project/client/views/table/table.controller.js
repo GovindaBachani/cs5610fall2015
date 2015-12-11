@@ -12,7 +12,6 @@
 
         var table = APIService.getTableContent(leagueId);
         table.then(function (response) {
-            console.log(response);
             $scope.teams = response.standing;
             $scope.leagueName = response.leagueCaption + "!!";
             $scope.matchDay = 'MatchDay ' + response.matchday;
@@ -21,7 +20,6 @@
                 var teamInfo = getTeamCrest(team);
                 teamInfo.then(function (res) {
                     team.crestUrl = res;
-                    console.log(team);
                 });
             })
         });

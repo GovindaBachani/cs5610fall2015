@@ -6,9 +6,7 @@ module.exports = function (app, model) {
     app.delete('/api/project/message/:id', deleteMessage);
 
     function addMessage(req, res) {
-        console.log(req);
         var message = req.body;
-        console.log(message);
         model.Create(message).then(function (message) {
             res.json(message);
         });

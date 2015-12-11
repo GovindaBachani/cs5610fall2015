@@ -28,7 +28,6 @@ module.exports = function (mongoose, db) {
     function getNewsContent(newsId) {
         var deferred = q.defer();
         newsModel.findOne({ newsId: newsId }, function (err, doc) {
-            console.log(doc);
             deferred.resolve(doc);
         });
         return deferred.promise;
@@ -36,16 +35,13 @@ module.exports = function (mongoose, db) {
 
     function CreateNews(newsObj) {
         var newsId1 = newsObj.newsId;
-        console.log(newsId1);
         var deferred = q.defer();
         newsModel.findOne({ newsId: newsId1 }, function (err, rNews) {
-            console.log(rNews);
             if (rNews) {
                 deferred.resolve(rNews);
             }
             else {
                 newsModel.create(newsObj, function (err, doc) {
-                    console.log(doc);
                     deferred.resolve(doc);
                 });
             }
@@ -120,7 +116,6 @@ module.exports = function (mongoose, db) {
         var deferred = q.defer();
         newsModel.findOne({ newsId: newsId }, function (err, doc) {
             if (!doc) {
-                console.log("err");
                 var team = {
                     newsId: newsId,
                     comments: [],

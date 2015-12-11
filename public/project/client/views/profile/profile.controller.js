@@ -29,7 +29,6 @@
                 name: 'Eredivisie',
                 leagueId: 404
             }];
-        console.log($rootScope);
         $scope.uName = $rootScope.loggedUser.username;
         $scope.email = $rootScope.loggedUser.email;
         $scope.pwd = $rootScope.loggedUser.password;
@@ -57,7 +56,6 @@
 
         $scope.populate = function () {
             var leagueId = $scope.league.leagueId;
-            console.log(leagueId);
             APIService.getAllTeams(leagueId).then(function (response) {
                 $scope.teamsOption = response.teams;
             });

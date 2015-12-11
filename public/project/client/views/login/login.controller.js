@@ -7,7 +7,6 @@
         $scope.login = function (user) {
 
             UserService.login(user).then(function (currentUser) {
-                console.log(currentUser);
                 if (currentUser != null) {
                     if (currentUser.status != 401) {
                         $rootScope.loggedUser = currentUser;

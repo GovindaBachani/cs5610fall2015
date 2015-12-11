@@ -7,9 +7,7 @@
         APIService.getFixtureDetails(leagueId).then(function (data) {
             if (angular.isDefined(data)) {
                 var soccerSeasonUrl = data._links[1].soccerseason;
-                console.log(soccerSeasonUrl);
-                APIService.getLeagueDetails(soccerSeasonUrl).then(function (response) {
-                    console.log(response);
+               APIService.getLeagueDetails(soccerSeasonUrl).then(function (response) {
                     $scope.leagueName = response.caption;
                     document.title = response.caption;
                 });

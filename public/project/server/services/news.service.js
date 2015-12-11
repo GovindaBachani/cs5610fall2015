@@ -15,7 +15,6 @@ module.exports = function (app, model) {
         var newsId = req.params.newsId;
         var emailId = req.params.emailId;
         model.increaseLikeCount(newsId, emailId).then(function (team) {
-            console.log(news);
             res.json(news);
         })
     }
@@ -30,7 +29,6 @@ module.exports = function (app, model) {
         var newsId = req.params.newsId;
         var emailId = req.params.emailId;
         model.increasedisLikeCount(newsId, emailId).then(function (team) {
-            console.log(news);
             res.json(news);
         })
     };
@@ -38,7 +36,6 @@ module.exports = function (app, model) {
     function addNews(req,res) {
         var news = req.body;
         model.CreateNews(news).then(function (news) {
-            console.log(news);
             res.json(news);
         })
     }
@@ -47,7 +44,6 @@ module.exports = function (app, model) {
         var newsId = req.params.newsId;
         var comment = req.body;
         model.addComment(comment, newsId).then(function (news) {
-            console.log(news);
             res.json(news);
         });
     }
@@ -56,7 +52,6 @@ module.exports = function (app, model) {
         var newsId = req.params.newsId;
         var commentId = req.params.commentId;
         model.deleteComment(commentId, newsId).then(function (news) {
-            console.log(news);
             res.json(news);
         });
     }
@@ -65,7 +60,6 @@ module.exports = function (app, model) {
         var newsId = req.params.newsId;
         var emailId = req.params.emailId;
         model.increaseLikeCount(newsId, emailId).then(function (news) {
-            console.log(news);
             res.json(news);
         })
     }
@@ -74,7 +68,6 @@ module.exports = function (app, model) {
         var newsId = req.params.newsId;
         var emailId = req.params.emailId;
         model.increaseDislikeCount(newsId, emailId).then(function (news) {
-            console.log(news);
             res.json(news);
         })
     }
@@ -82,7 +75,6 @@ module.exports = function (app, model) {
     function getNews(req, res) {
         var newsId = req.params.newsId;
         model.getNewsContent(newsId).then(function(news){
-            console.log(news);
             res.json(news);
         });
     }

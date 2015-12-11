@@ -40,13 +40,11 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
         { clientID: '333234730184863', clientSecret: '65d2640dd0c72bd854f580ece8cd852d', callbackURL: 'http://cs5610-govindabachani.rhcloud.com/auth/facebook/callback', profileFields: ["displayName", "email"], enableProof: false }
         , function (accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
-                console.log(profile);
                 var email = String(profile._json.email);
                 var arr = email.split('@');
                 var username = arr[0];
                 model.FindUserByUsername(username).then(function (user) {
                     if (user) {
-                        console.log(user);
                         return done(null, user);
                     } else {
                         var newUser = {
@@ -110,7 +108,6 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     app.post("/api/project/login", passport.authenticate('local'), function (req, res) {
         var user = req.user;
-        console.log(user);
         res.json(user);
     });
 
@@ -160,7 +157,6 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     app.get("/api/project/user/find/:email", function (req, res) {
         var email = req.param("email");
-        console.log(email);
         model.FindUserByEmail(email).then(function (user) {
             user.password = "********";
             res.json(user);
@@ -199,7 +195,6 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     function deleteUser(req, res) {
         model.Delete(req.params.id).then(function (users) {
-            console.log(users);
             res.json(users);
         });
     };

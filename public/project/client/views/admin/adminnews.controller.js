@@ -16,7 +16,6 @@
             });
         };
         $scope.toNewsPage = function (newsId) {
-            console.log(newsId);
             $location.path('/news-display/' + newsId);
         }
     }

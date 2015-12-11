@@ -11,17 +11,14 @@ module.exports = function (mongoose, db) {
 
     var api = {
         Create: Create,
-        FindAll: FindAll,        
-        Delete: Delete        
+        FindAll: FindAll,
+        Delete: Delete
     }
 
     function Create(message) {
         var deferred = q.defer();
-        console.log(message);
         messageModel.create(message, function (err, doc) {
-            console.log(doc);
-            
-                deferred.resolve(doc);
+            deferred.resolve(doc);
         });
         return deferred.promise;
     }

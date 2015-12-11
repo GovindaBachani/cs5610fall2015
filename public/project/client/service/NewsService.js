@@ -59,7 +59,6 @@
         function increaseLike(newsId, emailId) {
             var defer = $q.defer();
             var url = "/api/project/news/like/" + newsId + "/" + emailId;
-            console.log(url);
             $http.post(url).success(function (response) {
                 defer.resolve(response);
             });
@@ -69,7 +68,6 @@
         function increaseDislike(newsId, emailId) {
             var defer = $q.defer();
             var url = "/api/project/news/dislike/" + newsId + "/" + emailId;
-            console.log(url);
             $http.post(url).success(function (response) {
                 defer.resolve(response);
             });
