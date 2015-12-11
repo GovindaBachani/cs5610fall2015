@@ -3,41 +3,74 @@
 <h1 class="col-lg-offset-1">Register</h1>
 <br />
 <br />
-<form class="form-horizontal" ng-controller="RegisterController">
-    <div class="form-group">
-        <label for="Username" class="control-label col-lg-2 col-md-2">Username:</label>
-        <div class="col-lg-7 col-md-7">
-            <input type="text" id="Username" class="form-control" placeholder="Username" ng-model="uName" />
+<div>
+    <form class="form-horizontal" ng-controller="RegisterController" name="frm">
+        <div class="form-group">
+            <label for="Username" class="control-label col-lg-2 col-md-2">Username:</label>
+            <div class="col-lg-7 col-md-7">
+                <input type="text" id="Username" class="form-control"
+                       name="username" placeholder="Username" ng-model="uName" required />
+            </div>
+            <span style="color:#890000" ng-show="frm.username.$dirty && frm.username.$error.required">
+                <b> UserName is required</b>
+            </span>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="FullName" class="col-md-2 col-lg-2 control-label">FullName:</label>
-        <div class="col-lg-7 col-md-7">
-            <input type="text" id="FullName" placeholder="FullName" class="form-control" ng-model="fname" />
+        <div class="form-group">
+            <label for="FullName" class="col-md-2 col-lg-2 control-label">FullName:</label>
+            <div class="col-lg-7 col-md-7">
+                <input type="text" id="FullName" name="fullname" placeholder="FullName"
+                       class="form-control" ng-model="fname" required />
+            </div>
+            <span style="color:#890000" ng-show="frm.fullname.$dirty && frm.fullname.$error.required">
+                <b>Full Name is required</b>
+            </span>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="Password" class="col-md-2 col-lg-2 control-label">Password:</label>
-        <div class="col-lg-7 col-md-7">
-            <input type="password" id="Password" placeholder="Password" class="form-control" ng-model="pwd" />
+        <div class="form-group">
+            <label for="Password" class="col-md-2 col-lg-2 control-label">Password:</label>
+            <div class="col-lg-7 col-md-7">
+                <input type="password" id="Password" name="pwd"
+                       placeholder="Password" class="form-control" ng-model="pwd" required />
+            </div>
+            <span style="color:#890000" ng-show="frm.pwd.$dirty && frm.pwd.$error.required">
+                <b>Password is required</b>
+            </span>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="rep-pass" class="col-md-2 col-lg-2 control-label text-justify">Verify Password:</label>
-        <div class="col-lg-7 col-md-7">
-            <input type="password" placeholder="Verify Password" id="rep-pass" class="form-control" ng-model="repPwd" />
+        <div class="form-group">
+            <label for="rep-pass" class="col-md-2 col-lg-2 control-label text-justify">
+                Verify Password:
+            </label>
+            <div class="col-lg-7 col-md-7">
+                <input type="password" placeholder="Verify Password" name="rpwd"
+                       compare-to="pwd" id="rep-pass" class="form-control" ng-model="repPwd" required />
+            </div>
+            <span style="color:#890000" ng-show="frm.rpwd.$dirty && frm.rpwd.$error.required">
+                <b>Enter Password Again</b>
+            </span>
+            <h4 style="color:#890000">
+                {{errorMessage}}
+            </h4>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-md-2 col-lg-2 control-label">Email:</label>
-        <div class="col-lg-7 col-md-7">
-            <input placeholder="Email" type="email" id="email" class="form-control" ng-model="email" />
+        <div class="form-group">
+            <label for="email" class="col-md-2 col-lg-2 control-label">Email:</label>
+            <div class="col-lg-7 col-md-7">
+                <input placeholder="Email" type="email" id="email" name="email"
+                       class="form-control" ng-model="email" required />
+            </div>
+            <span style="color:#890000" ng-show="frm.email.$dirty && frm.email.$error.required">
+                <b>Email is required</b>
+            </span>
+            <span style="color:#890000" ng-show="frm.email.$dirty && frm.email.$error.email">
+                <b>Not a valid email</b>
+            </span>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-lg-offset-2 col-md-offset-2 col-lg-7 col-md-7">
-            <button class="btn btn-primary btn-group-justified" ng-click="register()">Register</button>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-md-offset-2 col-lg-7 col-md-7">
+                <button class="btn btn-primary btn-group-justified"
+                        ng-click="register()" ng-disabled="frm.$invalid">
+                    Register
+                </button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 

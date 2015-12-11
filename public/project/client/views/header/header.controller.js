@@ -87,6 +87,12 @@
                 }
             });
         }
+
+        $scope.toProfile = function () {
+            UserService.checkLoggedInUser().then(function (user) {
+                $location.path("/user/" + user.email);
+            });
+        }
     }
 
 

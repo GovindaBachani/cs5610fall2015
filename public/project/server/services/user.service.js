@@ -30,6 +30,8 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
                         error: 'Incorrect username or password.'
                     });
                 }
+                user.password = "*******";
+                console.log(user);
                 return done(null, user);
             })
         }));
@@ -102,6 +104,7 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
     passport.deserializeUser(function (user, done) {
         model.FindById(user._id).then(function (userU) {
+            //UserU.password = "******";
             done(null, userU);
         });        
     });
@@ -141,7 +144,13 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
 
 
     app.get('/api/project/loggedin', function (req, res) {
-        res.send(req.isAuthenticated() ? req.user : '0');
+        if (req.isAuthenticated()) {
+            req.user.password = "*******";
+            res.send(req.user);
+        }
+        else {
+            res.send('0');
+        }
     });
 
     app.post('/api/project/logout', function (req, res) {

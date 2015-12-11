@@ -38,9 +38,11 @@
 
 
             $scope.addComment = function () {
+                console.log("I am here");
                 if ($scope.comment !== undefined || $scope.comment == "") {
                     if ($scope.user == '0') {
                         $scope.error = 'Please login to Comment';
+                        console.log($scope.error);
                     }
                     else {
                         var d = new Date();
@@ -101,7 +103,7 @@
                     });
                 }
                 else {
-                    $scope.error = "Please login to like dislike teams.";
+                    $scope.errorLike = "Please login to like dislike News Article.";
                 }
 
             }
@@ -121,7 +123,7 @@
                     });
                 }
                 else {
-                    $scope.error = "Please login to like dislike teams.";
+                    $scope.errorLike = "Please login to like dislike News Article.";
                 }
             }
         }

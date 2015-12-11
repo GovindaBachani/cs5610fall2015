@@ -115,7 +115,7 @@
                 });
             }
             else {
-                $scope.error = "Please login to like dislike teams.";
+                $scope.errorLike = "Please login to like dislike teams.";
             }
         }
 
