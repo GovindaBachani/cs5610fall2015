@@ -93,6 +93,10 @@
             $location.path('/team/' + teamId);
         }
 
+        $scope.toUserPage = function (email) {
+            $location.path('/user/' + email);
+        };
+
         $scope.addComment = function () {
             console.log($scope.comment);
             if ($scope.comment !== undefined || $scope.comment == "") {

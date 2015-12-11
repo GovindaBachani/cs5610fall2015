@@ -21,10 +21,21 @@
             getAllTeamContent: getAllTeamContent,
             increaseLike: increaseLike,
             increaseDislike: increaseDislike,
-            getAllTeamsWithNonZeroComment: getAllTeamsWithNonZeroComment
+            getAllTeamsWithNonZeroComment: getAllTeamsWithNonZeroComment,
+            getUserByEmail : getUserByEmail
         }
 
         return service;
+
+        function getUserByEmail(email) {
+            var defer = $q.defer();
+            var url = '/api/project/user/find/' + email;
+            console.log(url);
+            $http.get(url).success(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
+        }
 
         function getAllTeamsWithNonZeroComment() {
             var defer = $q.defer();

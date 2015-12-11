@@ -177,6 +177,10 @@
             }
         }
 
+        $scope.toUserPage = function (email) {
+            $location.path('/user/' + email);
+        };
+
         $scope.deleteComment = function (commentId) {
             console.log(commentId);
             UserService.deleteComment(commentId, teamId).then(function (team) {

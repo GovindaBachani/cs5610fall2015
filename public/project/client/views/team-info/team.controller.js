@@ -138,6 +138,10 @@
                 $scope.error = "Please login to like dislike teams.";
             }
         }
+
+        $scope.toUserPage = function (email) {
+            $location.path('/user/' + email);
+        };
     };
 })();
 

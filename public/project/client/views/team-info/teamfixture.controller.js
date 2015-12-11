@@ -109,6 +109,12 @@
             $location.path('/team/' + teamId);
         };
 
+        $scope.toUserPage = function (email) {
+            $location.path('/user/' + email);
+        };
+
+
+
         function getTeamCrest(team) {
             var d = $q.defer();
             var teamId = APIService.getTeamId(team.href);

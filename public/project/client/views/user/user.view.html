@@ -1,0 +1,39 @@
+﻿<ng-include src="'views/header/header.view.html'"></ng-include>
+
+<div class="container" style="background:#645f5f" ng-controller="UserController">
+    <h1>
+        User Information
+    </h1>
+    <table class="table-responsive table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>UserName</th>
+                <td>{{user.username}}</td>
+            </tr>
+            <tr>
+                <th>Full Name</th>
+                <td>{{user.fullName}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td class="utableData">{{user.email}}</td>
+            </tr>
+            <tr>
+                <th>Favourite League</th>
+                <td>{{user.league.name}}</td>
+            </tr>
+            <tr>
+                <th>Favourite Team</th>
+                <td>{{user.team.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div align="center" ng-if="user.email == loggedInUser.email">
+        <a class="btn btn-danger" ng-click="remove(user._id)">
+            Delete
+        </a>
+        <a class="btn btn-success" ng-click="update()">
+            Update Profile
+        </a>
+    </div>
+</div>

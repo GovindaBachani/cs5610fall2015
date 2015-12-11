@@ -87,6 +87,9 @@
             .when("/teamSquad/:teamid", {
                 templateUrl: "views/team-info/teamsquad.view.html",
             })
+            .when("/user/:email", {
+                templateUrl: "views/user/user.view.html",
+            })
             .otherwise({
                 redirectTo: "/home"
             });

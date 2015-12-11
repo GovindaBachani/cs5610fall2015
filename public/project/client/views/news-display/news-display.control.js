@@ -92,6 +92,10 @@
                 });
             }
 
+            $scope.toUserPage = function (email) {
+                $location.path('/user/' + email);
+            };
+
             $scope.increaseDislike = function () {
                 if ($scope.user.email) {
                     NewsService.increaseDislike(newsId, $scope.user.email).then(function (news) {
