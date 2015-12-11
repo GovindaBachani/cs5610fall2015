@@ -9,7 +9,7 @@ var schema = function (mongoose) {
     var NewsSchema = new mongoose.Schema({
         "newsId": { type: String, required: true, unique: true },
         "content": { type: String, required: true },
-        "imageUrl": { type: String, required: true },
+        "imageUrl": { type: String },
         "titleNoFormatting": { type: String, required: true },
         "unescapedUrl": { type: String, required: true },
         "comments": [comment],

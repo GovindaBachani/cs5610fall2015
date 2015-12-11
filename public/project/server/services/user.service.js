@@ -30,7 +30,6 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
                         error: 'Incorrect username or password.'
                     });
                 }
-                user.password = "*******";
                 console.log(user);
                 return done(null, user);
             })

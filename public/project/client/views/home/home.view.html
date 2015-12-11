@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6" style="background-color:#000000;margin-top:10px;border:double">
+        <div class="col-sm-6 homeFixture" style="background-color:#000000;margin-top:10px;border:double">
             <h3 style="color:gold">Previous Result</h3>
             <h4 style="color:gold">{{rDate}}</h4>
             <h5 style="color:gold">{{rmyTime}}</h5>
@@ -79,7 +79,7 @@
                                  onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
                                  ng-click="toTeamPageI(resultHomeCrest.teamId)" />
                         </td>
-                        <td class="result" align="center"><h4><b><u>{{res}}</u></b></h4></td>
+                        <td class="result" align="center"><h5><b><u>{{res}}</u></b></h5></td>
                         <td align="center" class="teamHome">
                             <img src="{{resultAwayCrest.crestUrl}}" class="homeImage"
                                  onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
@@ -105,7 +105,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-6" style="background-color:#000000;margin-top:10px;border:double">
+        <div class="col-sm-6 homeFixture" style="background-color:#000000;margin-top:10px;border:double">
             <h3 style="color:gold">Upcoming Fixture</h3>
             <h4 style="color:gold">{{fDate}}</h4>
             <h5 style="color:gold">{{fmyTime}}</h5>
@@ -117,7 +117,7 @@
                                  onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
                                  ng-click="toTeamPageI(fixtureHomeCrest.teamId)" />
                         </td>
-                        <td class="result" align="center"><h4><b><u>{{vs}}</u></b></h4></td>
+                        <td class="result" align="center"><h5><b><u>{{vs}}</u></b></h5></td>
                         <td align="center" class="teamHome">
                             <img src="{{fixtureAwayCrest.crestUrl}}" class="homeImage"
                                  onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"

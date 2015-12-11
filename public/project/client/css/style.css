@@ -253,6 +253,10 @@ body {
     background-size: cover;
 }
 
+.homeFixture{
+    height:300px;
+}
+
 
 
 @media (min-width:1000px) {

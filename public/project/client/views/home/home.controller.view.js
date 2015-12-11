@@ -6,7 +6,7 @@
         document.title = 'Home';
         UserService.checkLoggedInUser().then(function (user) {
             if (user == 0) {
-                APIService.getRecentNews("English Premier League").then(function (data) {
+                APIService.getRecentNews("Europe Football").then(function (data) {
 
                     $scope.slides = data;
                     var table = APIService.getTableContent(398);
@@ -136,7 +136,7 @@
                     });
                 }
                 else {
-                    APIService.getRecentNews("English Premier League").then(function (data) {
+                    APIService.getRecentNews("Europe Football").then(function (data) {
                         $scope.slides = data;
                         var table = APIService.getTableContent(398);
                         table.then(function (response) {
@@ -203,17 +203,31 @@
 
 
         $scope.newsClick = function (news) {
+            console.log(news);
             var hash = HashCode(news.unescapedUrl);
-            var newsObj = {
-                "newsId": hash,
-                "content": news.content,
-                "imageUrl": news.image.url,
-                "titleNoFormatting": news.titleNoFormatting,
-                "unescapedUrl": news.unescapedUrl,
-                "comments": [],
-                "likes": [],
-                "dislikes": [],
-            };
+            if (news.image) {
+                var newsObj = {
+                    "newsId": hash,
+                    "content": news.content,
+                    "imageUrl": news.image.url,
+                    "titleNoFormatting": news.titleNoFormatting,
+                    "unescapedUrl": news.unescapedUrl,
+                    "comments": [],
+                    "likes": [],
+                    "dislikes": [],
+                };
+            }
+            else {
+                var newsObj = {
+                    "newsId": hash,
+                    "content": news.content,
+                    "titleNoFormatting": news.titleNoFormatting,
+                    "unescapedUrl": news.unescapedUrl,
+                    "comments": [],
+                    "likes": [],
+                    "dislikes": [],
+                };
+            }          
 
             NewsService.CreateNews(newsObj).then(function (savedNews) {
                 var url = '/news-display/' + savedNews.newsId;
