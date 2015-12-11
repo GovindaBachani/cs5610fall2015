@@ -17,7 +17,8 @@ module.exports = function (mongoose, db) {
         Update: Update,
         Delete: Delete,
         FindUserByUsername: FindUserByUsername,
-        FindUserByCredentials: FindUserByCredentials
+        FindUserByCredentials: FindUserByCredentials,
+        FindUserByEmail: FindUserByEmail
     }
 
     return api;
@@ -105,6 +106,14 @@ module.exports = function (mongoose, db) {
     function FindUserByUsername(username) {
         var deferred = q.defer();
         userModel.findOne({ username: username }, function (err, user) {
+            deferred.resolve(user);
+        });
+        return deferred.promise;
+    }
+
+    function FindUserByEmail(email) {
+        var deferred = q.defer();
+        userModel.findOne({ email: email }, function (err, user) {
             deferred.resolve(user);
         });
         return deferred.promise;

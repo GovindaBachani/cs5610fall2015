@@ -158,6 +158,14 @@ module.exports = function (app, passport, model, LocalStrategy, FacebookStrategy
     app.get('/api/project/user', findUser);
     app.get("/api/project/user/:id", findById);
 
+    app.get("/api/project/user/:email", function (req, res) {
+        var email = req.param.email;
+        model.FindUserByEmail(user).then(function (user) {
+            user.password = "********";
+            res.json(user);
+        });
+    });
+
 
     function findUser(req, res) {
         var username = req.param("username");

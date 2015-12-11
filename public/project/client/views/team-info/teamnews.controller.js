@@ -19,21 +19,36 @@
 
         UserService.checkLoggedInUser().then(function (user) {
             $scope.user = user;
-            console.log($scope.user);
         });
-        console.log($scope.team);
-        
+        UserService.getAllTeamContent(teamId).then(function (team) {
+            if (team) {
+                console.log(team);
+                $scope.comments = team.comments;
+                var commentCount = team.comments.length;
+                console.log(commentCount);
+                $scope.commentSection = commentCount + " comments";
+                $scope.like = team.likes.length;
+                $scope.dislike = team.dislikes.length;
+            }
+            else {
+                console.log(team);
+                $scope.commentSection = 0 + " comments";
+                $scope.like = 0;
+                $scope.dislike = 0;
+            }
 
-        $scope.newsClick = function (index) {
-            var news = $scope.posts[index];
-            var str = news.titleNoFormatting;
-            str = str.replace(/[^\w\s]/gi, '');
-            var hash = HashCode($scope.posts[index].unescapedUrl);
+            console.log($scope.commentSection);
+        });
+
+
+        $scope.newsClick = function (news) {
+            console.log(news);
+            var hash = HashCode(news.unescapedUrl);
             var newsObj = {
                 "newsId": hash,
                 "content": news.content,
                 "imageUrl": news.image.url,
-                "titleNoFormatting": str,
+                "titleNoFormatting": news.titleNoFormatting,
                 "unescapedUrl": news.unescapedUrl,
                 "comments": [],
                 "likes": [],
@@ -76,6 +91,51 @@
         $scope.navigateToTeam = function () {
             console.log("navigating to Squad");
             $location.path('/team/' + teamId);
+        }
+
+        $scope.addComment = function () {
+            console.log($scope.comment);
+            if ($scope.comment !== undefined || $scope.comment == "") {
+                if ($scope.user == '0') {
+                    $scope.error = 'Please login to Comment';
+                    console.log("abcd");
+                }
+                else {
+                    var d = new Date();
+                    var dt = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+                    var commentObj = {
+                        username: $scope.user.fullName,
+                        date: dt,
+                        commentText: $scope.comment,
+                        email: $scope.user.email
+                    }
+
+                    UserService.postComment(commentObj, teamId).then(function (team) {
+                        $scope.comment = "";
+                        $scope.comments = team.comments;
+                        $scope.like = team.likes.length;
+                        $scope.dislike = team.dislikes.length;
+                        var commentCount = team.comments.length;
+                        console.log(commentCount);
+                        $scope.commentSection = commentCount + " comments";
+                        console.log($scope.commentSection);
+                    });
+                }
+            }
+        }
+
+        $scope.deleteComment = function (commentId) {
+            console.log(commentId);
+            UserService.deleteComment(commentId, teamId).then(function (team) {
+                $scope.comment = "";
+                $scope.comments = team.comments;
+                $scope.like = team.likes.length;
+                $scope.dislike = team.dislikes.length;
+                var commentCount = team.comments.length;
+                console.log(commentCount);
+                $scope.commentSection = commentCount + " comments";
+                console.log($scope.commentSection);
+            });
         }
     }
 })();
