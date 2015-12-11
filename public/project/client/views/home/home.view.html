@@ -28,8 +28,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-lg-3" style="height:500px;overflow:auto;">
 
+        <div class="col-md-3 col-lg-3" style="height:500px;overflow:auto;">
+            <div class="hidden-lg hidden-md">&nbsp;</div>
+            <h4 style="color:gold">League Standings</h4>
             <div class="table-responsive">
                 <table class="table table-striped timg" id="league-table">
                     <thead>
@@ -54,8 +56,51 @@
                 </table>
             </div>
         </div>
-        <div></div>
-        <div></div>
+        <br />
+        <br />
+        <div style="margin-top:5px;margin-left:15px;background:#645f5f" class="col-md-5 col-lg-5">
+            <div class="hidden-lg hidden-md">&nbsp;</div>
+            <h3 style="color:gold">Previous Result</h3>
+            <h4 style="color:gold">{{rDate}}</h4>
+            <h5 style="color:gold">{{rmyTime}}</h5>
+            <div class="col-md-2 col-lg-2">
+                <img src="{{resultHomeCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                     style="width:100%"/>
+                <h4><a class="hyperlink">{{resultHomeCrest.teamName}}</a></h4>
+            </div>
+            <div class="col-md-1 col-lg-1">
+                <h5 style="width:100%">{{res}}</h5>
+            </div>
+            <div class="col-md-2 col-lg-2">
+                <img src="{{resultAwayCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                     style="width:100%"/>
+                <h4><a class="hyperlink">{{resultAwayCrest.teamName}}</a></h4>
+            </div>
+        </div>
+
+        <!--<div class="divider" />-->
+        <div class="col-md-5 col-lg-5 col-lg-offset-1 col-md-offset-1"  style="background:#645f5f;margin-top:5px;">
+            <div class="hidden-lg hidden-md">&nbsp;</div>
+            <h3 style="color:gold">Upcoming Fixture</h3>
+            <h4 style="color:gold">{{fDate}}</h4>
+            <h5 style="color:gold">{{fmyTime}}</h5>
+            <div class="col-md-2 col-lg-2">
+                <img src="{{fixtureHomeCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                     style="width:100%"/>
+                <h4><a class="hyperlink">{{fixtureHomeCrest.teamName}}</a></h4>
+            </div>
+            <div class="col-md-1 col-lg-1">
+                <h5>{{vs}}</h5>
+            </div>
+            <div class="col-md-2 col-lg-2">
+                <img src="{{fixtureAwayCrest.crestUrl}}" onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';"
+                     style="width:100%"/>
+                <h4><a class="hyperlink">{{fixtureAwayCrest.teamName}}</a></h4>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
 </div>
 

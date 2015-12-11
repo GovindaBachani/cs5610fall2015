@@ -9,7 +9,7 @@
             if (user == 0) {
                 console.log("not Logged In");
                 APIService.getRecentNews("Manchester United").then(function (data) {
-                    
+
                     $scope.slides = data;
                     var table = APIService.getTableContent(398);
                     table.then(function (response) {
@@ -17,14 +17,60 @@
                         $scope.teams = response.standing;
                         $scope.leagueName = response.leagueCaption + "!!";
                         $scope.matchDay = 'MatchDay ' + response.matchday;
-                        
+
                         angular.forEach($scope.teams, function (team) {
-                            var teamInfo = getTeamCrest(team);
+                            var teamInfo = getTeamCrest(team._links.team.href);
                             teamInfo.then(function (res) {
                                 team.crestUrl = res;
                                 console.log(team);
                             });
                         })
+                    });
+                    APIService.getTeamFixtures(66).then(function (data) {
+                        var fixtures = data.fixtures;
+                        var j = 0, k = 0;
+                        for (var i = 1; i < fixtures.length; i++) {
+                            if (fixtures[i].status == "TIMED") {
+                                j = i - 1;
+                                k = i;
+                                break;
+                            }
+                        }
+                        var nextFixture = fixtures[k];
+                        var previousResult = fixtures[j];
+                        var result = previousResult.result;
+                        var hGoal = result.goalsHomeTeam;
+                        var aGoal = result.goalsAwayTeam;
+                        $scope.res = hGoal + "-" + aGoal;
+                        $scope.vs = 'vs';
+                        var rdateTime = previousResult.date;
+                        var rres = rdateTime.split("T");
+                        var rdate = rres[0];
+                        var rtime = rres[1];
+                        var rtempTime = rtime.split("Z");
+                        var rmyTime = rtempTime[0];
+                        $scope.rmyTime = rmyTime;
+                        $scope.rDate = rdate;
+                        var fdateTime = nextFixture.date;
+                        var fres = fdateTime.split("T");
+                        var fdate = fres[0];
+                        var ftime = fres[1];
+                        var ftempTime = ftime.split("Z");
+                        var fmyTime = ftempTime[0];
+                        $scope.fmyTime = fmyTime;
+                        $scope.fDate = fdate;
+                        getTeamCrest(previousResult._links.homeTeam.href).then(function (data) {
+                            $scope.resultHomeCrest = data;
+                        });
+                        getTeamCrest(previousResult._links.awayTeam.href).then(function (data) {
+                            $scope.resultAwayCrest = data;
+                        });
+                        getTeamCrest(nextFixture._links.homeTeam.href).then(function (data) {
+                            $scope.fixtureHomeCrest = data;
+                        });
+                        getTeamCrest(nextFixture._links.awayTeam.href).then(function (data) {
+                            $scope.fixtureAwayCrest = data;
+                        });
                     });
                 });
             }
@@ -42,12 +88,59 @@
                             $scope.matchDay = 'MatchDay ' + response.matchday;
                             document.title = response.leagueCaption;
                             angular.forEach($scope.teams, function (team) {
-                                var teamInfo = getTeamCrest(team);
+                                var teamInfo = getTeamCrest(team._links.team.href);
                                 teamInfo.then(function (res) {
                                     team.crestUrl = res;
                                     console.log(team);
                                 });
                             })
+                        });
+                        var teamId = APIService.getTeamId(user.team._links.self.href);
+                        APIService.getTeamFixtures(teamId).then(function (data) {
+                            var fixtures = data.fixtures;
+                            var j = 0, k = 0;
+                            for (var i = 1; i < fixtures.length; i++) {
+                                if (fixtures[i].status == "TIMED") {
+                                    j = i - 1;
+                                    k = i;
+                                    break;
+                                }
+                            }
+                            var nextFixture = fixtures[k];
+                            var previousResult = fixtures[j];
+                            var result = previousResult.result;
+                            var hGoal = result.goalsHomeTeam;
+                            var aGoal = result.goalsAwayTeam;
+                            $scope.res = hGoal + "-" + aGoal;
+                            $scope.vs = 'vs';
+                            var rdateTime = previousResult.date;
+                            var rres = rdateTime.split("T");
+                            var rdate = rres[0];
+                            var rtime = rres[1];
+                            var rtempTime = rtime.split("Z");
+                            var rmyTime = rtempTime[0];
+                            $scope.rmyTime = rmyTime;
+                            $scope.rDate = rdate;
+                            var fdateTime = nextFixture.date;
+                            var fres = fdateTime.split("T");
+                            var fdate = fres[0];
+                            var ftime = fres[1];
+                            var ftempTime = ftime.split("Z");
+                            var fmyTime = ftempTime[0];
+                            $scope.fmyTime = fmyTime;
+                            $scope.fDate = fdate;
+                            getTeamCrest(previousResult._links.homeTeam.href).then(function (data) {
+                                $scope.resultHomeCrest = data;
+                            });
+                            getTeamCrest(previousResult._links.awayTeam.href).then(function (data) {
+                                $scope.resultAwayCrest = data;
+                            });
+                            getTeamCrest(nextFixture._links.homeTeam.href).then(function (data) {
+                                $scope.fixtureHomeCrest = data;
+                            });
+                            getTeamCrest(nextFixture._links.awayTeam.href).then(function (data) {
+                                $scope.fixtureAwayCrest = data;
+                            });
                         });
                     });
                 }
@@ -63,18 +156,64 @@
                             $scope.matchDay = 'MatchDay ' + response.matchday;
                             document.title = response.leagueCaption;
                             angular.forEach($scope.teams, function (team) {
-                                var teamInfo = getTeamCrest(team);
+                                var teamInfo = getTeamCrest(team._links.team.href);
                                 teamInfo.then(function (res) {
                                     team.crestUrl = res;
                                     console.log(team);
                                 });
                             })
                         });
+                        APIService.getTeamFixtures(66).then(function (data) {
+                            var fixtures = data.fixtures;
+                            var j = 0, k = 0;
+                            for (var i = 1; i < fixtures.length; i++) {
+                                if (fixtures[i].status == "TIMED") {
+                                    j = i - 1;
+                                    k = i;
+                                    break;
+                                }
+                            }
+                            var nextFixture = fixtures[k];
+                            var previousResult = fixtures[j];
+                            var result = previousResult.result;
+                            var hGoal = result.goalsHomeTeam;
+                            var aGoal = result.goalsAwayTeam;
+                            $scope.res = hGoal + "-" + aGoal;
+                            $scope.vs = 'vs';
+                            var rdateTime = previousResult.date;
+                            var rres = rdateTime.split("T");
+                            var rdate = rres[0];
+                            var rtime = rres[1];
+                            var rtempTime = rtime.split("Z");
+                            var rmyTime = rtempTime[0];
+                            $scope.rmyTime = rmyTime;
+                            $scope.rDate = rdate;
+                            var fdateTime = nextFixture.date;
+                            var fres = fdateTime.split("T");
+                            var fdate = fres[0];
+                            var ftime = fres[1];
+                            var ftempTime = ftime.split("Z");
+                            var fmyTime = ftempTime[0];
+                            $scope.fmyTime = fmyTime;
+                            $scope.fDate = fdate;
+                            getTeamCrest(previousResult._links.homeTeam.href).then(function (data) {
+                                $scope.resultHomeCrest = data;
+                            });
+                            getTeamCrest(previousResult._links.awayTeam.href).then(function (data) {
+                                $scope.resultAwayCrest = data;
+                            });
+                            getTeamCrest(nextFixture._links.homeTeam.href).then(function (data) {
+                                $scope.fixtureHomeCrest = data;
+                            });
+                            getTeamCrest(nextFixture._links.awayTeam.href).then(function (data) {
+                                $scope.fixtureAwayCrest = data;
+                            });
+                        });
                     });
-                }                
-            }            
+                }
+            }
         });
-        
+
 
         $scope.newsClick = function (news) {
             var hash = HashCode(news.unescapedUrl);
@@ -107,21 +246,20 @@
             return hash;
         };
 
-        $scope.toTeamPage = function (teamLink) {
-            var teamId = APIService.getTeamId(teamLink);
-            $location.path('/team/' + teamId);
-        };
+        function getTeamCrest(teamLink) {
 
-        function getTeamCrest(team) {
             var d = $q.defer();
-            var teamId = APIService.getTeamId(team._links.team.href);
+            var teamId = APIService.getTeamId(teamLink);
+            console.log(teamId);
             APIService.getTeamCrest(teamId).then(function (teamCrest) {
                 d.resolve(teamCrest);
-                //console.log(teamInfo);
             });
             return d.promise;
         }
 
-        
+        $scope.toTeamPage = function (teamLink) {
+            var teamId = APIService.getTeamId(teamLink);
+            $location.path('/team/' + teamId);
+        };
     }
 })();

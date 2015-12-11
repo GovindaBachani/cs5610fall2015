@@ -564,9 +564,10 @@ background-color:#91c0fe;
 
 .carousel-caption {
       max-width: 550px;
-      padding-bottom:50px;
+      padding-bottom:30px;
       margin:0 auto;
       margin-top: 200px;
+      left:0;
       text-align:left;
 }
 
@@ -574,4 +575,18 @@ background-color:#91c0fe;
   width: auto;
   height: 500px;
   max-height: 600px;
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
+}
+
+.hyperlink{
+    color:#3d0505
 }
