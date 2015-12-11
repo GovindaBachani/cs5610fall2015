@@ -6,7 +6,7 @@
         document.title = 'Home';
         UserService.checkLoggedInUser().then(function (user) {
             if (user == 0) {
-                APIService.getRecentNews("Manchester United").then(function (data) {
+                APIService.getRecentNews("English Premier League").then(function (data) {
 
                     $scope.slides = data;
                     var table = APIService.getTableContent(398);
@@ -22,7 +22,7 @@
                             });
                         })
                     });
-                    APIService.getTeamFixtures(66).then(function (data) {
+                    APIService.getFixtureDetails(398).then(function (data) {
                         var fixtures = data.fixtures;
                         var j = 0, k = 0;
                         for (var i = 1; i < fixtures.length; i++) {
@@ -136,7 +136,7 @@
                     });
                 }
                 else {
-                    APIService.getRecentNews("Manchester United").then(function (data) {
+                    APIService.getRecentNews("English Premier League").then(function (data) {
                         $scope.slides = data;
                         var table = APIService.getTableContent(398);
                         table.then(function (response) {
@@ -150,7 +150,7 @@
                                 });
                             })
                         });
-                        APIService.getTeamFixtures(66).then(function (data) {
+                        APIService.getFixtureDetails(398).then(function (data) {
                             var fixtures = data.fixtures;
                             var j = 0, k = 0;
                             for (var i = 1; i < fixtures.length; i++) {
