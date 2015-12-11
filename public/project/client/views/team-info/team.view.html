@@ -31,7 +31,7 @@
                 <h5 ng-if="team.squadMarketValue!=null"><b>Squad Market Value: </b>{{team.squadMarketValue}}</h5>
                 <br />
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <button type="button" class="btn btn-success" ng-click="increaseLike()"
+                    <button type="button" class="btn btn-danger" ng-click="increaseLike()"
                             aria-label="Left Align">
                         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>&nbsp;
                         <span>{{like}}</span>
@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-left:30px">
-                    <button type="button" class="btn btn-danger" ng-click="increaseDislike()"
+                    <button type="button" class="btn btn-success" ng-click="increaseDislike()"
                             aria-label="Left Align">
                         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;
                         <span>{{dislike}}</span>
