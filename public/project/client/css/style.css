@@ -25,6 +25,11 @@
     width: 100%;
 }
 
+.userNotFound{
+    padding-left:200px;
+    padding-top:100px;
+}
+
 .newsdiv {
     width: 800px;
     position: absolute;

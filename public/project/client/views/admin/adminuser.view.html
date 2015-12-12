@@ -22,7 +22,7 @@
             </tr>
 
             <tr class="table-bordered" ng-repeat="user in users">
-                <td>{{user.fullName}}</td>
+                <td><a ng-click="toUserProfile(user.email)">{{user.fullName}}</a></td>
                 <td>
                     <a><span class="big-glyphicon glyphicon glyphicon-remove" aria-hidden="true"
                              ng-click="remove(user._id)"></span></a>

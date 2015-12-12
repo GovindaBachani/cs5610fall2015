@@ -26,5 +26,9 @@
                 });
             });
         }
+
+        $scope.toUserProfile = function (email) {
+            $location.path('/user/' + email);
+        }
     }
 })();
