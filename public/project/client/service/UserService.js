@@ -169,6 +169,7 @@
             var defer = $q.defer();
             var url = '/api/project/user';
             $http.post(url, user).success(function (response) {
+                console.log(response);
                 defer.resolve(response);
             });
             return defer.promise;

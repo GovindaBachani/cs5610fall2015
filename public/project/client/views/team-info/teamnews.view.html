@@ -38,7 +38,9 @@
 
                         <div class="item" ng-repeat="news in posts" ng-class="{active : $first}">
                             <img id="UniformImage" src={{news.image.url}}
-                                 alt="Manc" width="100%"/>
+                                 alt="Manc" ng-if="news.image.url" />
+                            <img id="UniformImage" src="http://www.guygray.org/wp-content/uploads/2013/06/Image-Not-Found-2.jpg"
+                                 alt="Manc" ng-if="!news.image.url" />
                             <div class="carousel-caption">
                                 <a ng-click="newsClick(news)">
                                     <h3 style="background:#000000">{{news.titleNoFormatting}}</h3>

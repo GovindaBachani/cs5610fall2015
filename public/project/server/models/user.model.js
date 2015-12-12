@@ -30,7 +30,8 @@ module.exports = function (mongoose, db) {
         
         userModel.create(newUser, function (err, doc) {
             if (err) {
-                defer.resolve(err);
+                console.log(err);
+                deferred.resolve(err);
             }
             else {
                 deferred.resolve(doc);
@@ -112,6 +113,7 @@ module.exports = function (mongoose, db) {
     function FindUserByEmail(email) {
         var deferred = q.defer();
         userModel.findOne({ email: email }, function (err, user) {
+            user.password = "******"
             deferred.resolve(user);
         });
         return deferred.promise;

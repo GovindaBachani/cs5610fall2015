@@ -7,7 +7,7 @@
         $scope.register = function () {
             if ($scope.repPwd != $scope.pwd) {
                 $scope.errorMessage = "Passwords should Match";
-                console.log($scope.errorMessage); 
+                console.log($scope.errorMessage);
             }
             else {
                 var user = {
@@ -17,11 +17,15 @@
                     fullName: $scope.fname
                 }
                 var currentUser = UserService.createUser(user).then(function (currentUser) {
-                    console.log(currentUser);
-                    UserService.login(currentUser).then(function (loggedUser) {
-                        $rootScope.loggedUser = currentUser;
-                        $location.path("/profile");
-                    });
+                    if (currentUser.errmsg) {
+                        $scope.duplicateErrorMessage = "Username or Email alreday exists. Please choose Different.";
+                    }
+                    else {
+                        UserService.login(currentUser).then(function (loggedUser) {
+                            $rootScope.loggedUser = currentUser;
+                            $location.path("/profile");
+                        });
+                    }
                 });
             }
         }

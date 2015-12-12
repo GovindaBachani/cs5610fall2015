@@ -46,8 +46,8 @@
             <span style="color:#ffd800;background:#000000" ng-show="frm.rpwd.$dirty && frm.rpwd.$error.required">
                 <b>Enter Password Again</b>
             </span>
-            <h4 style="color:#ffd800;background:#000000">
-                {{errorMessage}}
+            <h4 style="color:#ffd800;background:#000000;display:inline" >
+                <span style="text-align: center; ">{{errorMessage}}</span>
             </h4>
         </div>
         <div class="form-group">
@@ -71,6 +71,9 @@
                 </button>
             </div>
         </div>
+        <h4 style="color:#ffd800;background:#000000;display:inline;align-content:center">
+            <span style="text-align: center; ">{{duplicateErrorMessage}}</span>
+        </h4>
     </form>
 </div>
 
