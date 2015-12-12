@@ -195,6 +195,9 @@
                         <li>
                             <a href="#/about">About</a>
                         </li>
+                        <li ng-if="user.role=='admin'">
+                            <a href="#/adminuser">Admin</a>
+                        </li>
                         <li>
                             <a href="https://docs.google.com/document/d/1BefXhdkBCI37gtrVhNXY9KEVQC-6SSvZfccJEVSGe7M/edit?usp=sharing" target="_blank">Project Document</a>
                         </li>
@@ -208,9 +211,7 @@
                                 </button>
                             </div>
                         </li>
-                        <li ng-if="user.role=='admin'">
-                            <a href="#/adminuser">Admin</a>
-                        </li>
+                       
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

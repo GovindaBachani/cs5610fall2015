@@ -6,7 +6,7 @@
         document.title = 'Home';
         UserService.checkLoggedInUser().then(function (user) {
             if (user == 0) {
-                APIService.getRecentNews("Europe Football").then(function (data) {
+                APIService.getRecentNews("soccer transfer news").then(function (data) {
 
                     $scope.slides = data;
                     var table = APIService.getTableContent(398);
@@ -136,7 +136,7 @@
                     });
                 }
                 else {
-                    APIService.getRecentNews("Europe Football").then(function (data) {
+                    APIService.getRecentNews("soccer transfer news").then(function (data) {
                         $scope.slides = data;
                         var table = APIService.getTableContent(398);
                         table.then(function (response) {
