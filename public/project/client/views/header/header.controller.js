@@ -82,7 +82,7 @@
         $scope.logout = function () {
             UserService.logout().then(function (user) {
                 if (user == 'OK') {
-                    $location.path('/login');
+                    
                     location.reload();
                 }
             });

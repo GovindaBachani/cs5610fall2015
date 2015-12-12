@@ -17,7 +17,7 @@
                         <li>
                             <a href="#/home">Home</a>
                         </li>
-                        
+
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Leagues<span class="caret"></span></a>
@@ -82,15 +82,18 @@
                             <a href="https://docs.google.com/document/d/1BefXhdkBCI37gtrVhNXY9KEVQC-6SSvZfccJEVSGe7M/edit?usp=sharing" target="_blank">Project Document</a>
                         </li>
 
-                        
+
                         <li>
-                            <div id="the-basics" style="padding-top:10px">
-                                <input class="typeahead form-control" type="text"
-                                       placeholder="Search Team" ng-model="teamName">
-                                <button style="" class="btn btn-default" 
-                                        ng-click="toTeamPage()">
-                                <i class="glyphicon glyphicon-search"></i></button>
-                            </div>
+                            <form ng-submit="toTeamPage()">
+                                <div id="the-basics" style="padding-top:10px">
+                                    <input class="typeahead form-control" type="text"
+                                           placeholder="Search Team" ng-model="teamName">
+                                    <button style="" class="btn btn-default"
+                                            >
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </li>
                         <li ng-if="user.role=='admin'">
                             <a href="#/adminuser">Admin</a>
@@ -131,7 +134,7 @@
                         <li>
                             <a href="#/home">Home</a>
                         </li>
-                        
+
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Leagues<span class="caret"></span></a>
@@ -208,7 +211,7 @@
                         <li ng-if="user.role=='admin'">
                             <a href="#/adminuser">Admin</a>
                         </li>
-                        
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
