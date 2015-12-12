@@ -113,6 +113,8 @@
                     for (var i = 0; i < news.length; i++) {
                         var properTitle = news[i].titleNoFormatting.replace(/&#39;/g, "'");
                         var properContent = news[i].content.replace(/&#39;/g, "'");
+                        properTitle = properTitle.replace(/&amp;/g, '&');
+                        properContent = properContent.replace(/&amp;/g, '&');
                         news[i].titleNoFormatting = properTitle;
                         news[i].content = properContent;
                     }
