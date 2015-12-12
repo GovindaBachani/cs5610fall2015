@@ -1,7 +1,7 @@
 ﻿<ng-include src="'views/header/header.view.html'"></ng-include>
 <br />
 
-<div class="container"  ng-controller="UserController">
+<div class="container col-lg-12 col-md-12 col-xs-12 col-sm-12" ng-controller="UserController">
     <div ng-if="user" style="background:#645f5f;height:350px">
         <h1>
             User Information
@@ -44,7 +44,7 @@
             </a>
         </div>
     </div>
-    <div ng-if="!user" class="col-sm-3 col-xs-3">
-        <img  src="http://www.covers.fbcovereffects.com/storage/cache/images/002/178/user-not-found,medium_large.jpg?1391609075"/>
+    <div ng-if="!user">
+        <h1>404 Profile Not Found......!!!</h1>
     </div>
 </div>

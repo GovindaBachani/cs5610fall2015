@@ -113,7 +113,9 @@ module.exports = function (mongoose, db) {
     function FindUserByEmail(email) {
         var deferred = q.defer();
         userModel.findOne({ email: email }, function (err, user) {
-            user.password = "******"
+            if (user) {
+                user.password = "******"
+            }            
             deferred.resolve(user);
         });
         return deferred.promise;
