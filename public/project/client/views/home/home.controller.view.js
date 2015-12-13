@@ -105,6 +105,9 @@
                             $scope.res = hGoal + "-" + aGoal;
                             $scope.vs = 'vs';
                             var rdateTime = previousResult.date;
+                            var startTime = new Date(rdateTime);
+                            startTime = new Date(startTime.getTime() + (startTime.getTimezoneOffset() * 60000));
+                            console.log(startTime);
                             var rres = rdateTime.split("T");
                             var rdate = rres[0];
                             var rtime = rres[1];
