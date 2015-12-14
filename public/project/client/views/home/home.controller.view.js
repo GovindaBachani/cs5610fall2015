@@ -40,20 +40,23 @@
                         $scope.res = hGoal + "-" + aGoal;
                         $scope.vs = 'vs';
                         var rdateTime = previousResult.date;
-                        var rres = rdateTime.split("T");
+                        var d = new Date(rdateTime);
+                        var c = d.toLocaleString();
+                        
+                        var rres = c.split(",");
                         var rdate = rres[0];
                         var rtime = rres[1];
-                        var rtempTime = rtime.split("Z");
-                        var rmyTime = rtempTime[0];
-                        $scope.rmyTime = rmyTime;
+                        
+                        $scope.rmyTime = rtime;
                         $scope.rDate = rdate;
+
                         var fdateTime = nextFixture.date;
-                        var fres = fdateTime.split("T");
+                        var d = new Date(fdateTime);
+                        var c = d.toLocaleString();
+                        var fres = c.split(",");
                         var fdate = fres[0];
                         var ftime = fres[1];
-                        var ftempTime = ftime.split("Z");
-                        var fmyTime = ftempTime[0];
-                        $scope.fmyTime = fmyTime;
+                        $scope.fmyTime = ftime;
                         $scope.fDate = fdate;
                         getTeamCrest(previousResult._links.homeTeam.href).then(function (data) {
                             $scope.resultHomeCrest = data;
@@ -104,24 +107,25 @@
                             var aGoal = result.goalsAwayTeam;
                             $scope.res = hGoal + "-" + aGoal;
                             $scope.vs = 'vs';
+                            
                             var rdateTime = previousResult.date;
-                            var startTime = new Date(rdateTime);
-                            startTime = new Date(startTime.getTime() + (startTime.getTimezoneOffset() * 60000));
-                            console.log(startTime);
-                            var rres = rdateTime.split("T");
+                            var d = new Date(rdateTime);
+                            var c = d.toLocaleString();
+
+                            var rres = c.split(",");
                             var rdate = rres[0];
                             var rtime = rres[1];
-                            var rtempTime = rtime.split("Z");
-                            var rmyTime = rtempTime[0];
-                            $scope.rmyTime = rmyTime;
+
+                            $scope.rmyTime = rtime;
                             $scope.rDate = rdate;
+
                             var fdateTime = nextFixture.date;
-                            var fres = fdateTime.split("T");
+                            var d = new Date(fdateTime);
+                            var c = d.toLocaleString();
+                            var fres = c.split(",");
                             var fdate = fres[0];
                             var ftime = fres[1];
-                            var ftempTime = ftime.split("Z");
-                            var fmyTime = ftempTime[0];
-                            $scope.fmyTime = fmyTime;
+                            $scope.fmyTime = ftime;
                             $scope.fDate = fdate;
                             getTeamCrest(previousResult._links.homeTeam.href).then(function (data) {
                                 $scope.resultHomeCrest = data;
@@ -171,20 +175,23 @@
                             $scope.res = hGoal + "-" + aGoal;
                             $scope.vs = 'vs';
                             var rdateTime = previousResult.date;
-                            var rres = rdateTime.split("T");
+                            var d = new Date(rdateTime);
+                            var c = d.toLocaleString();
+
+                            var rres = c.split(",");
                             var rdate = rres[0];
                             var rtime = rres[1];
-                            var rtempTime = rtime.split("Z");
-                            var rmyTime = rtempTime[0];
-                            $scope.rmyTime = rmyTime;
+
+                            $scope.rmyTime = rtime;
                             $scope.rDate = rdate;
+
                             var fdateTime = nextFixture.date;
-                            var fres = fdateTime.split("T");
+                            var d = new Date(fdateTime);
+                            var c = d.toLocaleString();
+                            var fres = c.split(",");
                             var fdate = fres[0];
                             var ftime = fres[1];
-                            var ftempTime = ftime.split("Z");
-                            var fmyTime = ftempTime[0];
-                            $scope.fmyTime = fmyTime;
+                            $scope.fmyTime = ftime;
                             $scope.fDate = fdate;
                             getTeamCrest(previousResult._links.homeTeam.href).then(function (data) {
                                 $scope.resultHomeCrest = data;
